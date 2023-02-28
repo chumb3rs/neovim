@@ -1,1 +1,2 @@
-vim.o.relativenumber = true
+require("chumbers.set")
+require("chumbers.remap")
