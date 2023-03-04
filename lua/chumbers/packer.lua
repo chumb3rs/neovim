@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
 
   use('theprimeagen/vim-be-good')
 
-  use('lervag/vimtex')
+  use 'lervag/vimtex'
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
