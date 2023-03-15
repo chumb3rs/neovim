@@ -13,6 +13,13 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use {
+      'jghauser/fold-cycle.nvim',
+      config = function()
+          require('fold-cycle').setup()
+      end
+  }
+
   use "EdenEast/nightfox.nvim" -- Packer
   vim.cmd("colorscheme nordfox")
 
@@ -20,6 +27,7 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use 'akinsho/toggleterm.nvim'
 
   use('theprimeagen/vim-be-good')
 

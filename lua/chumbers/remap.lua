@@ -44,3 +44,5 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
