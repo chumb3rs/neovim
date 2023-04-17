@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
   use 'akinsho/toggleterm.nvim'
 
+  use 'lervag/vimtex'
+
   use('theprimeagen/vim-be-good')
 
   use {
