@@ -14,8 +14,21 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'Package hyperref Warning: Token not allowed in a PDF string',
       \]
 
-" Setting custom latexmk compile options
-" let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+" Setting custom latexmk compile vimtex_view_general_options
+let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+
+let g:vimtex_compiler_latexmk = {
+        \ 'callback' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+        \   '-shell-escape',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
 " Setting up SumatraPDF
 "let g:vimtex_view_general_viewer = 'SumatraPDF'
