@@ -56,4 +56,10 @@ return require('packer').startup(function(use)
 	  }
   }
 
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release
+        tag = "v1.*",
+        run = "make install_jsregexp"
+    })
 end)	
