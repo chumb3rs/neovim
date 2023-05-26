@@ -15,8 +15,6 @@ let g:vimtex_quickfix_ignore_filters = [
       \]
 
 " Setting custom latexmk compile vimtex_view_general_options
-let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
-
 let g:vimtex_compiler_latexmk = {
         \ 'callback' : 1,
         \ 'executable' : 'latexmk',
@@ -28,6 +26,7 @@ let g:vimtex_compiler_latexmk = {
         \   '-synctex=1',
         \   '-interaction=nonstopmode',
         \ ],
+        \ 'build_dir' : 'build',
         \}
 
 " Setting up SumatraPDF
@@ -36,3 +35,5 @@ let g:vimtex_compiler_latexmk = {
 "let g:vimtex_view_general_options
 "            \ = '-reuse-instance -forward-search @tex @line @pdf'
 
+" Setting up Zathura
+let g:vimtex_view_method = 'zathura'

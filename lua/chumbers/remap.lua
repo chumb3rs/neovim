@@ -46,3 +46,6 @@ end)
 
 -- terminal mode
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
+
+-- reload changes to LuaSnippets on the fly
+vim.keymap.set('n', '<leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
