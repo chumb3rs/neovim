@@ -1,5 +1,7 @@
 noremap <localleader>c <Cmd>update<CR><Cmd>VimtexCompileSS<CR>
 
+nnoremap <leader>L <Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>
+
 " Don't open QuickFix for warning messages if no errors are present
 let g:vimtex_quickfix_open_on_warning = 0
 

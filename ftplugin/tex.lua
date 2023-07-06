@@ -1,7 +1,7 @@
 -- REMAPS
-vim.keymap.set("n", "dsm", "<Plug>(vimtex-env-delete-math)")
-vim.keymap.set("n", "tsm", "<Plug>(vimtex-env-toggle-math)")
-vim.keymap.set("n", "csm", "<Plug>(vimtex-env-change-math)")
+-- vim.keymap.set("n", "dsm", "<Plug>(vimtex-env-delete-math)")
+-- vim.keymap.set("n", "tsm", "<Plug>(vimtex-env-toggle-math)")
+-- vim.keymap.set("n", "csm", "<Plug>(vimtex-env-change-math)")
 
 vim.keymap.set("o", "ai", "<Plug>(vimtex-am)")
 vim.keymap.set("x", "ai", "<Plug>(vimtex-am)")
