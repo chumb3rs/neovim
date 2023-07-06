@@ -56,7 +56,9 @@ return require('packer').startup(function(use)
         }
     }
 
-    use 'SirVer/ultisnips'
+    use 'tpope/vim-dispatch'
+
+   use 'SirVer/ultisnips'
 
     use({
         "L3MON4D3/LuaSnip",
