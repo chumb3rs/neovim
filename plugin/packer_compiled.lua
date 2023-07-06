@@ -175,6 +175,11 @@ _G.packer_plugins = {
     path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ultisnips = {
+    loaded = true,
+    path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
+  },
   undotree = {
     loaded = true,
     path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/undotree",
