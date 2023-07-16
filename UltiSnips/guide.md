@@ -46,3 +46,6 @@ endsnippet
 nnoremap <leader>u <Cmd>call UltiSnips#RefreshSnippets()<CR>
 ```
 Put this in your configuration file and you're good to go!
+
+### Custom .sty file
+Use the file     `chumbers.sty` located at     `~/texmf/tex/latex/local/`.

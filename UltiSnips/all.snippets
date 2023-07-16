@@ -1,11 +1,22 @@
 priority -1
 
+snippet snip "A snippet for writing Ultisnips snippets" b
+`!p snip.rv = "snippet"` ${1:trigger} "${2:Description}" $3
+$4
+`!p snip.rv = "endsnippet"`
+$0
+endsnippet
+
+snippet -- "Commented line with a bunch of dashes ----------------- " bA
+# --------------------------------------------- #
+endsnippet
+
 snippet ' "single quotation marks" A
 '${1:${VISUAL:}}'$0
 endsnippet
 
-snippet "(^|[\W])\""  "double quotation marks" rA
-	`!p snip.rv = match.group(1)`"${1:${VISUAL:}}"$0
+snippet "(^|[\W])\""  "double quotation marks" rA	
+`!p snip.rv = match.group(1)`"${1:${VISUAL:}}"$0
 endsnippet
 
 snippet ( "Paired parentheses ()" iA 
@@ -21,7 +32,7 @@ snippet { "Paired curly brackets {}" iA
 endsnippet
 
 snippet "(^|[\W])`"  "Back ticks" rA
-	`!p snip.rv = match.group(1)`\`${1:${VISUAL:}}\`$0
+`!p snip.rv = match.group(1)`\`${1:${VISUAL:}}\`$0
 endsnippet
 
 snippet --- "Commented line with a bunch of dashes ----------------- " bA

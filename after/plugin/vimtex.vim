@@ -1,3 +1,5 @@
+compiler tex
+
 noremap <localleader>c <Cmd>update<CR><Cmd>VimtexCompileSS<CR>
 
 map <leader>i :VimtexInfo<CR>
@@ -127,3 +129,6 @@ map ]/ <plug>(vimtex-]/
 map ]* <plug>(vimtex-]star
 map [/ <plug>(vimtex-[/
 map [* <plug>(vimtex-[star
+
+" For triggering forward search
+nmap <localleader>v <plug>(vimtex-view)
