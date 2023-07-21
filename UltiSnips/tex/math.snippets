@@ -77,6 +77,10 @@ snippet "(^|[^a-zA-Z])ff" "\frac{}{}" rA
 `!p snip.rv = match.group(1)`\frac{${1:${VISUAL:}}}{$2}$0
 endsnippet
 
+snippet "(^|[^a-zA-Z])el" "\in (element of)" rA
+\in 
+endsnippet
+
 snippet "(^|[^a-zA-Z])tf" "\tfrac{}{}" rA
 `!p snip.rv = match.group(1)`\tfrac{${1:${VISUAL:}}}{$2}$0
 endsnippet
@@ -288,6 +292,13 @@ endsnippet
 context "math()"
 snippet >> "\implies" Ai
 \implies 
+endsnippet
+snippet <> "\implies" Ai
+\implies 
+endsnippet
+
+snippet rra "\rightarrow" A
+\rightarrow
 endsnippet
 
 snippet lra "\leftrightarrow" A

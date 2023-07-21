@@ -1,13 +1,13 @@
 # Custom command snippets
 
-snippet "(^|[^a-zA-Z])ass"	 "\qs{}{} (question set)" rA
+snippet "(^|[^a-zA-Z])qs"	 "\qs{}{} (question set)" rA
 `!p snip.rv = match.group(1)`\qs{}{${1:${VISUAL:}}}$0
 endsnippet
 
 snippet	 "(^|[^a-zA-Z])dfn" "\dfn{title}{definition}" rA
 `!p snip.rv = match.group(1)`\dfn{$1}{$2}$0
 endsnippet
-snippet	 "(^|[^a-zA-Z])sol" "\sol (solution)" rA
+snippet	 "(^|[^a-zA-Z])sol" "\sol (solution)" r
 `!p snip.rv = match.group(1	)`\sol $1
 endsnippet
 snippet	 "(^|[^a-zA-Z])nt" "\nt{note} (note)" rA
@@ -16,13 +16,13 @@ endsnippet
 snippet	 "(^|[^a-zA-Z])clm" "\clm{title}{}{claim}" rA
 `!p snip.rv = match.group(1	)`\clm{$2}{}{${1:${VISUAL}}}$0
 endsnippet
-snippet	 "(^|[^a-zA-Z])ex" "\ex{title}{example}" rA
+snippet	 "(^|[^a-zA-Z])ex" "\ex{title}{example}" r
 `!p snip.rv = match.group(1	)`\ex{$2}{${1:${VISUAL}}}$0
 endsnippet
 snippet	 "(^|[^a-zA-Z])thm" "\thm{title}{theorem}" rA
 `!p snip.rv = match.group(1)`\thm{$2}{${1:${VISUAL}}}$0
 endsnippet
-snippet	 "(^|[^a-zA-Z])cor" "\cor{title}{result}" rA
+snippet	 "(^|[^a-zA-Z])cor" "\cor{title}{result}" r
 `!p snip.rv = match.group(1)`\cor{$2}{${1:${VISUAL}}}$0
 endsnippet
 snippet	 "(^|[^a-zA-Z])lma" "\mlenma{title}{result} (lemma)" rA
