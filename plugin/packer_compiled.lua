@@ -180,6 +180,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ultisnips = {
+    loaded = true,
+    path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
+  },
   undotree = {
     loaded = true,
     path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\undotree",
@@ -189,6 +194,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-be-good",
     url = "https://github.com/theprimeagen/vim-be-good"
+  },
+  ["vim-dispatch"] = {
+    loaded = true,
+    path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
   },
   ["vim-fugitive"] = {
     loaded = true,

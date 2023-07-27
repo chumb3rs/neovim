@@ -1,0 +1,39 @@
+# Custom command snippets
+
+snippet "(^|[^a-zA-Z])ass"	 "\qs{}{} (question set)" rA
+`!p snip.rv = match.group(1)`\qs{}{${1:${VISUAL:}}}$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])dfn" "\dfn{title}{definition}" rA
+`!p snip.rv = match.group(1)`\dfn{$1}{$2}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])sol" "\sol (solution)" rA
+`!p snip.rv = match.group(1	)`\sol $1
+endsnippet
+snippet	 "(^|[^a-zA-Z])nt" "\nt{note} (note)" rA
+`!p snip.rv = match.group(1	)`\nt{${1:${VISUAL}}}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])clm" "\clm{title}{}{claim}" rA
+`!p snip.rv = match.group(1	)`\clm{$2}{}{${1:${VISUAL}}}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])ex" "\ex{title}{example}" rA
+`!p snip.rv = match.group(1	)`\ex{$2}{${1:${VISUAL}}}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])thm" "\thm{title}{theorem}" rA
+`!p snip.rv = match.group(1)`\thm{$2}{${1:${VISUAL}}}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])cor" "\cor{title}{result}" rA
+`!p snip.rv = match.group(1)`\cor{$2}{${1:${VISUAL}}}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])lma" "\mlenma{title}{result} (lemma)" rA
+`!p snip.rv = match.group(1)`\mlemma{$2}{${1:${VISUAL}}}$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])mprop" "\mprop{title}{result} (prop)" rA
+`!p snip.rv = match.group(1)`\mprop{$2}{${1:${VISUAL}}}$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])prf" "Proof template" rA
+`!p snip.rv = match.group(1)`\begin{myproof}$1
+\end{myproof}$0
+endsnippet
+
