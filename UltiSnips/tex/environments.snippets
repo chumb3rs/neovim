@@ -2,6 +2,13 @@ snippet "(^|[^a-zA-Z\\])mm" "Inline math $ $" rA
 `!p snip.rv = match.group(1)`\$ ${1:${VISUAL:}} \$$0
 endsnippet
 
+
+snippet bm  "New environment" bA
+\[
+	$1
+\]$0
+endsnippet
+
 # Various environments
 
 snippet env "New environment" bA

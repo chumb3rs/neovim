@@ -1,39 +1,74 @@
 # Custom command snippets
 
-snippet "(^|[^a-zA-Z])ass"	 "\qs{}{} (question set)" rA
-`!p snip.rv = match.group(1)`\qs{}{${1:${VISUAL:}}}$0
+snippet "(^|[^a-zA-Z])qs"	 "Question environment" rA
+`!p snip.rv = match.group(1)`\begin{question}{$2}{}
+	${1:${VISUAL}}
+\end{question}
+$0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])dfn" "\dfn{title}{definition}" rA
-`!p snip.rv = match.group(1)`\dfn{$1}{$2}$0
+snippet	 "(^|[^a-zA-Z])dfn" "Definition environment" rA
+`!p snip.rv = match.group(1)`\begin{Definition}{$2}{}
+	${1:${VISUAL}}
+\end{Definition}$0
 endsnippet
-snippet	 "(^|[^a-zA-Z])sol" "\sol (solution)" rA
+
+snippet	 "(^|[^a-zA-Z])sol" "\sol (solution)" r
 `!p snip.rv = match.group(1	)`\sol $1
 endsnippet
-snippet	 "(^|[^a-zA-Z])nt" "\nt{note} (note)" rA
-`!p snip.rv = match.group(1	)`\nt{${1:${VISUAL}}}$0
-endsnippet
-snippet	 "(^|[^a-zA-Z])clm" "\clm{title}{}{claim}" rA
-`!p snip.rv = match.group(1	)`\clm{$2}{}{${1:${VISUAL}}}$0
-endsnippet
-snippet	 "(^|[^a-zA-Z])ex" "\ex{title}{example}" rA
-`!p snip.rv = match.group(1	)`\ex{$2}{${1:${VISUAL}}}$0
-endsnippet
-snippet	 "(^|[^a-zA-Z])thm" "\thm{title}{theorem}" rA
-`!p snip.rv = match.group(1)`\thm{$2}{${1:${VISUAL}}}$0
-endsnippet
-snippet	 "(^|[^a-zA-Z])cor" "\cor{title}{result}" rA
-`!p snip.rv = match.group(1)`\cor{$2}{${1:${VISUAL}}}$0
-endsnippet
-snippet	 "(^|[^a-zA-Z])lma" "\mlenma{title}{result} (lemma)" rA
-`!p snip.rv = match.group(1)`\mlemma{$2}{${1:${VISUAL}}}$0
-endsnippet
-snippet	 "(^|[^a-zA-Z])mprop" "\mprop{title}{result} (prop)" rA
-`!p snip.rv = match.group(1)`\mprop{$2}{${1:${VISUAL}}}$0
+
+snippet	 "(^|[^a-zA-Z])nt" "Note environment" rA
+`!p snip.rv = match.group(1	)`\begin{note}
+	${1:${VISUAL}}
+\end{note}
+$0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])prf" "Proof template" rA
-`!p snip.rv = match.group(1)`\begin{myproof}$1
-\end{myproof}$0
+snippet	 "(^|[^a-zA-Z])clm" "Claim environment" rA
+`!p snip.rv = match.group(1	)`\begin{claim}{$2}{}
+	${1:${VISUAL}}
+\end{claim}
+$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])ex" "Example environment" r
+`!p snip.rv = match.group(1	)`\begin{Example}{$2}{}
+	${1:${VISUAL}}
+\end{Example}
+$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])thm" "Theorem environment" rA
+`!p snip.rv = match.group(1) `\begin{Theorem}{$2}{}
+	${1:${VISUAL}}
+\end{Theorem}
+$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])cor" "Corollary environment" r
+`!p snip.rv = match.group(1)`\begin{Corollary}{$2}{}
+	${1:${VISUAL}}
+\end{Corollary}
+$0
+endsnippet
+snippet	 "(^|[^a-zA-Z])lma" "Lemma environment" rA
+`!p snip.rv = match.group(1)`\begin{Lemma}{$2}{}
+	${1:${VISUAL}}
+\end{Lemma}
+$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])mprop" "Proposition environment" rA
+`!p snip.rv = match.group(1)`\begin{Prop}{$2}{}
+	${1:${VISUAL}}
+\end{Prop}
+$0
+endsnippet
+
+snippet	 "(^|[^a-zA-Z])prf" "Proof environment" rA
+`!p snip.rv = match.group(1)`\begin{myproof}
+	${1:${VISUAL}}
+\end{myproof}
+$0
 endsnippet
 
