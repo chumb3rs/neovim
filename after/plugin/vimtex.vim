@@ -133,3 +133,6 @@ map [* <plug>(vimtex-[star
 
 " For triggering forward search
 nmap <localleader>v <plug>(vimtex-view)
+
+" For automatically opening Zathura PDF for current file 
+nmap <localleader>q :!zathura <C-r>=expand('%:r')<cr>.pdf &<cr>
