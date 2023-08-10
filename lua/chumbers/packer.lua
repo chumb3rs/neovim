@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use "EdenEast/nightfox.nvim" -- Packer
+     use "EdenEast/nightfox.nvim" -- Packer
     vim.cmd("colorscheme nordfox")
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})

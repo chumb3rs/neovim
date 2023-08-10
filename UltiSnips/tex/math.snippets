@@ -7,7 +7,7 @@ priority 2
 # BEGIN SUPERSCRIPTS AND SUBSCRIPTS
 # ------------------------------------------------ #
 context "math()"
-snippet "([\w]|[\}\)\]\|'])'" "Superscript" rA
+snippet "([\w]|[\}\)\]\|'])''" "Superscript" rA
 `!p snip.rv = match.group(1)`^{${1:${VISUAL:}}}$0
 endsnippet
 
