@@ -165,16 +165,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["plenary.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
-    url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["telescope.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
-    url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
   ["toggleterm.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\toggleterm.nvim",
@@ -182,7 +172,7 @@ _G.packer_plugins = {
   },
   ultisnips = {
     loaded = true,
-    path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/ultisnips",
+    path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ultisnips",
     url = "https://github.com/SirVer/ultisnips"
   },
   undotree = {
@@ -197,7 +187,7 @@ _G.packer_plugins = {
   },
   ["vim-dispatch"] = {
     loaded = true,
-    path = "/home/chumbers/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    path = "C:\\Users\\Nick\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-dispatch",
     url = "https://github.com/tpope/vim-dispatch"
   },
   ["vim-fugitive"] = {
