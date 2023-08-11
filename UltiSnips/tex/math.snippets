@@ -254,6 +254,11 @@ context "math()"
 snippet "([^\w\\])lmm" "\limits{}{} with upper and lower limit" rA
 `!p snip.rv = match.group(1)`\limits_{$1}{$2}$0
 endsnippet
+
+context "math()"
+snippet "([^\w\\])lim" "\lim with built-in right arrow" r
+`!p snip.rv = match.group(1)`\lim_{$1 \rightarrow $2} $0
+endsnippet
 # --------------------------------------------- #
 # END LIMITS
 
@@ -347,6 +352,16 @@ snippet "([^a-zA-Z0-9\\])eqq" "\equiv" rA
 endsnippet
 # ------------------------------------- #
 # END STATIC MATH SNIPPETS
+
+
+# --- SET NOTATION -------------------- #
+snippet "([^a-zA-Z0-9\\])sse" "\subseteq" rA
+`!p snip.rv = match.group(1)`\subseteq 
+endsnippet
+
+
+
+# END SET NOTATION
 
 
 # BEGIN MISC
