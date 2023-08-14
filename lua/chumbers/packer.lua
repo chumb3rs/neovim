@@ -22,9 +22,9 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-
+    use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim" -- Packer
-    vim.cmd("colorscheme nordfox")
+    vim.cmd("colorscheme tokyonight")
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')
@@ -69,4 +69,10 @@ return require('packer').startup(function(use)
         tag = "v1.*",
         run = "make install_jsregexp"
     })
+
+    use {
+        'christoomey/vim-tmux-navigator',
+        lazy = false
+
+    }
 end)	
