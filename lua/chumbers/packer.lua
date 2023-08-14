@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-  use 'github/copilot.vim'
+    use 'github/copilot.vim'
 
     use {
         'jghauser/fold-cycle.nvim',
@@ -15,6 +15,13 @@ return require('packer').startup(function(use)
             require('fold-cycle').setup()
         end
     }
+
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
 
     use "EdenEast/nightfox.nvim" -- Packer
     vim.cmd("colorscheme nordfox")
@@ -54,7 +61,7 @@ return require('packer').startup(function(use)
 
     use 'tpope/vim-dispatch'
 
-   use 'SirVer/ultisnips'
+    use 'SirVer/ultisnips'
 
     use({
         "L3MON4D3/LuaSnip",
