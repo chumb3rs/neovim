@@ -69,4 +69,10 @@ return require('packer').startup(function(use)
         tag = "v1.*",
         run = "make install_jsregexp"
     })
+
+    use {
+        'christoomey/vim-tmux-navigator',
+        lazy = false
+
+    }
 end)	
