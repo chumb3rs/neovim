@@ -114,3 +114,25 @@ snippet title "mytitlepage environment for FMF documents" bA
 	$0
 \end{mytitlepage}
 endsnippet
+
+# --------------------------------------------- #
+# ----------------- Tables ------------------ #
+# --------------------------------------------- #
+snippet tab "Tabular environment" b
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{${1:cc}}
+		$2 \\\\
+		\hline\hline
+		$3
+	\end{tabular}
+	\caption{$4}
+	\label{tab:$5}
+\end{table}
+$0    
+endsnippet
+
+snippet hll "Horizontal line" A
+\hline
+$0
+endsnippet
