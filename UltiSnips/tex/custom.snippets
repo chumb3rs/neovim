@@ -1,13 +1,13 @@
 # Custom command snippets
 
-snippet "(^|[^a-zA-Z])qs"	 "Question environment" rA
+snippet "(^|[^a-zA-Z])qs"	 "Question environment" rbA
 `!p snip.rv = match.group(1)`\begin{question}{$2}{}
 	${1:${VISUAL}}
 \end{question}
 $0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])dfn" "Definition environment" rA
+snippet	 "(^|[^a-zA-Z])dfn" "Definition environment" rbA
 `!p snip.rv = match.group(1)`\begin{Definition}{$2}{}
 	${1:${VISUAL}}
 \end{Definition}$0
@@ -17,14 +17,14 @@ snippet	 "(^|[^a-zA-Z])sol" "\sol (solution)" r
 `!p snip.rv = match.group(1	)`\sol $1
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])nt" "Note environment" rA
+snippet	 "(^|[^a-zA-Z])nt" "Note environment" rbA
 `!p snip.rv = match.group(1	)`\begin{note}
 	${1:${VISUAL}}
 \end{note}
 $0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])clm" "Claim environment" rA
+snippet	 "(^|[^a-zA-Z])clm" "Claim environment" rbA
 `!p snip.rv = match.group(1	)`\begin{claim}{$2}{}
 	${1:${VISUAL}}
 \end{claim}
@@ -38,7 +38,7 @@ snippet	 "(^|[^a-zA-Z])ex" "Example environment" r
 $0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])thm" "Theorem environment" rA
+snippet	 "(^|[^a-zA-Z])thm" "Theorem environment" rbA
 `!p snip.rv = match.group(1) `\begin{Theorem}{$2}{}
 	${1:${VISUAL}}
 \end{Theorem}
@@ -51,21 +51,21 @@ snippet	 "(^|[^a-zA-Z])cor" "Corollary environment" r
 \end{Corollary}
 $0
 endsnippet
-snippet	 "(^|[^a-zA-Z])lma" "Lemma environment" rA
+snippet	 "(^|[^a-zA-Z])lma" "Lemma environment" rbA
 `!p snip.rv = match.group(1)`\begin{Lemma}{$2}{}
 	${1:${VISUAL}}
 \end{Lemma}
 $0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])mprop" "Proposition environment" rA
+snippet	 "(^|[^a-zA-Z])mprop" "Proposition environment" rbA
 `!p snip.rv = match.group(1)`\begin{Prop}{$2}{}
 	${1:${VISUAL}}
 \end{Prop}
 $0
 endsnippet
 
-snippet	 "(^|[^a-zA-Z])prf" "Proof environment" rA
+snippet	 "(^|[^a-zA-Z])prf" "Proof environment" rbA
 `!p snip.rv = match.group(1)`\begin{myproof}
 	${1:${VISUAL}}
 \end{myproof}
