@@ -73,16 +73,19 @@ endsnippet
 
 # BEGIN SEMANTIC COMMANDS (vec, tilde, etc...)
 # --------------------------------------------- #
+context "math()"
 snippet "(^|[^a-zA-Z])ff" "\frac{}{}" rA
 `!p snip.rv = match.group(1)`\frac{${1:${VISUAL:}}}{$2}$0
 endsnippet
 
+context "math()"
 snippet "(^|[^a-zA-Z])bsh" "\backslash" rA
-\backslash 
+`!p snip.rv = match.group(1)`\backslash 
 endsnippet
 
+context "math()"
 snippet "(^|[^a-zA-Z\\])ell" "\in (element of)" rA
-\in 
+`!p snip.rv = match.group(1)`\in 
 endsnippet
 
 snippet "(^|[^a-zA-Z])tf" "\tfrac{}{}" rA
