@@ -63,13 +63,6 @@ return require('packer').startup(function(use)
 
     use 'SirVer/ultisnips'
 
-    use({
-        "L3MON4D3/LuaSnip",
-        -- follow latest release
-        tag = "v1.*",
-        run = "make install_jsregexp"
-    })
-
     use {
         'christoomey/vim-tmux-navigator',
         lazy = false

@@ -8,8 +8,8 @@ $0
 endsnippet
 
 snippet	 "(^|[^a-zA-Z])dfn" "Definition environment" rbA
-`!p snip.rv = match.group(1)`\begin{Definition}{$2}{}
-	${1:${VISUAL}}
+`!p snip.rv = match.group(1)`\begin{Definition}{$1}{}
+	${2:${VISUAL}}
 \end{Definition}$0
 endsnippet
 
@@ -72,3 +72,9 @@ snippet	 "(^|[^a-zA-Z])prf" "Proof environment" rbA
 $0
 endsnippet
 
+snippet	 "(^|[^a-zA-Z])exx" "Exercise environment" rbA
+`!p snip.rv = match.group(1)`\vspace{1.5em}
+	\textbf{Exercise: }${1:${VISUAL}}
+\vspace{1.5em}
+$0
+endsnippet
