@@ -15,3 +15,5 @@ end
 
 ColorConfig()
 LineNumberColors()
+
+require "colorizer".setup()
