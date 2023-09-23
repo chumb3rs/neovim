@@ -33,3 +33,5 @@ vim.opt.colorcolumn = "80"
 vim.opt.shell = 'bash'
 vim.opt.shellcmdflag = '-c'
 vim.g.netrw_localrmdir = 'rm -r'
+vim.g.netrw_localcopydircmd = 'cp -r'
+vim.g.netrw_keepdir = 0
