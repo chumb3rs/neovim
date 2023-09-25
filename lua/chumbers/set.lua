@@ -28,10 +28,20 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
-vim.opt.shell = 'bash'
+vim.opt.shell = 'zsh'
 vim.opt.shellcmdflag = '-c'
 vim.g.netrw_localrmdir = 'rm -r'
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_keepdir = 0
+
+-- Searching
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.completeopt = "menuone,noselect"
+
+-- For nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
