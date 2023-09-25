@@ -7,6 +7,9 @@ null_ls.setup({
         null_ls.builtins.diagnostics.ruff,
         null_ls.builtins.formatting.black,
         -- Cpp
-        null_ls.builtins.formatting.clang_format
+        null_ls.builtins.formatting.clang_format,
+        -- JavaScript
+        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.formatting.prettier
     }
 })

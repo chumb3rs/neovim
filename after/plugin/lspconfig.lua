@@ -27,6 +27,23 @@ lspconfig.lua_ls.setup {
     },
 }
 
---lspconfig.pylsp.setup({
---    filetypes = { "python" }
---})
+local function organize_imports()
+    local params = {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) }
+    }
+    vim.lsp.buf.execute_command(params)
+end
+
+lspconfig.tsserver.setup({
+    init_options = {
+        preferences = {
+            disableSuggestions = true
+        }
+    },
+    on_attach = function(_, _)
+        vim.api.nvim_create_user_command("OrganizeImports", organize_imports, { desc = "Organize imports" })
+    end
+})
+
+vim.keymap.set("n", "<leader>oi", "<cmd> OrganizeImports <CR>", { desc = "Organize imports" })
