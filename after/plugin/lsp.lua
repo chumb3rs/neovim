@@ -10,6 +10,9 @@ lsp.ensure_installed({
     --Python
     'pyright',
     -- mypy, ruff, black, debugpy
+    'clangd',
+    --'codelldb'
+    --'clang-format'
 })
 
 local cmp = require('cmp')

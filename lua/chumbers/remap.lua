@@ -76,4 +76,5 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- Debugging
 vim.keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle breakpoint" })
+vim.keymap.set("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue debugger" })
 vim.keymap.set("n", "<leader>dpr", ":lua require('dap-python').test_method() <CR>", { desc = "Run python test method" })

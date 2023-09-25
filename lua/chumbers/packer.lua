@@ -72,8 +72,6 @@ return require('packer').startup(function(use)
     use('tpope/vim-rhubarb')
     use('lewis6991/gitsigns.nvim')
 
-    use 'akinsho/toggleterm.nvim'
-
     -- LATEX
     use {
         'lervag/vimtex',
@@ -135,6 +133,14 @@ return require('packer').startup(function(use)
             "mfussenegger/nvim-dap"
         }
     }
+    use {
+        "jay-babu/mason-nvim-dap.nvim",
+        requires = {
+            "williamboman/mason.nvim",
+            "mfussenegger/nvim-dap"
+        }
+    }
+    use "NvChad/nvterm"
 
     use 'tpope/vim-dispatch'
     use 'folke/neovim'
