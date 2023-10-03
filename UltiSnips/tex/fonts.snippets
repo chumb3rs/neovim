@@ -51,3 +51,19 @@ endsnippet
 snippet "opp" "\operatorname{} (operator name)" rA
 \operatorname{${1:${VISUAL:}}}$0
 endsnippet
+
+snippet "(^|[^a-zA-Z\\])cc" "\mathbb{C}" rA
+`!p snip.rv = match.group(1)`\mathbb{C}$0
+endsnippet
+snippet "(^|[^a-zA-Z\\])rl" "\mathbb{R}" rA
+`!p snip.rv = match.group(1)`\mathbb{R}$0
+endsnippet
+snippet "(^|[^a-zA-Z\\])qq" "\mathbb{Q}" rA
+`!p snip.rv = match.group(1)`\mathbb{Q}$0
+endsnippet
+snippet "(^|[^a-zA-Z\\])zz" "\mathbb{Z}" rA
+`!p snip.rv = match.group(1)`\mathbb{Z}$0
+endsnippet
+snippet "(^|[^a-zA-Z\\])Nn" "\mathbb{N}" rA
+`!p snip.rv = match.group(1)`\mathbb{N}$0
+endsnippet

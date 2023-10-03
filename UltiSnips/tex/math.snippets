@@ -137,7 +137,7 @@ snippet "ss" "Line segment (assumes a user-defined macro)" A
 `!p snip.rv = match.group(1)`\linesegment{${1:${VISUAL:}}}$0
 endsnippet
 
-snippet "([\W_\\])cc" "Complex conjugate (assumes a user-defined macro)" rA
+snippet "([\W_\\])coj" "Complex conjugate (assumes a user-defined macro)" rA
 `!p snip.rv = match.group(1)`\conjugate{${1:${VISUAL:}}}$0
 endsnippet
 
@@ -239,7 +239,11 @@ snippet "([^\w\\])smm" "Sum with upper and lower limit" rA
 `!p snip.rv = match.group(1)`\sum_{$1}^{$2}$0
 endsnippet
 
-snippet "([^\w\\])smf" "Sum from negative to positive infinity" rA
+snippet "([^\w\\])smf" "Sum over natural numbers" rA
+`!p snip.rv = match.group(1)`\sum^{\infty} $0
+endsnippet
+
+snippet "([^\w\\])smF" "Sum from negative to positive infinity" rA
 `!p snip.rv = match.group(1)`\sum_{$1-\infty}^{\infty} $0
 endsnippet
 
@@ -311,10 +315,11 @@ snippet >> "\implies" Ai
 \implies 
 endsnippet
 
-snippet rra "\rightarrow" A
-\rightarrow 
+snippet "([Rr])ra" "\rightarrow" rA
+\\`!p snip.rv = match.group(1)`ightarrow 
 endsnippet
 
+context "math()"
 snippet lra "\leftrightarrow" A
 \leftrightarrow 
 endsnippet
@@ -373,6 +378,11 @@ snippet "([^a-zA-Z0-9\\])tle" "\trianglelefteq" rA
 endsnippet
 snippet "([^a-zA-Z0-9\\])tlf" "\triangleleft" rA
 `!p snip.rv = match.group(1)`\triangleleft 
+endsnippet
+
+context "math()"
+snippet "([^a-zA-Z0-9\\])sm([^fmFM])" "\setminus \{ item \}" rA
+`!p snip.rv = match.group(1)`\setminus \\{ `!p snip.rv = match.group(2)` \\}
 endsnippet
 
 
