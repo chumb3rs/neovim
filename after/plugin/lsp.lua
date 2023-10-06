@@ -1,21 +1,34 @@
 local lsp = require("lsp-zero")
+local mason = require("mason")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-    'tsserver',
-    'rust_analyzer',
-    'eslint',
-    --'prettier',
-    -- eslint_d
-    --'js-debug-adapter',
-    'lua_ls',
-    --Python
-    'pyright',
-    -- mypy, ruff, black, debugpy
-    'clangd',
-    --'codelldb'
-    --'clang-format'
+lsp.on_attach(function(_, bufnr)
+    lsp.default_keymaps({ buffer = bufnr })
+end)
+
+mason.setup({})
+
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        'tsserver',
+        'rust_analyzer',
+        'eslint',
+        --'prettier',
+        -- eslint_d
+        --'js-debug-adapter',
+        'lua_ls',
+        --Python
+        'pyright',
+        --'mypy',
+        -- mypy, ruff, black, debugpy
+        'clangd',
+        --'codelldb'
+        --'clang-format'
+    },
+    handlers = {
+        lsp.default_setup,
+    }
 })
 
 local cmp = require('cmp')
