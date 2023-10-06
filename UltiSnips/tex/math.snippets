@@ -385,6 +385,12 @@ snippet "([^a-zA-Z0-9\\])sm([^fmFM])" "\setminus \{ item \}" rA
 `!p snip.rv = match.group(1)`\setminus \\{ `!p snip.rv = match.group(2)` \\}
 endsnippet
 
+context "math()"
+snippet "([^a-zA-Z0-9\\])lag" "Langle and rangle" rA
+`!p snip.rv = match.group(1)`\langle $1 \rangle $0
+endsnippet
+
+
 
 
 # END SET NOTATION
