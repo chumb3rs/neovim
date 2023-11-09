@@ -103,6 +103,11 @@ snippet "([^a-zA-Z\\])sq" "\sqrt (square root)" rA
 endsnippet
 
 context "math()"
+snippet "([^a-zA-Z\\])ssq" "\sqrt[n] (square root)" rA
+`!p snip.rv = match.group(1)`\sqrt[$1]{${2:${VISUAL:}}}$0
+endsnippet
+
+context "math()"
 snippet "([\W_])vv" "\vec" rA
 `!p snip.rv = match.group(1)`\vec{${1:${VISUAL:}}}$0
 endsnippet
@@ -315,8 +320,19 @@ snippet >> "\implies" Ai
 \implies 
 endsnippet
 
+context "math()"
+snippet iff "\implies" A
+\iff 
+endsnippet
+
+context "math()"
 snippet "([Rr])ra" "\rightarrow" rA
 \\`!p snip.rv = match.group(1)`ightarrow 
+endsnippet
+
+context "math()"
+snippet "([Ll])la" "\leftarrow" rA
+\\`!p snip.rv = match.group(1)`eftarrow
 endsnippet
 
 context "math()"
@@ -342,7 +358,7 @@ snippet "([^a-zA-Z0-9\\])cll" "\curl" rA
 endsnippet
 
 snippet "([lcvd])dd" "(lcvd)dots (various dots commands in one regex)" rA
-\\`!p snip.rv = match.group(1)`dots
+\\`!p snip.rv = match.group(1)`dots 
 endsnippet
 
 snippet ,. "\cdot" iA
@@ -383,6 +399,11 @@ endsnippet
 context "math()"
 snippet "([^a-zA-Z0-9\\])sm([^fmFM])" "\setminus \{ item \}" rA
 `!p snip.rv = match.group(1)`\setminus \\{ `!p snip.rv = match.group(2)` \\}
+endsnippet
+
+context "math()"
+snippet "([^a-zA-Z0-9\\])stt" "Create a set" rA
+`!p snip.rv = match.group(1)`\\{ $1 \\} $0
 endsnippet
 
 context "math()"
