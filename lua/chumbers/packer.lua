@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
 
     -- EDITING AND KEYBINDINGS
     use "lukas-reineke/indent-blankline.nvim"
+    --use "jiangmiao/auto-pairs"
     use "tpope/vim-sleuth"
     use {
         "folke/which-key.nvim",
@@ -46,15 +47,16 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     vim.cmd("colorscheme tokyonight")
+    use "onsails/lspkind.nvim"
+    use "nvim-tree/nvim-web-devicons"
 
 
     -- NAVIGATION AND FILES
     use('theprimeagen/harpoon')
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -62,6 +64,7 @@ return require('packer').startup(function(use)
         'christoomey/vim-tmux-navigator',
         lazy = false
     }
+    use "simrat39/symbols-outline.nvim"
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('mbbill/undotree')
@@ -109,6 +112,8 @@ return require('packer').startup(function(use)
             'folke/neodev.nvim'
         }
     }
+
+    use "mfussenegger/nvim-jdtls"
 
     -- DEBUGGER
     use {
