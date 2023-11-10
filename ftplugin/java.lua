@@ -34,6 +34,8 @@ local on_attach = function(client, bufnr)
     -- Regular Neovim LSP client keymappings
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+    vim.opt.tabstop = 2
+
     ---- Java extensions provided by jdtls
     --nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
     --nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
@@ -42,12 +44,13 @@ local on_attach = function(client, bufnr)
     --   { noremap = true, silent = true, buffer = bufnr, desc = "Extract method" })
     vim.keymap.set("n", "<A-o>", jdtls.organize_imports, { desc = "Organize imports" })
     vim.keymap.set("n", "<leader>crv", jdtls.extract_variable, { desc = "Extract variable" })
-    vim.keymap.set("v", "<leader>crv", "<Esc><Cmd>require('jdtls').extract_variable(true)<CR>",
+    vim.keymap.set("v", "<leader>crv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
         { desc = "Extract variable" })
     vim.keymap.set("n", "<leader>crc", jdtls.extract_constant, { desc = "Extract constant" })
-    vim.keymap.set("v", "<leader>crc", "<Esc><Cmd>require('jdtls').extract_constant(true)<CR>",
+    vim.keymap.set("v", "<leader>crc", "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
         { desc = "Extract constant" })
-    vim.keymap.set("v", "<leader>crm", "<Esc><Cmd>require('jdtls').extract_method(true)<CR>", { desc = "Extract method" })
+    vim.keymap.set("v", "<leader>crm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
+        { desc = "Extract method" })
 
     -- Extensions for vscode-java-test
     nnoremap("<leader>vc", jdtls.test_class, bufopts, "Test class (DAP)")
