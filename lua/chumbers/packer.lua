@@ -116,11 +116,8 @@ return require('packer').startup(function(use)
     use "mfussenegger/nvim-jdtls"
 
     -- DEBUGGER
-    use {
-        "mfussenegger/nvim-dap",
-        config = function()
-        end
-    }
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/cmp-dap"
     use {
         "mfussenegger/nvim-dap-python",
         requires = {

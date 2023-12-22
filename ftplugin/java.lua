@@ -30,7 +30,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- The on_attach function is used to set key maps after the language server
 -- attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- Regular Neovim LSP client keymappings
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
