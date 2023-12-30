@@ -146,4 +146,8 @@ return require('packer').startup(function(use)
 
     use 'tpope/vim-dispatch'
     use 'folke/neovim'
+
+    -- Beancount
+    use "crispgm/cmp-beancount"
+    use "nathangrigg/vim-beancount"
 end)
