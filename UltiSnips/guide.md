@@ -49,3 +49,8 @@ Put this in your configuration file and you're good to go!
 
 ### Custom .sty file
 Use the file     `chumbers.sty` located at     `~/texmf/tex/latex/local/`.
+
+
+## Further Reading
+
+Refer to [this](https://github.com/ShawnHuang/ulti-snippets/blob/master/markdown.snippets) repository for a comprehensive guide of snippet files that you may wish to use as a starting point. In general, I think it is best to start with a basic setup like this and then iteratively add snippets as you are using a particular filetype and see a purpose for it.
