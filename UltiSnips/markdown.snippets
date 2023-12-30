@@ -1,0 +1,62 @@
+snippet "mtd" "Markdown metadata front matter" bA
+\-\-\-
+title: "$1"
+date: `!p from datetime import datetime
+if not snip.c:
+    snip.rv=datetime.now().strftime("%Y-%m-%d %H:%M:%S%z")`
+tags: [$2]
+categories: [$3]
+\-\-\-
+endsnippet
+
+snippet h1 "Add Heading 1" bA
+# ${1:${VISUAL:}}$0
+endsnippet
+
+snippet h2 "Add Heading 2" bA
+## ${1:${VISUAL:}}$0
+endsnippet
+
+snippet h3 "Add Heading 3" bA
+### ${1:${VISUAL:}}$0
+endsnippet
+
+snippet h4 "Add Heading 4" bA
+#### ${1:${VISUAL:}}$0
+endsnippet
+
+snippet tbb "Insert bold text" A
+**${1:${VISUAL}}**$0
+endsnippet
+
+snippet tii "Insert italictext" A
+*${1:${VISUAL}}*$0
+endsnippet
+
+snippet thh "Insert highlighted text" A
+==${1:${VISUAL}}==$0
+endsnippet
+
+snippet href "Insert hyperlink" A
+[${1:${VISUAL}alias}](${2:link})$0
+endsnippet
+
+snippet img "Insert image" bA
+![${1:pic alt}](${2:path}${3/.+/ "/}${3:opt title}${3/.+/"/})$0
+endsnippet
+
+priority 2
+snippet cbb "Insert code block" bA
+\`\`\`
+${1:${VISUAL}}
+\`\`\`
+$0
+endsnippet
+
+priority 1
+snippet cbb "Insert inline-code" A
+\`${1:${VISUAL}}\`
+endsnippet
+
+
+
