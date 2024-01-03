@@ -20,10 +20,11 @@ end
 
 local bundles = {
     vim.fn.glob(
-        '/home/chumbers/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.50.0/com.microsoft.java.debug.plugin-0.5.0.jar')
+        home ..
+        '/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.50.0/com.microsoft.java.debug.plugin-0.5.0.jar')
 }
 
-vim.list_extend(bundles, vim.split(vim.fn.glob("/home/chumbers/.m2/vscode-java-test/server/*.jar", 1), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.m2/vscode-java-test/server/*.jar", 1), "\n"))
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -33,8 +34,6 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local on_attach = function(_, bufnr)
     -- Regular Neovim LSP client keymappings
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-    vim.opt.tabstop = 2
 
     ---- Java extensions provided by jdtls
     --nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
