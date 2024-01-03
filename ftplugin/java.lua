@@ -160,7 +160,7 @@ local config = {
         -- to the location where you installed jdtls
         '-jar',
         vim.fn.glob(
-            "/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.600.v20231012-1237.jar"),
+            "/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"),
 
         -- The configuration for jdtls is also placed where jdtls was installed. This will
         -- need to be updated depending on your environment
