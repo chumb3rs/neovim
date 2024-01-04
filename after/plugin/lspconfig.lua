@@ -1,5 +1,13 @@
 local lspconfig = require('lspconfig')
 
+local servers = { clangd = {} }
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+for server, opts in pairs(servers) do
+    opts.capabilities = capabilities
+    lspconfig[server].setup(opts)
+end
+
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
