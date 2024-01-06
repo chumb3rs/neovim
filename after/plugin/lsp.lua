@@ -3,7 +3,7 @@ local mason = require("mason")
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
---lsp.preset("recommended")
+lsp.preset("recommended")
 
 mason.setup({})
 

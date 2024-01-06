@@ -94,6 +94,23 @@ return require('packer').startup(function(use)
         run = function() vim.cmd [[silent! GoInstallDeps]] end
     }
 
+    -- Rust
+    use {
+        "rust-lang/rust.vim",
+        ft = "rust",
+        config = function()
+            vim.g.rustfmt_autosave = 1
+        end
+    }
+    use {
+        "simrat39/rust-tools.nvim",
+    }
+    use {
+        "saecki/crates.nvim",
+        ft = { "rust", "toml" },
+        config = function() require("crates").setup() end
+    }
+
     -- LSP
     use "jose-elias-alvarez/null-ls.nvim"
     use {
@@ -118,7 +135,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
 
             -- Useful status updates
-            { 'j-hui/fidget.nvim',                tag = 'legacy', opts = {} },
+            { 'j-hui/fidget.nvim',                lock = true, tag = 'legacy', opts = {} },
 
             -- Additional lua configuration
             'folke/neodev.nvim'
