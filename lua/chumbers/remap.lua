@@ -77,7 +77,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Debugging
 vim.keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle breakpoint" })
 vim.keymap.set("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue debugger" })
+vim.keymap.set("n", "<leader>dus", function()
+    local widgets = require("dap.ui.widgets");
+    local sidebar = widgets.sidebar(widgets.scopes);
+    sidebar.open();
+end, { desc = "Open debugging sidebar" })
 vim.keymap.set("n", "<leader>dpr", ":lua require('dap-python').test_method() <CR>", { desc = "Run python test method" })
+vim.keymap.set("n", "<leader>dgt", ":lua require('dap-go').debug_test() <CR>", { desc = "Debug Go test" })
+vim.keymap.set("n", "<leader>dgl", ":lua require('dap-go').debug_last() <CR>", { desc = "Debug last Go test" })
 
 
 vim.keymap.set("n", "<leader>bc", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",

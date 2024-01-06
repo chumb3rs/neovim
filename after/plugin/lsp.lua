@@ -1,7 +1,9 @@
 local lsp = require("lsp-zero")
 local mason = require("mason")
+local lspconfig = require("lspconfig")
+local util = require "lspconfig/util"
 
-lsp.preset("recommended")
+--lsp.preset("recommended")
 
 mason.setup({})
 
@@ -21,9 +23,39 @@ require("mason-lspconfig").setup({
         'clangd',
         --'codelldb'
         --'clang-format'
+        'gopls'
     },
     handlers = {
         lsp.default_setup,
+
+        gopls = function()
+            lspconfig.gopls.setup({
+                --root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+                settings = {
+                    gopls = {
+                        usePlaceholders = true,
+                        staticcheck = true,
+                        gofumpt = true,
+                        analyses = {
+                            unusedparams = true
+                        }
+                    }
+                }
+            })
+        end,
+
+        tsserver = function()
+            lspconfig.tsserver.setup({
+                init_options = {
+                    preferences = {
+                        disableSuggestions = true
+                    }
+                },
+                on_attach = function(_, _)
+                    print('hello from ts')
+                end
+            })
+        end
     }
 })
 

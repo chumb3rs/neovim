@@ -10,6 +10,9 @@ null_ls.setup({
         null_ls.builtins.formatting.clang_format,
         -- JavaScript
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.prettier
+        null_ls.builtins.formatting.prettier,
+        -- Go
+        null_ls.builtins.formatting.gofumpt,
+        null_ls.builtins.formatting.goimports_reviser
     }
 })

@@ -82,6 +82,18 @@ return require('packer').startup(function(use)
     }
     use 'SirVer/ultisnips'
 
+    -- Go
+    use {
+        'olexsmir/gopher.nvim',
+        ft = 'go',
+        config = function() require("gopher").setup() end,
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        run = function() vim.cmd [[silent! GoInstallDeps]] end
+    }
+
     -- LSP
     use "jose-elias-alvarez/null-ls.nvim"
     use {
@@ -139,6 +151,12 @@ return require('packer').startup(function(use)
         "jay-babu/mason-nvim-dap.nvim",
         requires = {
             "williamboman/mason.nvim",
+            "mfussenegger/nvim-dap"
+        }
+    }
+    use {
+        "leoluz/nvim-dap-go",
+        requires = {
             "mfussenegger/nvim-dap"
         }
     }
