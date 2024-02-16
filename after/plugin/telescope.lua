@@ -25,6 +25,7 @@ vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iag
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
 vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch [M]arks" })
+vim.keymap.set("n", "<leader>shm", "<cmd>Telescope harpoon marks<cr>", { desc = "[S]earch [H]arpoon [M]arks" })
 vim.keymap.set("n", "<leader>sr", builtin.lsp_references, { desc = "[S]earch LSP [R]eferences" })
 vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "[S]earch LSP Document [S]ymbols" })
 vim.keymap.set("n", "<leader>sc", builtin.lsp_incoming_calls, { desc = "[S]earch LSP Incoming [C]alls" })
