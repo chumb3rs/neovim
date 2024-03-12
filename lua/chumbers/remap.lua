@@ -39,8 +39,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/AppData/Local/nvim/lua/chumbers/packer.lua <CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~$NVIM_CONFIG/nvim/lua/chumbers/packer.lua <CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
@@ -99,7 +98,7 @@ vim.keymap.set("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>", { des
 vim.keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>", { desc = "Step out" })
 vim.keymap.set("n", '<leader>dd', "<cmd>lua require'dap'.disconnect()<cr>", { desc = "Disconnect" })
 vim.keymap.set("n", '<leader>dt', "<cmd>lua require'dap'.terminate()<cr>", { desc = "Terminate" })
-vim.keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", { desc = "Open REPL" })
+--vim.keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", { desc = "Open REPL" })
 vim.keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", { desc = "Run last" })
 vim.keymap.set("n", '<leader>di', function() require "dap.ui.widgets".hover() end, { desc = "Variables" })
 vim.keymap.set("n", '<leader>d?', function()
