@@ -102,16 +102,17 @@ return require('packer').startup(function(use)
     use 'SirVer/ultisnips'
 
     -- Go
-    use {
-        'olexsmir/gopher.nvim',
-        ft = 'go',
-        config = function() require("gopher").setup() end,
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter"
-        },
-        run = function() vim.cmd [[silent! GoInstallDeps]] end
-    }
+    -- use {
+    --     'olexsmir/gopher.nvim',
+    --     ft = 'go',
+    --     config = function() require("gopher").setup() end,
+    --     requires = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-treesitter/nvim-treesitter"
+    --     },
+    --     run = function() vim.cmd [[silent! GoInstallDeps]] end
+    -- }
+    use 'ray-x/go.nvim'
 
     -- Rust
     use {
