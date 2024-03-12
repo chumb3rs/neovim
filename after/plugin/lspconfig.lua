@@ -56,3 +56,7 @@ lspconfig.tsserver.setup({
 })
 
 vim.keymap.set("n", "<leader>oi", "<cmd> OrganizeImports <CR>", { desc = "Organize imports" })
+
+lspconfig.pyright.setup({
+    filetypes = { "python" }
+})

@@ -1,6 +1,3 @@
-vim.g.mapleader = " "
-
---vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Return to netrw" })
 vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeFindFile<cr>", { desc = "Explorer tree" })
 vim.keymap.set("n", "<leader>pt", "<cmd>NvimTreeToggle<cr>", { desc = "Explorer tree toggle" })
 vim.keymap.set("n", "<leader>pc", "<cmd>NvimTreeCollapse<cr>", { desc = "Explorer tree collapse" })
@@ -24,12 +21,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy to clipboard" })
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to black-hole register" })
 
--- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open tmux sessionizer" })
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
@@ -38,8 +33,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~$NVIM_CONFIG/nvim/lua/chumbers/packer.lua <CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

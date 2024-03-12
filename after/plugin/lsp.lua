@@ -102,7 +102,7 @@ vim.keymap.set("n", '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end)
 vim.keymap.set("n", '<leader>D', vim.lsp.buf.type_definition)
-vim.keymap.set("n", '<leader>f', function() vim.lsp.buf.format { async = true } end)
+vim.keymap.set("n", '<leader>fm', function() vim.lsp.buf.format { async = true } end)
 
 lsp.setup()
 
