@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- AI
-    use 'github/copilot.vim'
+    use { 'github/copilot.vim', version = '1.18.0' }
     use({
         "dreamsofcode-io/ChatGPT.nvim",
         requires = {
