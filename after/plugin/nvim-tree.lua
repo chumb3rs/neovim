@@ -2,11 +2,20 @@ local nvimtree = require('nvim-tree')
 
 nvimtree.setup({
     sort_by = "case_sensitive",
+    git = {
+        enable = true,
+    },
     view = {
         width = 30,
     },
     renderer = {
         group_empty = true,
+        highlight_git = true,
+        icons = {
+            show = {
+                git = true,
+            }
+        }
     },
     filters = {
         dotfiles = true,
@@ -25,5 +34,10 @@ M.toggle = function()
         a = true
     end
 end
+
+-- Remove yellow underlining on files
+vim.cmd([[
+    :hi! link NvimTreeExecFile NONE
+]])
 
 return M
