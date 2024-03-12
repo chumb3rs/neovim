@@ -19,7 +19,7 @@ cmp.setup({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete {},
-        ['<CR'] = cmp.mapping.confirm {
+        ['<C-y>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
@@ -45,7 +45,9 @@ cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = "crates" }
+        { name = "crates" },
+        { name = 'async_path' },
+        { name = "nvim_lsp_signature_help" }
     },
 
     formatting = {
