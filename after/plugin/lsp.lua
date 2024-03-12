@@ -59,6 +59,9 @@ require("mason-lspconfig").setup({
     }
 })
 
+-- Astro lsp
+lspconfig.astro.setup {}
+
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
