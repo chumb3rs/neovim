@@ -25,7 +25,18 @@ return require('packer').startup(function(use)
 
     -- EDITING AND KEYBINDINGS
     use "lukas-reineke/indent-blankline.nvim"
-    --use "jiangmiao/auto-pairs"
+    use "jiangmiao/auto-pairs"
+    use "windwp/nvim-ts-autotag"
+    use {
+        'andymass/vim-matchup',
+        setup = function()
+            -- may set any options here
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
+        config = function()
+            require("match-up").setup()
+        end
+    }
     use "tpope/vim-sleuth"
     use {
         "folke/which-key.nvim",
