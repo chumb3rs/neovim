@@ -52,6 +52,14 @@ return require('packer').startup(function(use)
     }
     use 'numToStr/Comment.nvim'
 
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-treesitter/nvim-treesitter" }
+        }
+    }
+
     -- APPEARANCE
     use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim" -- Packer
