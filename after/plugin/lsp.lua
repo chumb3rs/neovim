@@ -1,19 +1,26 @@
 local lsp = require("lsp-zero")
 local mason = require("mason")
 local lspconfig = require("lspconfig")
-local util = require "lspconfig/util"
 
 lsp.preset("recommended")
 
-mason.setup({})
+mason.setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
 
 require("mason-lspconfig").setup({
     ensure_installed = {
         'tsserver',
         'rust_analyzer',
-        'eslint',
+        --'eslint',
         --'prettier',
-        -- eslint_d
+        --'eslint_d',
         --'js-debug-adapter',
         'lua_ls',
         --Python
