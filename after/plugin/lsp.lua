@@ -80,6 +80,8 @@ lsp.set_preferences({
 })
 
 
+local api = require('nvim-tree.api')
+
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "[G]o to [D]efinition" })
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Open IntelliSense menu" })
 vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, { desc = "Show [W]orkspace [S]ymbols" })
@@ -93,13 +95,14 @@ vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
 vim.keymap.set("n", 'gD', vim.lsp.buf.declaration)
 vim.keymap.set("n", 'gi', vim.lsp.buf.implementation)
 vim.keymap.set("n", '<C-k>', vim.lsp.buf.signature_help)
-vim.keymap.set("n", '<space>wa', vim.lsp.buf.add_workspace_folder)
+vim.keymap.set("n", '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = "Add folder to current workspace" })
+vim.keymap.set("n", '<space>wf', function() api.fs.create() end, { desc = "Add folder to current workspace" })
 vim.keymap.set("n", '<space>wr', vim.lsp.buf.remove_workspace_folder)
 vim.keymap.set("n", '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end)
-vim.keymap.set("n", '<space>D', vim.lsp.buf.type_definition)
-vim.keymap.set("n", '<space>f', function() vim.lsp.buf.format { async = true } end)
+vim.keymap.set("n", '<leader>D', vim.lsp.buf.type_definition)
+vim.keymap.set("n", '<leader>f', function() vim.lsp.buf.format { async = true } end)
 
 lsp.setup()
 
