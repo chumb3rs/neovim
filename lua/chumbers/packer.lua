@@ -157,7 +157,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
 
             -- Useful status updates
-            { 'j-hui/fidget.nvim',                lock = true, tag = 'legacy', opts = {} },
+            { 'j-hui/fidget.nvim',                  lock = true, tag = 'legacy', opts = {} },
 
             -- Additional lua configuration
             'folke/neodev.nvim'
@@ -191,7 +191,8 @@ return require('packer').startup(function(use)
         requires = {
             "williamboman/mason.nvim",
             "mfussenegger/nvim-dap"
-        }
+        },
+        opts = {}
     }
     use {
         "leoluz/nvim-dap-go",
