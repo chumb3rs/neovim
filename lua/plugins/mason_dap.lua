@@ -5,7 +5,7 @@ return {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap"
     },
-    config = {
+    opts = {
         ensure_installed = { "python", "codelldb" },
         automatic_installation = true,
         handlers = {}

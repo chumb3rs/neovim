@@ -5,7 +5,7 @@ return {
     keys = {
         { "<leader>cs", ":Silicon<cr>", mode = "v", desc = "[C]ode [S]napshot" }
     },
-    config = {
+    opts = {
         -- Configuration here, or leave empty to use defaults
         font = "JetBrainsMono Nerd Font=28;Noto Color Emoji=28",
         --background = nil,

@@ -6,7 +6,7 @@ return {
         vim.opt.listchars:append "space:⋅"
         vim.opt.listchars:append "eol:↴"
     end,
-    config = {
+    opts = {
         indent = {
             char = "┊"
         }
