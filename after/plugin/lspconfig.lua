@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-local util = require "lspconfig/util"
 
 local servers = { clangd = {} }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())

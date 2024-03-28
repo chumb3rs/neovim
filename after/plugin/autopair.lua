@@ -1,7 +1,0 @@
--- function! Ulti_Pairs()
---     call UltiSnips#ExpandSnippetOrJump()
---     if g:ulti_expand_or_jump_res == 0
---         call AutoPairsJump()
---     endif
--- endfunction
---vim.keymap.set("i", "jj", "<ESC>:call AutoPairsJump()<CR>", { desc = "Jump forward through pair" })
