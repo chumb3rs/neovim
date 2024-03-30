@@ -1,17 +1,24 @@
 local lsp = require("lsp-zero")
 local mason = require("mason")
+local lspconfig = require("lspconfig")
 
-lsp.preset("recommended")
-
-mason.setup({})
+mason.setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
 
 require("mason-lspconfig").setup({
     ensure_installed = {
         'tsserver',
         'rust_analyzer',
-        'eslint',
+        --'eslint',
         --'prettier',
-        -- eslint_d
+        --'eslint_d',
         --'js-debug-adapter',
         'lua_ls',
         --Python
@@ -21,45 +28,44 @@ require("mason-lspconfig").setup({
         'clangd',
         --'codelldb'
         --'clang-format'
+        'gopls'
     },
     handlers = {
         lsp.default_setup,
+
+        gopls = function()
+            lspconfig.gopls.setup({
+                --root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+                settings = {
+                    gopls = {
+                        usePlaceholders = true,
+                        staticcheck = true,
+                        gofumpt = true,
+                        analyses = {
+                            unusedparams = true
+                        }
+                    }
+                }
+            })
+        end,
+
+        tsserver = function()
+            lspconfig.tsserver.setup({
+                init_options = {
+                    preferences = {
+                        disableSuggestions = true
+                    }
+                },
+                on_attach = function(_, _)
+                    print('hello from ts')
+                end
+            })
+        end
     }
 })
 
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = '',
-        warn = '',
-        hint = '',
-        info = ''
-    }
-})
-
-
-vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "[G]o to [D]efinition" })
-vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Open IntelliSense menu" })
-vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, { desc = "Show [W]orkspace [S]ymbols" })
-vim.keymap.set("n", "<leader>of", function() vim.diagnostic.open_float() end, { desc = "[O]pen [F]loat window" })
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "Go to next diagnostic" })
-vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "Go to previous diagnostic" })
-vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end, { desc = "[L]SP [C]ode [A]ctions" })
-vim.keymap.set("n", "<leader>lrr", function() vim.lsp.buf.references() end)
-vim.keymap.set("n", "<leader>lrn", function() vim.lsp.buf.rename() end, { desc = "[L]SP [R]e[n]ame" })
-vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
-vim.keymap.set("n", 'gD', vim.lsp.buf.declaration)
-vim.keymap.set("n", 'gi', vim.lsp.buf.implementation)
-vim.keymap.set("n", '<C-k>', vim.lsp.buf.signature_help)
-vim.keymap.set("n", '<space>wa', vim.lsp.buf.add_workspace_folder)
-vim.keymap.set("n", '<space>wr', vim.lsp.buf.remove_workspace_folder)
-vim.keymap.set("n", '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-end)
-vim.keymap.set("n", '<space>D', vim.lsp.buf.type_definition)
-vim.keymap.set("n", '<space>f', function() vim.lsp.buf.format { async = true } end)
-
-lsp.setup()
+-- Astro lsp
+lspconfig.astro.setup {}
 
 vim.diagnostic.config({
     virtual_text = true

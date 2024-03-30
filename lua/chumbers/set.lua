@@ -20,8 +20,6 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
-
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
@@ -40,8 +38,3 @@ vim.g.netrw_keepdir = 0
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.completeopt = "menuone,noselect"
-
--- For nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-

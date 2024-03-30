@@ -16,5 +16,3 @@ function ColorConfig(color)
 end
 
 ColorConfig()
-
-require "colorizer".setup()
