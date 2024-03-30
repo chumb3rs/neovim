@@ -88,7 +88,8 @@ return {
         "rcarriga/nvim-dap-ui",
         ft = { "python", "cpp", "javascript" },
         dependencies = {
-            "mfussenegger/nvim-dap"
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio"
         },
     },
     {
