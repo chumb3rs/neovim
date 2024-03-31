@@ -2,9 +2,9 @@ return {
     "nvim-tree/nvim-tree.lua",
     cmd = "NvimTreeOpen",
     keys = {
-        { "<leader>pv", ":NvimTreeFindFile<cr>", mode = "n", desc = "Explorer tree" },
-        { "<leader>pt", ":NvimTreeToggle<cr>",   mode = "n", desc = "Explorer tree toggle" },
-        { "<leader>pc", ":NvimTreeCollapse<cr>", mode = "n", desc = "Explorer tree collapse" },
+        { "<leader>pv", ":NvimTreeFindFile<cr>", mode = "n", desc = "Explorer tree",          silent = true },
+        { "<leader>pt", ":NvimTreeToggle<cr>",   mode = "n", desc = "Explorer tree toggle",   silent = true },
+        { "<leader>pc", ":NvimTreeCollapse<cr>", mode = "n", desc = "Explorer tree collapse", silent = true },
     },
     init = function()
         vim.g.loaded_netrw = 1
