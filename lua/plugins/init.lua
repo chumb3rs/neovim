@@ -80,7 +80,7 @@ return {
         end,
     },
 
-    "mfussenegger/nvim-jdtls",
+    { "mfussenegger/nvim-jdtls",         ft = "java" },
 
     -- DEBUGGER
     { "rcarriga/cmp-dap",                ft = { "python", "cpp", "javascript" } },
