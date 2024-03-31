@@ -108,6 +108,11 @@ snippet "([^a-zA-Z\\])ssq" "\sqrt[n] (square root)" rA
 endsnippet
 
 context "math()"
+snippet "([^a-zA-Z\\])lgg" "\log_{n} logarithm" rA
+`!p snip.rv = match.group(1)`\log_{$1}${2:${VISUAL:}}$0
+endsnippet
+
+context "math()"
 snippet "([\W_])vv" "\vec" rA
 `!p snip.rv = match.group(1)`\vec{${1:${VISUAL:}}}$0
 endsnippet
@@ -411,6 +416,9 @@ snippet "([^a-zA-Z0-9\\])lag" "Langle and rangle" rA
 `!p snip.rv = match.group(1)`\langle $1 \rangle $0
 endsnippet
 
+snippet "([^a-zA-Z0-9\\])qy" "\qty{}{} from siunitx" rA
+`!p snip.rv = match.group(1)`\qty{$1}{$2}$0
+endsnippet
 
 
 
