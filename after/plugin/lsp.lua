@@ -48,24 +48,8 @@ require("mason-lspconfig").setup({
                 }
             })
         end,
-
-        tsserver = function()
-            lspconfig.tsserver.setup({
-                init_options = {
-                    preferences = {
-                        disableSuggestions = true
-                    }
-                },
-                on_attach = function(_, _)
-                    print('hello from ts')
-                end
-            })
-        end
     }
 })
-
--- Astro lsp
-lspconfig.astro.setup {}
 
 vim.diagnostic.config({
     virtual_text = true

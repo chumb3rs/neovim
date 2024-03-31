@@ -84,6 +84,7 @@ vim.keymap.set("n", "<leader>of", function() vim.diagnostic.open_float() end, { 
 vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "Go to next diagnostic" })
 vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "Go to previous diagnostic" })
 vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end, { desc = "[L]SP [C]ode [A]ctions" })
+vim.keymap.set("v", "<leader>lca", ":Telescope lsp_range_code_actions<CR>", { desc = "[L]SP [C]ode [A]ctions" })
 vim.keymap.set("n", "<leader>lrr", function() vim.lsp.buf.references() end)
 vim.keymap.set("n", "<leader>lrn", function() vim.lsp.buf.rename() end, { desc = "[L]SP [R]e[n]ame" })
 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)

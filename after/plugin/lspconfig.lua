@@ -1,12 +1,6 @@
 local lspconfig = require('lspconfig')
 
-local servers = { clangd = {} }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-for server, opts in pairs(servers) do
-    opts.capabilities = capabilities
-    lspconfig[server].setup(opts)
-end
 
 lspconfig.lua_ls.setup {
     settings = {
@@ -35,27 +29,25 @@ lspconfig.lua_ls.setup {
     },
 }
 
-local function organize_imports()
-    local params = {
-        command = "_typescript.organizeImports",
-        arguments = { vim.api.nvim_buf_get_name(0) }
-    }
-    vim.lsp.buf.execute_command(params)
-end
-
 lspconfig.tsserver.setup({
     init_options = {
         preferences = {
-            disableSuggestions = true
+            disableSuggestions = false
         }
     },
-    on_attach = function(_, _)
-        vim.api.nvim_create_user_command("OrganizeImports", organize_imports, { desc = "Organize imports" })
+    on_attach = function(client)
+        -- Makes sure tsserver does not format ts/js files
+        client.server_capabilities.documentFormattingProvider = false
     end
 })
-
-vim.keymap.set("n", "<leader>oi", "<cmd> OrganizeImports <CR>", { desc = "Organize imports" })
 
 lspconfig.pyright.setup({
     filetypes = { "python" }
 })
+
+local servers = { clangd = {}, astro = {}, biome = {} }
+
+for server, opts in pairs(servers) do
+    opts.capabilities = capabilities
+    lspconfig[server].setup(opts)
+end
