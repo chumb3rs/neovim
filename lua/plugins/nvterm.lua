@@ -2,8 +2,8 @@ return {
     "NvChad/nvterm",
     lazy = true,
     keys = {
-        { "<leader>ht", ':lua require("nvterm.terminal").toggle "horizontal"<CR>', mode = "n", desc = "Toggle [H]orizontal [T]erminal" },
-        { "<leader>vt", ':lua require("nvterm.terminal").toggle "vertical"<CR>',   mode = "n", desc = "Toggle [V]ertical [T]erminal" },
+        { "<leader>ht", ':lua require("nvterm.terminal").toggle "horizontal"<CR>', mode = "n", desc = "Toggle [H]orizontal [T]erminal", silent = true },
+        { "<leader>vt", ':lua require("nvterm.terminal").toggle "vertical"<CR>',   mode = "n", desc = "Toggle [V]ertical [T]erminal",   silent = true },
     },
     config = function()
         require("nvterm").setup {
