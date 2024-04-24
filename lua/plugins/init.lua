@@ -4,13 +4,6 @@ return {
     "jiangmiao/auto-pairs",
     "windwp/nvim-ts-autotag",
     "tpope/vim-sleuth",
-    {
-        "ThePrimeagen/refactoring.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-    },
 
     -- APPEARANCE
     "folke/tokyonight.nvim",
@@ -22,17 +15,9 @@ return {
     },
     "onsails/lspkind.nvim",
 
-
-    -- NAVIGATION AND FILES
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-
     { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
 
     -- GIT PLUGINS
-    "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
 
     -- LATEX
@@ -92,18 +77,7 @@ return {
             "nvim-neotest/nvim-nio"
         },
     },
-    {
-        "leoluz/nvim-dap-go",
-        dependencies = {
-            "mfussenegger/nvim-dap"
-        },
-        ft = "go",
-        config = function()
-            require("dap-go").setup()
-        end
-    },
 
-    'tpope/vim-dispatch',
     'folke/neovim',
 
     -- Beancount
