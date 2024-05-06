@@ -33,20 +33,6 @@ lspconfig.lua_ls.setup {
     },
 }
 
--- lspconfig.tsserver.setup({
---     init_options = {
---         preferences = {
---             disableSuggestions = false
---         },
---         plugins = {
---             name = '@vue/typescript-plugin',
---             location = vue_language_server_path,
---             languages = { 'vue' }
---         }
---     },
---     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
--- })
-
 lspconfig.tsserver.setup {
     init_options = {
         preferences = {
