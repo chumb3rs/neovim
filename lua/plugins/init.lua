@@ -4,9 +4,10 @@ return {
     "jiangmiao/auto-pairs",
     "windwp/nvim-ts-autotag",
     "tpope/vim-sleuth",
+    "tpope/vim-obsession",
 
     -- APPEARANCE
-    "folke/tokyonight.nvim",
+    { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
     {
         'norcalli/nvim-colorizer.lua',
         config = function()
