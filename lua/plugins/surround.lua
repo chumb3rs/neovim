@@ -1,8 +1,6 @@
 return {
-    "echasnovski/mini.surround",
-    branch = "stable",
-    main = "mini.surround",
-    opts = {
-        search_method = "cover_or_next"
-    }
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    opts = {}
 }
