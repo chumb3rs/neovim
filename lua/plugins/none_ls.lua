@@ -15,7 +15,7 @@ return {
                 --
                 -- JavaScript
                 null_ls.builtins.formatting.biome.with({
-                    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc", "vue" },
+                    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc", "vue", "astro" },
                     args = {
                         "check",
                         "--apply",
