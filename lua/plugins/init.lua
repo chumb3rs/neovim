@@ -27,17 +27,7 @@ return {
         ft = "tex"
     },
 
-    -- Go
-    -- use {
-    --     'olexsmir/gopher.nvim',
-    --     ft = 'go',
-    --     config = function() require("gopher").setup() end,
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-treesitter/nvim-treesitter"
-    --     },
-    --     build = function() vim.cmd [[silent! GoInstallDeps]] end
-    -- }
+    -- GO
     {
         'ray-x/go.nvim',
         ft = "go"
@@ -66,10 +56,10 @@ return {
         end,
     },
 
-    { "mfussenegger/nvim-jdtls",         ft = "java" },
+    { "mfussenegger/nvim-jdtls", ft = "java" },
 
     -- DEBUGGER
-    { "rcarriga/cmp-dap",                ft = { "python", "cpp", "javascript" } },
+    { "rcarriga/cmp-dap",        ft = { "python", "cpp", "javascript" } },
     {
         "rcarriga/nvim-dap-ui",
         ft = { "python", "cpp", "javascript" },
