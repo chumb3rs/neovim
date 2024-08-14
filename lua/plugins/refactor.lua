@@ -16,7 +16,7 @@ return {
                 require("telescope").extensions.refactoring.refactors()
             end,
             mode = { "n", "x" },
-            desc = { "Open Telescope to Refactor" }
+            desc = "Open Telescope to Refactor"
         }
     },
     dependencies = {
