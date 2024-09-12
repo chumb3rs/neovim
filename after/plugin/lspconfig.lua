@@ -33,7 +33,7 @@ lspconfig.lua_ls.setup {
     },
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     init_options = {
         preferences = {
             disableSuggestions = false
@@ -47,7 +47,7 @@ lspconfig.tsserver.setup {
         },
     },
     on_attach = function(client)
-        -- Makes sure tsserver does not format ts/js files
+        -- Makes sure ts_ls does not format ts/js files
         client.server_capabilities.documentFormattingProvider = false
     end
 }
