@@ -1,6 +1,6 @@
 return {
     "jay-babu/mason-nvim-dap.nvim",
-    cmd = "DapInstall",
+    -- cmd = { "DapIntall", "DapContinue" },
     dependencies = {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap"
