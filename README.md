@@ -26,8 +26,9 @@ lua-language-server
 ```
 - For C/C++:
 ```
-clang-format, clangd, codelldb
+clang-format, clangd
 ```
+Note that `codelldb` will need to be installed manually following the instructions [here](https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(via--codelldb)). 
 - For Golang:
 ```
 gofumpt, goimports-reviser, gopls

@@ -26,7 +26,6 @@ require("mason-lspconfig").setup({
         --'mypy',
         -- mypy, ruff, black, debugpy
         'clangd',
-        --'codelldb'
         --'clang-format'
         'gopls'
     },
