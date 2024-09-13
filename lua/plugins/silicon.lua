@@ -2,6 +2,7 @@ return {
     "michaelrommel/nvim-silicon",
     lazy = true,
     cmd = "Silicon",
+    main = "nvim-silicon",
     keys = {
         { "<leader>cs", ":Silicon<cr>", mode = "v", desc = "[C]ode [S]napshot" }
     },
