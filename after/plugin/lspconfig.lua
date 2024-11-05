@@ -69,6 +69,14 @@ local servers = {
     },
     emmet_language_server = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" }
+    },
+    jsonls = {
+        settings = {
+            json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true },
+            },
+        },
     }
 }
 
