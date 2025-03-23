@@ -32,7 +32,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to black-hol
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open tmux sessionizer" })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
@@ -41,11 +40,14 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>yfP", "<cmd>:let @+=expand('%:p')<CR>",
+    { desc = "[Y]ank [F]ile [P]ath (absolute)" })
+vim.keymap.set("n", "<leader>yfp", "<cmd>:let @+=@%<CR>",
+    { desc = "[Y]ank [F]ile [P]ath (relative)" })
+vim.keymap.set("n", "<leader>yfn", "<cmd>::let @+=expand('%:t')<CR>",
+    { desc = "[Y]ank [F]ile [N]ame" })
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
-
+vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "Source Lua Config" })
 -- terminal mode
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 

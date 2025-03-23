@@ -57,8 +57,11 @@ return {
         vim.keymap.set("n", '<space>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end)
-        vim.keymap.set("n", '<leader>D', vim.lsp.buf.type_definition)
-        vim.keymap.set("n", '<leader>fm', function() vim.lsp.buf.format { async = true } end)
+        vim.keymap.set("n", '<leader>td', vim.lsp.buf.type_definition, { desc = "Go to [T]ype [D]efinition" })
+        vim.keymap.set("n", '<leader>fm', function() vim.lsp.buf.format { async = true } end,
+            { desc = "[F]or[M]at Code" })
+        vim.keymap.set("v", '<leader>fm', function() vim.lsp.buf.format { async = true } end,
+            { desc = "[F]or[M]at Code Selection" })
         -- REMAPS
         --
         lsp.setup()
