@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local configs = require 'lspconfig.configs'
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -55,6 +56,22 @@ lspconfig.ts_ls.setup {
 lspconfig.pyright.setup({
     filetypes = { "python" }
 })
+
+-- Check if the config is already defined (useful when reloading this file)
+if not configs.barium then
+    configs.barium = {
+        default_config = {
+            cmd = { 'barium' },
+            filetypes = { 'brazil-config' },
+            root_dir = function(fname)
+                return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+            end,
+            settings = {},
+        },
+    }
+end
+
+lspconfig.barium.setup {}
 
 local servers = {
     clangd = {},
