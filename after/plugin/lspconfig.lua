@@ -34,7 +34,7 @@ lspconfig.lua_ls.setup {
     },
 }
 
-lspconfig.ts_ls.setup {
+lspconfig.tsserver.setup {
     init_options = {
         preferences = {
             disableSuggestions = false
