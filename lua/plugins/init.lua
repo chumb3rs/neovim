@@ -9,6 +9,12 @@ return {
     -- APPEARANCE
     { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
     {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+    {
         'norcalli/nvim-colorizer.lua',
         config = function()
             require("colorizer").setup()

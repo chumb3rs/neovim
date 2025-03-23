@@ -31,6 +31,10 @@ return {
                 icon = "",
                 color = "#f1502f",
                 name = "Gitignore"
+            },
+            ["Config"] = {
+                icon = " 🇧🇷",
+                name = "Config"
             }
         },
         -- same as `override` but specifically for overrides by extension
