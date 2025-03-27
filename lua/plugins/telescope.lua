@@ -35,5 +35,13 @@ return {
         vim.keymap.set("n", "<leader>so", builtin.lsp_outgoing_calls, { desc = "[S]earch LSP [O]utgoing Calls" })
         vim.keymap.set("n", "<leader>si", builtin.lsp_implementations, { desc = "[S]earch LSP [I]mplementations" })
         vim.keymap.set("n", "<leader>sx", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "[S]earch LSP errors" })
+
+        require("telescope").setup {
+            pickers = {
+                find_files = {
+                    follow = true
+                }
+            }
+        }
     end
 }
