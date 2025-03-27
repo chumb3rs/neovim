@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local configs = require 'lspconfig.configs'
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -33,7 +34,7 @@ lspconfig.lua_ls.setup {
     },
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     init_options = {
         preferences = {
             disableSuggestions = false
@@ -47,7 +48,7 @@ lspconfig.tsserver.setup {
         },
     },
     on_attach = function(client)
-        -- Makes sure tsserver does not format ts/js files
+        -- Makes sure ts_ls does not format ts/js files
         client.server_capabilities.documentFormattingProvider = false
     end
 }
@@ -55,6 +56,22 @@ lspconfig.tsserver.setup {
 lspconfig.pyright.setup({
     filetypes = { "python" }
 })
+
+-- Check if the config is already defined (useful when reloading this file)
+if not configs.barium then
+    configs.barium = {
+        default_config = {
+            cmd = { 'barium' },
+            filetypes = { 'brazil-config' },
+            root_dir = function(fname)
+                return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+            end,
+            settings = {},
+        },
+    }
+end
+
+lspconfig.barium.setup {}
 
 local servers = {
     clangd = {},
@@ -75,6 +92,14 @@ local servers = {
     emmet_language_server = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" }
     },
+    jsonls = {
+        settings = {
+            json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true },
+            },
+        },
+    }
 }
 
 for server, opts in pairs(servers) do

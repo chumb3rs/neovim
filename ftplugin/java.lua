@@ -1,10 +1,59 @@
 local home = os.getenv('HOME')
 local jdtls = require('jdtls')
 
--- File types that signify a Java project's root directory. This will be
--- used by eclipse to determine what constitutes a workspace
-local root_markers = { 'gradlew', 'mvnw', '.git' }
-local root_dir = require('jdtls.setup').find_root(root_markers)
+
+-- Helper function for creating keymaps
+local function nnoremap(rhs, lhs, bufopts, desc)
+    bufopts.desc = desc
+    vim.keymap.set("n", rhs, lhs, bufopts)
+end
+
+local function get_hostname()
+    local f = io.popen("/bin/hostname")
+    local hostname = f:read("*a") or ""
+    f:close()
+    hostname = string.gsub(hostname, "\n$", "")
+    return hostname
+end
+
+
+local root_markers
+local root_dir
+local Java_debug_plugin
+local Java_path
+local Jdtls_config
+
+if get_hostname() == "7cf34dd2a0d5" then -- settings for local Amazon machine
+    -- File types that signify a Java project's root directory. This will be
+    -- used by eclipse to determine what constitutes a workspace
+    root_markers = { "packageInfo" }
+    root_dir = require('jdtls.setup').find_root(root_markers, "Config")
+
+    Java_debug_plugin =
+    "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar"
+    Java_version = "JavaSE-21"
+    Java_path = "/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
+    Jdtls_config = "config_mac_arm"
+elseif get_hostname() == "dev-dsk-nickmarx-2c-e551df06.us-west-2.amazon.com" then -- settings for cloud desktop
+    root_markers = { "packageInfo" }
+    root_dir = require('jdtls.setup').find_root(root_markers, "Config")
+
+    Java_debug_plugin =
+    "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar"
+    Java_version = "JavaSE-21"
+    Java_path = "/usr/lib/jvm/java-21-amazon-corretto"
+    Jdtls_config = "config_linux"
+else -- settings for personal PC
+    root_markers = { 'gradlew', 'mvnw', '.git' }
+    root_dir = require('jdtls.setup').find_root(root_markers)
+
+    Java_debug_plugin =
+    "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.50.0/com.microsoft.java.debug.plugin-0.5.0.jar"
+    Java_version = "JavaSE-19"
+    Java_path = home .. "/.asdf/installs/java/temurin-19.0.2+7"
+    Jdtls_config = "config_linux"
+end
+
 
 -- eclipse.jdt.ls stores project specific data within a folder. If you are working
 -- with multiple different projects, each project must use a dedicated data directory.
@@ -12,17 +61,23 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 -- current project found using the root_marker as the folder for project specific data.
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
--- Helper function for creating keymaps
-function nnoremap(rhs, lhs, bufopts, desc)
-    bufopts.desc = desc
-    vim.keymap.set("n", rhs, lhs, bufopts)
-end
-
 local bundles = {
     vim.fn.glob(
         home ..
-        '/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.50.0/com.microsoft.java.debug.plugin-0.5.0.jar')
+        Java_debug_plugin)
 }
+
+-- add Brazil workspace folders
+local ws_folders_jdtls = {}
+if root_dir and get_hostname() == "7cf34dd2a0d5" then
+    local file = io.open(root_dir .. "/.bemol/ws_root_folders")
+    if file then
+        for line in file:lines() do
+            table.insert(ws_folders_jdtls, "file://" .. line)
+        end
+        file:close()
+    end
+end
 
 vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.m2/vscode-java-test/server/*.jar", 1), "\n"))
 
@@ -66,7 +121,8 @@ local config = {
     on_attach = on_attach, -- We pass our on_attach keybindings to the configuration map
     capabilities = capabilities,
     init_options = {
-        bundles = bundles
+        bundles = bundles,
+        workspaceFolders = ws_folders_jdtls
     },
     root_dir = root_dir, -- Set the root directory to our found root_marker
     -- Here you can configure eclipse.jdt.ls specific settings
@@ -76,13 +132,19 @@ local config = {
     settings = {
         java = {
             format = {
-                settings = {
-                    -- Use Google Java style guidelines for formatting
-                    -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-                    -- and place it in the ~/.local/share/eclipse directory
-                    url = "/.local/share/eclipse/eclipse-java-google-style.xml",
-                    profile = "GoogleStyle",
+                enabled = false,
+                insertSpaces = true,
+                tabSize = 4,
+                comments = {
+                    enabled = true
                 },
+                -- settings = {
+                --     -- Use Google Java style guidelines for formatting
+                --     -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+                --     -- and place it in the ~/.local/share/eclipse directory
+                --     url = home .. "/.local/share/eclipse/eclipse-java-google-style.xml",
+                --     profile = "GoogleStyle",
+                -- },
             },
             signatureHelp = { enabled = true },
             contentProvider = { preferred = 'fernflower' }, -- Use fernflower to decompile library code
@@ -105,12 +167,12 @@ local config = {
                 },
             },
             -- Specify any options for organizing imports
-            sources = {
-                organizeImports = {
-                    starThreshold = 9999,
-                    staticStarThreshold = 9999,
-                },
-            },
+            -- sources = {
+            --     organizeImports = {
+            --         starThreshold = 9999,
+            --         staticStarThreshold = 9999,
+            --     },
+            -- },
             -- How code generation should act
             codeGeneration = {
                 toString = {
@@ -129,8 +191,8 @@ local config = {
             configuration = {
                 runtimes = {
                     {
-                        name = "JavaSE-19",
-                        path = home .. "/.asdf/installs/java/temurin-19.0.2+7",
+                        name = Java_version,
+                        path = Java_path
                     },
                 }
             }
@@ -142,7 +204,7 @@ local config = {
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     -- for the full list of options
     cmd = {
-        home .. "/.asdf/installs/java/temurin-19.0.2+7/bin/java",
+        Java_path .. "/bin/java",
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -163,7 +225,7 @@ local config = {
 
         -- The configuration for jdtls is also placed where jdtls was installed. This will
         -- need to be updated depending on your environment
-        '-configuration', "/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
+        '-configuration', "/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/" .. Jdtls_config,
 
         -- Use the workspace_folder defined above to store data for this project
         '-data', workspace_folder,

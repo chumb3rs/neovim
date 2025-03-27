@@ -1,12 +1,12 @@
 return {
     "jay-babu/mason-nvim-dap.nvim",
-    -- cmd = { "DapIntall", "DapContinue" },
+    cmd = { "DapInstall", "DapContinue" },
     dependencies = {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap"
     },
     opts = {
-        ensure_installed = { "python", "codelldb" },
+        ensure_installed = { "python" },
         automatic_installation = true,
         handlers = {}
     }

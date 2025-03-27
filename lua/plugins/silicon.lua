@@ -10,7 +10,7 @@ return {
         -- Configuration here, or leave empty to use defaults
         font = "JetBrainsMono Nerd Font=28;Noto Color Emoji=28",
         --background = nil,
-        background_image = "/home/chumbers/Pictures/Icons/silicon.png",
+        background_image = os.getenv("HOME") .. "/Pictures/Icons/silicon.png",
         theme = "Dracula",
 
         window_title = function()

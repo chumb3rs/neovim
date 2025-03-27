@@ -32,7 +32,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to black-hol
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open tmux sessionizer" })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
@@ -40,12 +39,15 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>chx", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>yfP", "<cmd>let @+=expand('%:p')<CR>",
+    { desc = "[Y]ank [F]ile [P]ath (absolute)" })
+vim.keymap.set("n", "<leader>yfp", "<cmd>let @+=@%<CR>",
+    { desc = "[Y]ank [F]ile [P]ath (relative)" })
+vim.keymap.set("n", "<leader>yfn", "<cmd>let @+=expand('%:t')<CR>",
+    { desc = "[Y]ank [F]ile [N]ame" })
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
-
+vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "Source Lua Config" })
 -- terminal mode
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 
@@ -69,3 +71,46 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>ed', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+-- basic telescope configuration
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+    { desc = "Open harpoon window" })
+vim.keymap.set("n", "<C-s>", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window with Telescope" })
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+
+vim.keymap.set("n", "<leader>h1", function() harpoon:list():select(1) end, { desc = "[H]arpoon List [1]" })
+vim.keymap.set("n", "<leader>h2", function() harpoon:list():select(2) end, { desc = "[H]arpoon List [2]" })
+vim.keymap.set("n", "<leader>h3", function() harpoon:list():select(3) end, { desc = "[H]arpoon List [3]" })
+vim.keymap.set("n", "<leader>h4", function() harpoon:list():select(4) end, { desc = "[H]arpoon List [4]" })
+vim.keymap.set("n", "<leader>h5", function() harpoon:list():select(5) end, { desc = "[H]arpoon List [5]" })
+vim.keymap.set("n", "<leader>h6", function() harpoon:list():select(6) end, { desc = "[H]arpoon List [6]" })
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<leader>hlp", function() harpoon:list():prev() end, { desc = "[H]arpoon [L]ist [P]revious" })
+vim.keymap.set("n", "<leader>hln", function() harpoon:list():next() end, { desc = "[H]arpoon [L]ist [N]ext" })

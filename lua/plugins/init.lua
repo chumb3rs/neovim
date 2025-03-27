@@ -9,6 +9,12 @@ return {
     -- APPEARANCE
     { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
     {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+    {
         'norcalli/nvim-colorizer.lua',
         config = function()
             require("colorizer").setup()
@@ -74,5 +80,8 @@ return {
     -- Beancount
     { "crispgm/cmp-beancount",     ft = "beancount" },
     { "nathangrigg/vim-beancount", ft = "beancount" },
+
+    -- JSON
+    "b0o/schemastore.nvim",
 
 }
