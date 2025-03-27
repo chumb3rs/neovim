@@ -11,8 +11,10 @@ return {
                 null_ls.builtins.formatting.usort,
                 --
                 -- Cpp
-                null_ls.builtins.formatting.clang_format,
-                --
+                null_ls.builtins.formatting.clang_format.with({
+                    filetypes = { "c", "cpp", "cs", "cuda", "proto" }
+                }),
+
                 -- JavaScript
                 null_ls.builtins.formatting.biome.with({
                     filetypes = { "javascript", "typescript",
