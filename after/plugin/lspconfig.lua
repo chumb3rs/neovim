@@ -67,9 +67,14 @@ local servers = {
             }
         }
     },
+    beancount = {
+        init_options = {
+            journal_file = "/mnt/WIN_D/PROJECTS/beancount/chumbers.beancount"
+        }
+    },
     emmet_language_server = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" }
-    }
+    },
 }
 
 for server, opts in pairs(servers) do
