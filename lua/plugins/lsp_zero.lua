@@ -23,7 +23,7 @@ return {
         { 'rafamadriz/friendly-snippets' }, -- Optional
 
         -- Useful status updates
-        { 'j-hui/fidget.nvim',                  event = "VeryLazy", pin = true, version = 'legacy', opts = {} },
+        { 'j-hui/fidget.nvim' },
 
     },
     config = function()
