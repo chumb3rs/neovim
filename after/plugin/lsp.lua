@@ -54,12 +54,19 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+local excluded_filetypes = {
+    smithy = true,
+    -- Add more filetypes as key = true
+}
+
 -- Auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = buffer,
-    callback = function()
-        vim.lsp.buf.format { async = false }
-    end
+    pattern = "*",
+    callback = function(args)
+        if not excluded_filetypes[vim.bo[args.buf].filetype] then
+            vim.lsp.buf.format()
+        end
+    end,
 })
 
 -- For Bemol integration
