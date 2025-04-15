@@ -38,3 +38,13 @@ vim.g.netrw_keepdir = 0
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.completeopt = "menuone,noselect"
+
+vim.g.firenvim_config = {
+    globalSettings = { alt = "all" },
+    localSettings = {
+        [".*"] = {
+            takeover = "never",
+            cmdline = "firenvim"
+        }
+    }
+}
