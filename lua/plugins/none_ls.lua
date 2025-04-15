@@ -34,6 +34,9 @@ return {
                 null_ls.builtins.diagnostics.djlint,
                 null_ls.builtins.formatting.djhtml,
 
+                -- Bash
+                null_ls.builtins.formatting.shellharden,
+
                 -- Go
                 null_ls.builtins.formatting.gofumpt,
                 null_ls.builtins.formatting.goimports_reviser,

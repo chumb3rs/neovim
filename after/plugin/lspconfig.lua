@@ -26,11 +26,6 @@ function bemol()
     end
 end
 
-local on_attach = function(_, bufnr)
-    print("Calling on attach")
-    bemol()
-end
-
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
@@ -98,6 +93,11 @@ local servers = {
     barium = {},
     biome = {},
     clangd = {},
+    beancount = {
+        init_options = {
+            journal_file = "/mnt/WIN_D/PROJECTS/beancount/chumbers.beancount"
+        }
+    },
     emmet_language_server = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" }
     },
