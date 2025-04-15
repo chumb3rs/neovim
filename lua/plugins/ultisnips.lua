@@ -3,7 +3,8 @@ return {
     init = function()
         vim.keymap.set("n", "<leader>U", ":call UltiSnips#RefreshSnippets()<CR>", { desc = "Refresh snippets" })
         vim.cmd([[
-            let g:UltiSnipsExpandTrigger = "<Tab>"
+            let g:UltiSnipsExpandTrigger = "<tab>"
+            let g:UltiSnipsListSnippets = "<c-tab>"
             let g:UltiSnipsJumpForwardTrigger = "jj"
             let g:UltiSnipsJumpBackwardTrigger = "kk"
 
