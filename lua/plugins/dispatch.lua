@@ -3,6 +3,6 @@ return {
     lazy = true,
     cmd = "Make",
     keys = {
-        { "<leader>m", ":Make<CR>", mode = "n", desc = "Run Dispatch Make" }
+        { "<leader>mk", "<cmd>Make<CR>", mode = "n", desc = "Run Dispatch Make" }
     }
 }

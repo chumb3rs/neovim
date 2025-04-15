@@ -25,8 +25,8 @@ return {
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-d>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                ['<C-Space>'] = cmp.mapping.complete {},
-                ['<C-l>'] = cmp.mapping.confirm {
+                ['<C-Space>'] = cmp.mapping.complete({ select = true }),
+                ["fj"] = cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
                 },

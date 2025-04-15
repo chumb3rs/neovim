@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>yfp", "<cmd>let @+=@%<CR>",
 vim.keymap.set("n", "<leader>yfn", "<cmd>let @+=expand('%:t')<CR>",
     { desc = "[Y]ank [F]ile [N]ame" })
 
-vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "Source Lua Config" })
+vim.keymap.set("n", "<leader><leader>", "<cmd>source %<CR>", { desc = "Source Lua Config" })
 -- terminal mode
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 
@@ -71,6 +71,12 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>ed', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Opening Tools
+vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Open [L]a[z]y" })
+vim.keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Open [M]a[s]on" })
+vim.keymap.set("n", "<leader>lsp", "<cmd>LspInfo<CR>", { desc = "Open [LSP]Info" })
+vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<CR>", { desc = "Open [N]ull[LS]Info" })
 
 
 local harpoon = require("harpoon")
