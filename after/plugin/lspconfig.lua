@@ -6,6 +6,30 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 local mason_registry = require('mason-registry')
 local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
     '/node_modules/@vue/language-server'
+--
+-- For Bemol integration
+function bemol()
+    local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory' })[1]
+    local ws_folders_lsp = {}
+    if bemol_dir then
+        local file = io.open(bemol_dir .. '/ws_root_folders', 'r')
+        if file then
+            for line in file:lines() do
+                table.insert(ws_folders_lsp, line)
+            end
+            file:close()
+        end
+    end
+
+    for _, line in ipairs(ws_folders_lsp) do
+        vim.lsp.buf.add_workspace_folder(line)
+    end
+end
+
+local on_attach = function(_, bufnr)
+    print("Calling on attach")
+    bemol()
+end
 
 lspconfig.lua_ls.setup {
     settings = {
@@ -53,9 +77,6 @@ lspconfig.ts_ls.setup {
     end
 }
 
-lspconfig.pyright.setup({
-    filetypes = { "python" }
-})
 
 -- Check if the config is already defined (useful when reloading this file)
 if not configs.barium then
@@ -71,19 +92,12 @@ if not configs.barium then
     }
 end
 
-lspconfig.barium.setup {}
 
 local servers = {
-    clangd = {},
     astro = {},
+    barium = {},
     biome = {},
-    volar = {
-        init_options = {
-            vue = {
-                hybridMode = false
-            }
-        }
-    },
+    clangd = {},
     emmet_language_server = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" }
     },
@@ -94,7 +108,16 @@ local servers = {
                 validate = { enable = true },
             },
         },
-    }
+    },
+    pyright = { filetypes = { "python" }, },
+    ruby_lsp = {},
+    volar = {
+        init_options = {
+            vue = {
+                hybridMode = false
+            }
+        }
+    },
 }
 
 for server, opts in pairs(servers) do
