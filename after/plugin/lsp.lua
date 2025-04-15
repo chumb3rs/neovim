@@ -16,6 +16,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         'ts_ls',
         'rust_analyzer',
+        'ruby_lsp',
         --'eslint',
         --'prettier',
         --'eslint_d',
@@ -60,14 +61,29 @@ local excluded_filetypes = {
 }
 
 -- Auto format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function(args)
-        if not excluded_filetypes[vim.bo[args.buf].filetype] then
-            vim.lsp.buf.format()
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     pattern = "*",
+--     callback = function(args)
+--         if not excluded_filetypes[vim.bo[args.buf].filetype] then
+--             vim.lsp.buf.format()
+--         end
+--     end,
+-- })
+
+function format_range_operator()
+    local old_func = vim.go.operatorfunc
+    _G.op_func_formatting = function()
+        local start = vim.api.nvim_buf_get_mark(0, '[')
+        local finish = vim.api.nvim_buf_get_mark(0, ']')
+        vim.lsp.buf.range_formatting({}, start, finish)
+        vim.go.operatorfunc = old_func
+        _G.op_func_formatting = nil
+    end
+    vim.go.operatorfunc = 'v:lua.op_func_formatting'
+    vim.api.nvim_feedkeys('g@', 'n', false)
+end
+
+vim.api.nvim_set_keymap("n", "gm", "<cmd>lua format_range_operator()<CR>", { noremap = true })
 
 -- For Bemol integration
 function bemol()
