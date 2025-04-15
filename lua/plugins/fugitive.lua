@@ -2,7 +2,9 @@ return {
     "tpope/vim-fugitive",
     cmd = "Git",
     keys = {
-        { "<leader>gs", vim.cmd.Git,     mode = "n", desc = "[G]it [S]tatus" },
-        { "<leader>gb", vim.cmd.GBrowse, mode = "n", desc = "[G]it [B]rowse" }
+        { "<leader>gs",  "<cmd>vertical Git<CR>", mode = "n", desc = "[G]it [S]tatus" },
+        { "<leader>gbr", vim.cmd.GBrowse,         mode = "n", desc = "[G]it [B][R]owse" },
+        { "<leader>gbl", "<cmd>Git blame<CR>",          mode = "n", desc = "[G]it [B][L]ame" },
+        { "<leader>glg", "<cmd>vert Git log<CR>", mode = "n", desc = "[G]it [L]o[G]" },
     }
 }
