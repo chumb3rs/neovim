@@ -11,8 +11,13 @@ function ColorConfig(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" });
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" });
+end
 
-    LineNumberColors()
+function CursorLineConfig()
+    vim.opt.cursorline = true  -- Enable cursor line
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292E42" })  -- Set the background color
 end
 
 ColorConfig()
+CursorLineConfig()
+LineNumberColors()
