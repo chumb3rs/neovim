@@ -9,7 +9,7 @@ return {
                 null_ls.builtins.diagnostics.pylint,
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.usort,
-                --
+
                 -- Cpp
                 null_ls.builtins.formatting.clang_format.with({
                     filetypes = { "c", "cpp", "cs", "cuda", "proto" }
@@ -30,9 +30,17 @@ return {
                     }
                 }),
 
+                -- Django
+                null_ls.builtins.diagnostics.djlint,
+                null_ls.builtins.formatting.djhtml,
+
                 -- Go
                 null_ls.builtins.formatting.gofumpt,
                 null_ls.builtins.formatting.goimports_reviser,
+
+                -- Ruby
+                null_ls.builtins.formatting.rubocop,
+                null_ls.builtins.diagnostics.rubocop,
 
                 -- Code actions
                 null_ls.builtins.code_actions.refactoring,
