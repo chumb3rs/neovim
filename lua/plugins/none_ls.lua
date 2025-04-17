@@ -45,6 +45,9 @@ return {
                 null_ls.builtins.formatting.rubocop,
                 null_ls.builtins.diagnostics.rubocop,
 
+                -- Lua
+                null_ls.builtins.formatting.stylua,
+
                 -- Code actions
                 null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.code_actions.gitsigns,
