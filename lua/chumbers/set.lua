@@ -28,10 +28,10 @@ vim.opt.updatetime = 50
 
 -- vim.opt.colorcolumn = "60"
 
-vim.opt.shell = 'zsh'
-vim.opt.shellcmdflag = '-c'
-vim.g.netrw_localrmdir = 'rm -r'
-vim.g.netrw_localcopydircmd = 'cp -r'
+vim.opt.shell = "zsh"
+vim.opt.shellcmdflag = "-c"
+vim.g.netrw_localrmdir = "rm -r"
+vim.g.netrw_localcopydircmd = "cp -r"
 vim.g.netrw_keepdir = 0
 
 -- Searching
@@ -39,12 +39,4 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.completeopt = "menuone,noselect"
 
-vim.g.firenvim_config = {
-    globalSettings = { alt = "all" },
-    localSettings = {
-        [".*"] = {
-            takeover = "never",
-            cmdline = "firenvim"
-        }
-    }
-}
+vim.opt.guifont = "JetBrainsMono Nerd Font"
