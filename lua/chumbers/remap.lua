@@ -116,6 +116,10 @@ vim.keymap.set("n", "<leader>h3", function() harpoon:list():select(3) end, { des
 vim.keymap.set("n", "<leader>h4", function() harpoon:list():select(4) end, { desc = "[H]arpoon List [4]" })
 vim.keymap.set("n", "<leader>h5", function() harpoon:list():select(5) end, { desc = "[H]arpoon List [5]" })
 vim.keymap.set("n", "<leader>h6", function() harpoon:list():select(6) end, { desc = "[H]arpoon List [6]" })
+vim.keymap.set("n", "<leader>h7", function() harpoon:list():select(7) end, { desc = "[H]arpoon List [7]" })
+vim.keymap.set("n", "<leader>h8", function() harpoon:list():select(8) end, { desc = "[H]arpoon List [8]" })
+vim.keymap.set("n", "<leader>h9", function() harpoon:list():select(9) end, { desc = "[H]arpoon List [9]" })
+vim.keymap.set("n", "<leader>h0", function() harpoon:list():select(0) end, { desc = "[H]arpoon List 1[0]" })
 
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<leader>hlp", function() harpoon:list():prev() end, { desc = "[H]arpoon [L]ist [P]revious" })
