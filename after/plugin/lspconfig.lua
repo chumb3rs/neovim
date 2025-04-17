@@ -93,28 +93,44 @@ local servers = {
     clangd = {},
     beancount = {
         init_options = {
-            journal_file = "/mnt/WIN_D/PROJECTS/beancount/chumbers.beancount"
-        }
+            journal_file = "/mnt/WIN_D/PROJECTS/beancount/chumbers.beancount",
+        },
     },
     emmet_language_server = {
-        filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" }
+        filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" },
     },
     jsonls = {
         settings = {
             json = {
-                schemas = require('schemastore').json.schemas(),
+                schemas = require("schemastore").json.schemas(),
                 validate = { enable = true },
             },
         },
+        filetypes = { "json" },
     },
-    pyright = { filetypes = { "python" }, },
+    pyright = { filetypes = { "python" } },
     ruby_lsp = {},
     volar = {
         init_options = {
             vue = {
-                hybridMode = false
-            }
-        }
+                hybridMode = false,
+            },
+        },
+    },
+    yamlls = {
+        settings = {
+            yaml = {
+                schemaStore = {
+                    -- You must disable built-in schemaStore support if you want to use
+                    -- this plugin and its advanced options like `ignore`.
+                    enable = false,
+                    -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                    url = "",
+                },
+                schemas = require("schemastore").yaml.schemas(),
+            },
+        },
+        filetypes = { "yaml" },
     },
 }
 
