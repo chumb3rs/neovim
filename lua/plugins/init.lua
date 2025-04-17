@@ -7,7 +7,6 @@ return {
     "tpope/vim-obsession",
 
     -- APPEARANCE
-    { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -15,29 +14,28 @@ return {
         opts = {},
     },
     {
-        'norcalli/nvim-colorizer.lua',
+        "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup()
         end,
     },
     "onsails/lspkind.nvim",
 
-    { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
     -- GIT PLUGINS
     "tpope/vim-rhubarb",
 
     -- LATEX
     {
-        'lervag/vimtex',
-        ft = "tex"
+        "lervag/vimtex",
+        ft = "tex",
     },
 
     -- GO
     {
-        'ray-x/go.nvim',
-        ft = "go"
-
+        "ray-x/go.nvim",
+        ft = "go",
     },
 
     -- Rust
@@ -46,42 +44,46 @@ return {
         ft = "rust",
         config = function()
             vim.g.rustfmt_autosave = 1
-        end
+        end,
     },
     {
-        'mrcjkb/rustaceanvim',
-        version = '^4', -- Recommended
-        ft = { 'rust' },
+        "mrcjkb/rustaceanvim",
+        version = "^4", -- Recommended
+        ft = { "rust" },
     },
     {
-        'saecki/crates.nvim',
+        "saecki/crates.nvim",
         event = { "BufRead Cargo.toml" },
         ft = "rust",
         config = function()
-            require('crates').setup()
+            require("crates").setup()
         end,
     },
 
-    { "mfussenegger/nvim-jdtls", ft = "java" },
+    { "mfussenegger/nvim-jdtls",         ft = "java" },
 
     -- DEBUGGER
-    { "rcarriga/cmp-dap",        ft = { "python", "cpp", "javascript" } },
+    { "rcarriga/cmp-dap",                ft = { "python", "cpp", "javascript" } },
     {
         "rcarriga/nvim-dap-ui",
         ft = { "python", "cpp", "javascript" },
         dependencies = {
             "mfussenegger/nvim-dap",
-            "nvim-neotest/nvim-nio"
+            "nvim-neotest/nvim-nio",
         },
     },
 
-    'folke/neovim',
+    "folke/neovim",
 
     -- Beancount
     { "crispgm/cmp-beancount",     ft = "beancount" },
     { "nathangrigg/vim-beancount", ft = "beancount" },
 
     -- JSON
-    "b0o/schemastore.nvim",
+    {
+        "b0o/schemastore.nvim",
+        ft = "json",
+    },
 
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 }
