@@ -3,7 +3,7 @@ return {
     build = ":call firenvim#install(0)",
     config = function()
         vim.api.nvim_create_autocmd({ "BufEnter" }, {
-            pattern = "github.com_*.txt",
+            pattern = {"github.com_*.txt", "t.corp.amazon.com_*.txt"},
             command = "set filetype=markdown",
         })
 

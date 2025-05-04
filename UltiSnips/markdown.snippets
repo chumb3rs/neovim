@@ -37,7 +37,7 @@ snippet thh "Insert highlighted text" A
 ==${1:${VISUAL}}==$0
 endsnippet
 
-snippet href "Insert hyperlink" A
+snippet hf "Insert hyperlink" A
 [${1:${VISUAL}alias}](${2:link})$0
 endsnippet
 
@@ -47,8 +47,8 @@ endsnippet
 
 priority 2
 snippet cbb "Insert code block" bA
-\`\`\`
-${1:${VISUAL}}
+\`\`\`$1
+${2:${VISUAL}}
 \`\`\`
 $0
 endsnippet
