@@ -74,6 +74,7 @@ return {
             "nvim-neotest/nvim-nio",
         },
     },
+    "nvim-telescope/telescope-dap.nvim",
 
     "folke/neovim",
 
