@@ -27,7 +27,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy to clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to black-hole register" })
+vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete to black-hole register" })
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
@@ -77,6 +77,7 @@ vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Open [L]a[z]y" })
 vim.keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Open [M]a[s]on" })
 vim.keymap.set("n", "<leader>lsp", "<cmd>LspInfo<CR>", { desc = "Open [LSP]Info" })
 vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<CR>", { desc = "Open [N]ull[LS]Info" })
+vim.keymap.set("n", "<leader>chl",  "<cmd>checkhealth<CR>", { desc = "[C]heck[H]ea[L]th" })
 
 
 local harpoon = require("harpoon")
