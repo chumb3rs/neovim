@@ -3,10 +3,8 @@ local configs = require("lspconfig.configs")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local mason_registry = require("mason-registry")
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-    .. "/node_modules/@vue/language-server"
---
+local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server") .. "/node_modules/@vue/language-server"
+
 -- For Bemol integration
 function bemol()
     local bemol_dir = vim.fs.find({ ".bemol" }, { upward = true, type = "directory" })[1]
