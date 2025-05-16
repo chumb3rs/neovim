@@ -14,6 +14,12 @@ function ColorConfig(color)
     vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "MsgArea", { bg = "NONE" })
+
+    -- Gitsigns
+    vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#9ECE6A" })    -- For added lines
+    vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#BB9AF7" }) -- For changed lines
+    vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#F7768E" }) -- For deleted lines
+    vim.api.nvim_set_hl(0, "GitSignsUntracked", { fg = "#73DACA" }) -- For deleted lines
 end
 
 function CursorLineConfig()
@@ -59,6 +65,7 @@ function IconConfig()
         numhl = "",
     })
 end
+
 
 ColorConfig()
 CursorLineConfig()
