@@ -1,8 +1,8 @@
 -- Sets colors to line numbers Above, Current and Below  in this order
 function LineNumberColors()
-    vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#A4DFFD" })
-    vim.api.nvim_set_hl(0, "LineNr", { fg = "white", bold = true })
-    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#FDB3BF" })
+    vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#73DACA" })
+    vim.api.nvim_set_hl(0, "LineNr", { fg = "#CFC9C2", bold = true })
+    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#F7768E" })
 end
 
 function ColorConfig(color)
@@ -30,10 +30,10 @@ end
 function IconConfig()
     -- Define highlight groups with desired colors
     vim.cmd([[
-          highlight DapBreakpoint guifg=#FF5555
-          highlight DapBreakpointCondition guifg=#61AFEF
-          highlight DapLogPoint guifg=#E5C07B
-          highlight DapStopped guifg=#98C379
+          highlight DapBreakpoint guifg=#F7768E
+          highlight DapBreakpointCondition guifg=#7AA2F7
+          highlight DapLogPoint guifg=#E0AF68
+          highlight DapStopped guifg=#2AC3De
     ]])
 
     -- Set custom signs with Nerd Font icon
@@ -65,7 +65,6 @@ function IconConfig()
         numhl = "",
     })
 end
-
 
 ColorConfig()
 CursorLineConfig()

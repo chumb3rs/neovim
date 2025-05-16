@@ -56,7 +56,8 @@ return {
                 { name = 'luasnip' },
                 { name = "crates" },
                 { name = 'async_path' },
-                { name = "nvim_lsp_signature_help" }
+                { name = "nvim_lsp_signature_help" },
+                { name = "lazydev", group_index = 0 }
             },
 
             formatting = {
