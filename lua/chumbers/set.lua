@@ -8,9 +8,13 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.numberwidth = 4
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = true
+
+vim.opt.fillchars = { eob = ' ' }
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -21,7 +25,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes:3" -- Reserve 3 columns for signs
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
