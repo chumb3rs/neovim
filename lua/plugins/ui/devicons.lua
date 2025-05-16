@@ -51,6 +51,11 @@ return {
                 color = "#f1502f",
                 name = "Astro",
             },
+            ["snippets"] = {
+                icon = "",
+                color = "#7AA2F7",
+                name = "Snippets"
+            }
         },
 
     }
