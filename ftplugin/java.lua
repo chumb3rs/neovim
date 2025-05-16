@@ -1,14 +1,8 @@
 local home = os.getenv('HOME')
 local jdtls = require('jdtls')
+local utils = require("utils")
 
-local function get_hostname()
-    local f = io.popen("/bin/hostname")
-    local hostname = f:read("*a") or ""
-    f:close()
-    hostname = string.gsub(hostname, "\n$", "")
-    return hostname
-end
-
+local hostname = utils.get_hostname()
 
 local root_markers
 local root_dir
@@ -16,7 +10,7 @@ local Java_debug_plugin
 local Java_path
 local Jdtls_config
 
-if get_hostname() == "7cf34dd2a0d5" then -- settings for local Amazon machine
+if hostname == "7cf34dd2a0d5" then -- settings for local Amazon machine
     root_markers = { "packageInfo" }
     root_dir = require('jdtls.setup').find_root(root_markers, "Config")
 
@@ -25,7 +19,7 @@ if get_hostname() == "7cf34dd2a0d5" then -- settings for local Amazon machine
     Java_version = "JavaSE-21"
     Java_path = "/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
     Jdtls_config = "config_mac_arm"
-elseif get_hostname() == "dev-dsk-nickmarx-2c-e551df06.us-west-2.amazon.com" then -- settings for cloud desktop
+elseif hostname == "dev-dsk-nickmarx-2c-e551df06.us-west-2.amazon.com" then -- settings for cloud desktop
     root_markers = { "packageInfo" }
     root_dir = require('jdtls.setup').find_root(root_markers, "Config")
 
@@ -56,7 +50,7 @@ local bundles = {
 
 -- add Brazil workspace folders
 local ws_folders_jdtls = {}
-if root_dir and get_hostname() == "7cf34dd2a0d5" then
+if root_dir and hostname == "7cf34dd2a0d5" then
     local file = io.open(root_dir .. "/.bemol/ws_root_folders")
     if file then
         for line in file:lines() do
