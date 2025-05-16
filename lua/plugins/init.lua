@@ -21,9 +21,11 @@ return {
     },
     "onsails/lspkind.nvim",
 
-    { "nvim-treesitter/nvim-treesitter",
+    {
+        "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        dependencies = "OXY2DEV/markview.nvim"},
+        dependencies = "OXY2DEV/markview.nvim",
+    },
 
     -- GIT PLUGINS
     "tpope/vim-rhubarb",
@@ -58,14 +60,14 @@ return {
         event = { "BufRead Cargo.toml" },
         ft = "rust",
         config = function()
-            require("crates").setup()
+            require("crates").setup({})
         end,
     },
 
-    { "mfussenegger/nvim-jdtls",         ft = "java" },
+    { "mfussenegger/nvim-jdtls", ft = "java" },
 
     -- DEBUGGER
-    { "rcarriga/cmp-dap",                ft = { "python", "cpp", "javascript" } },
+    { "rcarriga/cmp-dap",        ft = { "python", "cpp", "javascript" } },
     {
         "rcarriga/nvim-dap-ui",
         ft = { "python", "cpp", "javascript" },
@@ -89,4 +91,11 @@ return {
     },
 
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    {
+        "nvim-telescope/telescope-ui-select.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+    },
+
+    { "junegunn/fzf" },
+    { "junegunn/fzf.vim",                         dependencies = { "junegunn/fzf" } },
 }
