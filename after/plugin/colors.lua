@@ -20,6 +20,8 @@ function ColorConfig(color)
     vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#BB9AF7" }) -- For changed lines
     vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#F7768E" }) -- For deleted lines
     vim.api.nvim_set_hl(0, "GitSignsUntracked", { fg = "#73DACA" }) -- For deleted lines
+
+    vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#a9b1d6" })  -- Adjust the color code to your preference
 end
 
 function CursorLineConfig()
