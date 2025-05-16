@@ -42,17 +42,17 @@ return {
         -- takes effect when `strict` is true
         override_by_extension = {
             ["log"] = {
-                icon = "",
+                icon = "",
                 color = "#81e043",
                 name = "Log"
             },
             ["astro"] = {
-                icon = "",
-                color = "#f1502f",
+                icon = "",
+                color = "#FF7E33",
                 name = "Astro",
             },
             ["snippets"] = {
-                icon = "",
+                icon = "",
                 color = "#7AA2F7",
                 name = "Snippets"
             }
