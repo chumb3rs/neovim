@@ -33,7 +33,8 @@ return {
                 name = "Gitignore"
             },
             ["Config"] = {
-                icon = " 🇧🇷",
+                icon = "",
+                color = "#009739",
                 name = "Config"
             }
         },

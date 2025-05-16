@@ -33,7 +33,7 @@ return {
         vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
         vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
         vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-        vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+        vim.keymap.set('n', '<leader>srm', builtin.resume, { desc = '[S]earch [R]esu[M]e' })
         vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
         vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch [M]arks" })
         vim.keymap.set("n", "<leader>shm", "<cmd>Telescope harpoon marks<cr>", { desc = "[S]earch [H]arpoon [M]arks" })

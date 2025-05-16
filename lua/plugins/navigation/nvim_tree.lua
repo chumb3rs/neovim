@@ -43,7 +43,7 @@ return {
             }
         },
         view = {
-            width = 35,
+            width = 45,
             relativenumber = true,
             signcolumn = "yes",
             cursorline = false,

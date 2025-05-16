@@ -15,8 +15,20 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.termguicolors = true
 
-require('lazy').setup('plugins', {
+require('lazy').setup({
     change_detection = {
         notify = false
     },
+    spec = {
+        { import = "plugins" },
+        { import = "plugins.ai" },
+        { import = "plugins.amazon" },
+        { import = "plugins.debug" },
+        { import = "plugins.editing" },
+        { import = "plugins.git" },
+        { import = "plugins.lsp" },
+        { import = "plugins.navigation" },
+        { import = "plugins.ui" },
+        { import = "plugins.utilities" },
+    }
 })
