@@ -18,3 +18,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.env.GIT_WORK_TREE = home
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "fugitive://*",
+  callback = function()
+    -- Move the current window to the far left
+    vim.cmd("wincmd H")
+  end,
+})

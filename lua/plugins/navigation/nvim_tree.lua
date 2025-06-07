@@ -1,5 +1,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    enabled = false,
     cmd = "NvimTreeOpen",
     keys = {
         { "<leader>pv", ":NvimTreeFindFile<cr>", mode = "n", desc = "Explorer tree",          silent = true },
