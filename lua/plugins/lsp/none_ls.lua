@@ -16,19 +16,7 @@ return {
                 }),
 
                 -- JavaScript
-                null_ls.builtins.formatting.biome.with({
-                    filetypes = { "javascript", "typescript",
-                        "javascriptreact", "typescriptreact",
-                        "json", "jsonc", "vue", "astro" },
-                    args = {
-                        "check",
-                        "--apply",
-                        "--formatter-enabled=true",
-                        "--organize-imports-enabled=true",
-                        "--skip-errors",
-                        "$FILENAME"
-                    }
-                }),
+                null_ls.builtins.formatting.biome,
 
                 -- Django
                 null_ls.builtins.diagnostics.djlint,
