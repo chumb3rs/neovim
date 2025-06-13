@@ -15,20 +15,9 @@ mason.setup({
 require("mason-lspconfig").setup({
     ensure_installed = {
         'ts_ls',
-        'rust_analyzer',
-        'ruby_lsp',
-        --'eslint',
-        --'prettier',
-        --'eslint_d',
-        --'js-debug-adapter',
         'lua_ls',
-        --Python
         'pyright',
-        --'mypy',
-        -- mypy, ruff, black, debugpy
         'clangd',
-        --'clang-format'
-        -- 'gopls'
     },
     handlers = {
         lsp.default_setup,
