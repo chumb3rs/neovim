@@ -41,7 +41,7 @@ return {
         vim.keymap.set("n", 'gD', vim.lsp.buf.declaration)
         vim.keymap.set("n", 'gi', vim.lsp.buf.implementation, { desc = "[G]o to [I]mplementation" })
         vim.keymap.set("n", "<leader>?", vim.lsp.buf.hover, { desc = "Open IntelliSense menu" })
-        vim.keymap.set("i", "gs",  vim.lsp.buf.signature_help, { desc = "Show signature help" })
+        vim.keymap.set("i", "g?",  vim.lsp.buf.signature_help, { desc = "Show signature help" })
         vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Show signature help" })
         vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { desc = "Show [W]orkspace [S]ymbols" })
         vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, { desc = "[O]pen [F]loat window" })
