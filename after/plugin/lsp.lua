@@ -44,20 +44,6 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
-local excluded_filetypes = {
-    smithy = true,
-    -- Add more filetypes as key = true
-}
-
--- Auto format on save
--- vim.api.nvim_create_autocmd("BufWritePre", {
---     pattern = "*",
---     callback = function(args)
---         if not excluded_filetypes[vim.bo[args.buf].filetype] then
---             vim.lsp.buf.format()
---         end
---     end,
--- })
 
 function format_range_operator()
     local old_func = vim.go.operatorfunc
