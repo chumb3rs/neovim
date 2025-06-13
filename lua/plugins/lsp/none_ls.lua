@@ -12,7 +12,7 @@ return {
 
                 -- Cpp
                 null_ls.builtins.formatting.clang_format.with({
-                    filetypes = { "c", "cpp", "cs", "cuda", "proto" }
+                    filetypes = { "c", "cpp", "cs", "cuda", "proto" },
                 }),
 
                 -- JavaScript
@@ -36,10 +36,13 @@ return {
                 -- Lua
                 null_ls.builtins.formatting.stylua,
 
+                -- Java
+                null_ls.builtins.formatting.google_java_format.with({ extra_args = { "--aosp" } }),
+
                 -- Code actions
                 null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.code_actions.gitsigns,
-            }
+            },
         })
-    end
+    end,
 }
