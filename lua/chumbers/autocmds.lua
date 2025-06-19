@@ -12,7 +12,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
     -- Skip if already inside a non-bare Git repo
     local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
     local result = handle and handle:read("*a") or ""
-    if handle then handle:close() end
+    if handle then
+      handle:close()
+    end
     if result:match("^true") then
       return
     end
@@ -24,9 +26,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = "fugitive://*",
+  pattern = { "fugitive://*", "git://*" },
   callback = function()
     -- Move the current window to the far left
     vim.cmd("wincmd H")
   end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "Config",
+    command = "set filetype=brazil-config"
 })
