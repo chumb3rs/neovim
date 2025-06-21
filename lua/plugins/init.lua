@@ -5,6 +5,7 @@ return {
     "windwp/nvim-ts-autotag",
     "tpope/vim-sleuth",
     "tpope/vim-obsession",
+    "lewis6991/spaceless.nvim",
 
     -- APPEARANCE
     {

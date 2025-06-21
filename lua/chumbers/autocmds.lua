@@ -5,16 +5,35 @@ vim.api.nvim_create_autocmd("BufEnter", {
     local filepath = vim.fn.expand("%:p")
 
     -- Only apply for files under $HOME
-    if not filepath:match("^" .. home) then return end
+    if not (filepath:match("^" .. home) or filepath:match("^/local" .. home)) then
+      return
+    end
 
     -- Skip if already inside a non-bare Git repo
     local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
     local result = handle and handle:read("*a") or ""
-    if handle then handle:close() end
-    if result:match("^true") then return end
+    if handle then
+      handle:close()
+    end
+    if result:match("^true") then
+      return
+    end
 
     -- Set GIT_DIR and GIT_WORK_TREE for Fugitive to work with the bare repo
     vim.env.GIT_DIR = home .. "/.dotfiles"
     vim.env.GIT_WORK_TREE = home
   end,
+})
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = { "fugitive://*", "git://*" },
+  callback = function()
+    -- Move the current window to the far left
+    vim.cmd("wincmd H")
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "Config",
+    command = "set filetype=brazil-config"
 })

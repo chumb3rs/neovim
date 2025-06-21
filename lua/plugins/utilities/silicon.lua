@@ -21,6 +21,5 @@ return {
         end,
 
         to_clipboard = true
-
     }
 }

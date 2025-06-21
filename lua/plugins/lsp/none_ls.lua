@@ -12,23 +12,11 @@ return {
 
                 -- Cpp
                 null_ls.builtins.formatting.clang_format.with({
-                    filetypes = { "c", "cpp", "cs", "cuda", "proto" }
+                    filetypes = { "c", "cpp", "cs", "cuda", "proto" },
                 }),
 
                 -- JavaScript
-                null_ls.builtins.formatting.biome.with({
-                    filetypes = { "javascript", "typescript",
-                        "javascriptreact", "typescriptreact",
-                        "json", "jsonc", "vue", "astro" },
-                    args = {
-                        "check",
-                        "--apply",
-                        "--formatter-enabled=true",
-                        "--organize-imports-enabled=true",
-                        "--skip-errors",
-                        "$FILENAME"
-                    }
-                }),
+                null_ls.builtins.formatting.biome,
 
                 -- Django
                 null_ls.builtins.diagnostics.djlint,
@@ -50,11 +38,13 @@ return {
 
                 -- Zsh
                 null_ls.builtins.diagnostics.zsh,
+                -- Java
+                null_ls.builtins.formatting.google_java_format.with({ extra_args = { "--aosp" } }),
 
                 -- Code actions
                 null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.code_actions.gitsigns,
-            }
+            },
         })
-    end
+    end,
 }

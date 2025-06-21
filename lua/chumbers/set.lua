@@ -30,8 +30,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
--- vim.opt.colorcolumn = "60"
-
 vim.opt.shell = "zsh"
 vim.opt.shellcmdflag = "-c"
 vim.g.netrw_localrmdir = "rm -r"
@@ -44,3 +42,7 @@ vim.opt.smartcase = true
 vim.opt.completeopt = "menuone,noselect"
 
 vim.opt.guifont = "JetBrainsMono Nerd Font"
+
+-- Windows
+vim.opt.splitright = true
+vim.opt.splitbelow = true

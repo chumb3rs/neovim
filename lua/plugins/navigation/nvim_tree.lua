@@ -1,5 +1,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    enabled = false,
     cmd = "NvimTreeOpen",
     keys = {
         { "<leader>pv", ":NvimTreeFindFile<cr>", mode = "n", desc = "Explorer tree",          silent = true },
@@ -13,17 +14,8 @@ return {
         vim.cmd([[
             :hi! link NvimTreeExecFile NONE
         ]])
-
-        function my_on_attach(bufnr)
-            local api = require("nvim-tree.api")
-            vim.keymap.set("n", "l", api.node.open.edit, { desc = "Open folder/file" })
-            vim.keymap.set("n", "h", api.node.navigate.parent_close, { desc = "Close parent folder" })
-
-            api.config.mappings.default_on_attach(bufnr)
-        end
     end,
     opts = {
-        on_attach = my_on_attach,
         hijack_cursor = true,
         sort_by = "case_sensitive",
         git = {
@@ -31,16 +23,15 @@ return {
             ignore = false,
         },
         diagnostics = {
-            enable = true,
+            enable = false,
             show_on_dirs = true,
             show_on_open_dirs = true,
-            icons =
-            {
-                hint = '',
+            icons = {
+                hint = "",
                 info = "",
                 warning = "",
-                error = ""
-            }
+                error = "",
+            },
         },
         view = {
             width = 45,
@@ -56,7 +47,7 @@ return {
             highlight_opened_files = "all",
             highlight_modified = "name",
             indent_markers = {
-                enable = true
+                enable = true,
             },
             icons = {
                 modified_placement = "before",
@@ -71,7 +62,7 @@ return {
             },
         },
         filters = {
-            custom = { "^\\.git", "^\\node_modules" }
+            custom = { "^\\.git", "^\\node_modules" },
         },
         modified = {
             enable = true,
@@ -81,8 +72,8 @@ return {
                 restrict_above_cwd = true,
             },
             open_file = {
-                resize_window = true
-            }
+                resize_window = true,
+            },
         },
-    }
+    },
 }
