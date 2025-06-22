@@ -29,7 +29,7 @@ local lazy_spec = {
 }
 
 local hostname = utils.get_hostname()
-if hostname ~= "marlow" and hostname ~= "CHUMBERS-PC" then -- Load work plugins
+if hostname ~= "marlow" and hostname ~= "CHUMBERS-PC" and hostname ~= "rpi" then -- Load work plugins
     table.insert(lazy_spec, { import = "plugins.amazon" })
 end
 
