@@ -108,6 +108,7 @@ local servers = {
     },
     pyright = { filetypes = { "python" } },
     ruby_lsp = {},
+    tailwindcss = {},
     volar = {
         init_options = {
             vue = {
