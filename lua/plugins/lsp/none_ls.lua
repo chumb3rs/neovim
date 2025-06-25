@@ -16,7 +16,19 @@ return {
                 }),
 
                 -- JavaScript
-                null_ls.builtins.formatting.biome,
+                null_ls.builtins.formatting.biome.with({
+                    filetypes = {
+                        "javascript",
+                        "typescript",
+                        "javascriptreact",
+                        "typescriptreact",
+                        "json",
+                        "jsonc",
+                        "css",
+                        "graphql",
+                        "astro",
+                    },
+                }),
 
                 -- Django
                 null_ls.builtins.diagnostics.djlint,
