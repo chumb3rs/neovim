@@ -19,7 +19,7 @@ if hostname == "7cf34dd2a0d5" then -- settings for local Amazon machine
     Java_version = "JavaSE-21"
     Java_path = "/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
     Jdtls_config = "config_mac_arm"
-elseif hostname == "dev-dsk-nickmarx-2c-e551df06.us-west-2.amazon.com" then -- settings for cloud desktop
+elseif hostname == "dev-dsk-nickmarx-2c-b25eba4a.us-west-2.amazon.com" then -- settings for cloud desktop
     root_markers = { "packageInfo" }
     root_dir = require("jdtls.setup").find_root(root_markers, "Config")
 
