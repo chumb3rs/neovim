@@ -7,13 +7,13 @@ return {
     },
     opts = {
         outline_window = {
-            position = 'right',
+            position = "right",
             width = 25,
             show_numbers = true,
             show_relative_numbers = true,
         },
         outline_items = {
             show_symbol_lineno = true,
-        }
+        },
     },
 }
