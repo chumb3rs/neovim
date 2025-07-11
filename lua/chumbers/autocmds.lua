@@ -25,14 +25,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = { "fugitive://*", "git://*" },
-  callback = function()
-    -- Move the current window to the far left
-    vim.cmd("wincmd H")
-  end,
-})
-
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "Config",
     command = "set filetype=brazil-config"
