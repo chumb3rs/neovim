@@ -36,6 +36,11 @@ return {
                 icon = "",
                 color = "#009739",
                 name = "Config"
+            },
+            ["lombok.config"] = {
+                icon = "󰞲",
+                color = "#d9230f",
+                name = "Lombok"
             }
         },
         -- same as `override` but specifically for overrides by extension
