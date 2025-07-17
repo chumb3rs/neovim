@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>chx", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "[M]ake E[x]ecutable" })
 vim.keymap.set("n", "<leader>yfP", "<cmd>let @+=expand('%:p')<CR>",
     { desc = "[Y]ank [F]ile [P]ath (absolute)" })
 vim.keymap.set("n", "<leader>yfp", "<cmd>let @+=@%<CR>",
