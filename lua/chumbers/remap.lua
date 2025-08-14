@@ -19,6 +19,7 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Center next search result" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Center previous search result" })
 
 vim.keymap.set("n", "<leader>b", ":buffers<CR>:buffer<Space>", { desc = "Switch buffer" })
+vim.keymap.set("n", "<leader>bcl", ":%bd|e#<CR>", { desc = "Close all buffers except current" })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection" })
