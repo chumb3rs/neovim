@@ -14,10 +14,6 @@ return {
         { "<leader>amlo", ":AmazonQ logout<CR>",   mode = "n", desc = "[A]mazon[Q] [L]og[O]ut", silent = true },
     },
     opts = {
-        -- Command passed to `vim.lsp` to start Q LSP. Amazon -- Q LSP is
-        -- a NodeJS program, which must be started with `--stdio` flag.
-        -- lsp_server_cmd = { 'node', 'path/to/aws-lsp-codewhisperer-token-binary.js', '--stdio' },
-        -- IAM Identity Center portal for organisation.
         ssoStartUrl = "https://view.awsapps.com/start",
         inline_suggest = true,
         on_chat_open = function()
@@ -27,7 +23,7 @@ return {
             vim.wo.list = false
             vim.wo.number = true
             vim.wo.relativenumber = true
-            vim.cmd('vertical resize 80')
+            vim.cmd('vertical resize 100')
         end,
     },
 }
