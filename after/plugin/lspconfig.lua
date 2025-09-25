@@ -1,4 +1,3 @@
-local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -24,7 +23,7 @@ function bemol()
     end
 end
 
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
             runtime = {
@@ -51,7 +50,7 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.ts_ls.setup({
+vim.lsp.config('ts_ls', {
     init_options = {
         preferences = {
             disableSuggestions = false,
@@ -135,5 +134,5 @@ local servers = {
 
 for server, opts in pairs(servers) do
     opts.capabilities = capabilities
-    lspconfig[server].setup(opts)
+    vim.lsp.config(server, opts)
 end
