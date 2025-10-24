@@ -8,7 +8,7 @@ function ColorConfig(color)
     WindowColors()
     GitSignsColors(colors)
     LineNumberColors(colors, util)
-    CursorLineColors()
+    CursorLineColors(colors)
     IconColors(colors)
     NvimCmpColors(colors)
 end
@@ -27,7 +27,7 @@ function GitSignsColors(colors)
     vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = colors.red }) -- For deleted lines
     vim.api.nvim_set_hl(0, "GitSignsUntracked", { fg = colors.cyan }) -- For deleted lines
 
-    vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#a9b1d6" })  -- Adjust the color code to your preference
+    vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.fg })
 end
 
 function LineNumberColors(colors, util)
@@ -37,9 +37,9 @@ function LineNumberColors(colors, util)
 end
 
 
-function CursorLineColors()
+function CursorLineColors(colors)
     vim.opt.cursorline = true                             -- Enable cursor line
-    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292E42" }) -- Set the background color
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.bg_highlight }) -- Set the background color
 end
 
 function IconColors(colors)
@@ -97,6 +97,7 @@ function NvimCmpColors(colors)
     vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindKeyword' })
 
     vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { bg=colors.orange, fg=colors.bg_dark })
+    vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindEnum' })
 
     vim.api.nvim_set_hl(0, 'CmpItemKindField', { bg=colors.green1, fg=colors.bg_dark })
 
