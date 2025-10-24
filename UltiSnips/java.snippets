@@ -11,12 +11,20 @@ endglobal
 
 
 ### === BASICS === ###
-snippet co "constant" b
-public static final ${1:String} ${2:var} = $3;$0
+snippet coos "constant public string" bA
+public static final String ${1:varName} = "$2";$0
 endsnippet
 
-snippet cos "constant string" b
-public static final String ${1:var} = "$2";$0
+snippet coxs "constant private string" bA
+private static final String ${1:varName} = "$2";$0
+endsnippet
+
+snippet pbsf "constant public var" bA
+public static final ${1:var} ${2:varName} = $3;$0
+endsnippet
+
+snippet pvsf "constant private var" bA
+private static final ${1:var} ${2:varName} = $3;$0
 endsnippet
 
 snippet pa "package" b
@@ -35,7 +43,7 @@ snippet po "protected" b
 protected $0
 endsnippet
 
-snippet pv "private" bA
+snippet pp "private" bA
 private $0
 endsnippet
 
@@ -55,9 +63,9 @@ endsnippet
 
 ### === CLASSES === ###
 snippet cls "class" bA
-public class ${1:`!p
-snip.rv = snip.basename or "untitled"`} {
-	$0
+public class `!p
+snip.rv = snip.basename or "untitled"` {
+	$1
 }
 endsnippet
 
