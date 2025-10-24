@@ -3,10 +3,11 @@ function ColorConfig(color)
     vim.cmd.colorscheme(color)
 
     local colors = require("tokyonight.colors").setup()
+    local util = require("tokyonight.util")
 
     WindowColors()
     GitSignsColors(colors)
-    LineNumberColors(colors)
+    LineNumberColors(colors, util)
     CursorLineColors()
     IconColors(colors)
     NvimCmpColors(colors)
@@ -29,10 +30,10 @@ function GitSignsColors(colors)
     vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#a9b1d6" })  -- Adjust the color code to your preference
 end
 
-function LineNumberColors(colors)
+function LineNumberColors(colors, util)
     vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.blue2 })
     vim.api.nvim_set_hl(0, "LineNr", { fg = colors.orange, bold = true })
-    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = colors.magenta2 })
+    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = util.brighten(colors.magenta2, 0, -0.2) })
 end
 
 
