@@ -1,42 +1,51 @@
--- Sets colors to line numbers Above, Current and Below  in this order
-function LineNumberColors()
-    vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#73DACA" })
-    vim.api.nvim_set_hl(0, "LineNr", { fg = "#CFC9C2", bold = true })
-    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#F7768E" })
-end
-
 function ColorConfig(color)
     color = color or "tokyonight-night"
     vim.cmd.colorscheme(color)
 
+    local colors = require("tokyonight.colors").setup()
+
+    WindowColors()
+    GitSignsColors(colors)
+    LineNumberColors(colors)
+    CursorLineColors()
+    IconColors(colors)
+    NvimCmpColors(colors)
+end
+
+function WindowColors()
     vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" }) -- Non-current windows
     vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "MsgArea", { bg = "NONE" })
+end
 
-    -- Gitsigns
-    vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#9ECE6A" })    -- For added lines
-    vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#BB9AF7" }) -- For changed lines
-    vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#F7768E" }) -- For deleted lines
-    vim.api.nvim_set_hl(0, "GitSignsUntracked", { fg = "#73DACA" }) -- For deleted lines
+function GitSignsColors(colors)
+    vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = colors.green })    -- For added lines
+    vim.api.nvim_set_hl(0, "GitSignsChange", { fg = colors.magenta }) -- For changed lines
+    vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = colors.red }) -- For deleted lines
+    vim.api.nvim_set_hl(0, "GitSignsUntracked", { fg = colors.cyan }) -- For deleted lines
 
     vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#a9b1d6" })  -- Adjust the color code to your preference
 end
 
-function CursorLineConfig()
+function LineNumberColors(colors)
+    vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.blue2 })
+    vim.api.nvim_set_hl(0, "LineNr", { fg = colors.orange, bold = true })
+    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = colors.magenta2 })
+end
+
+
+function CursorLineColors()
     vim.opt.cursorline = true                             -- Enable cursor line
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292E42" }) -- Set the background color
 end
 
-function IconConfig()
-    -- Define highlight groups with desired colors
-    vim.cmd([[
-          highlight DapBreakpoint guifg=#F7768E
-          highlight DapBreakpointCondition guifg=#7AA2F7
-          highlight DapLogPoint guifg=#E0AF68
-          highlight DapStopped guifg=#2AC3De
-    ]])
+function IconColors(colors)
+    vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = colors.red })
+    vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = colors.blue })
+    vim.api.nvim_set_hl(0, "DapLogPoint", { fg = colors.yellow })
+    vim.api.nvim_set_hl(0, "DapStopped", { fg = colors.blue1 })
 
     -- Set custom signs with Nerd Font icon
     vim.fn.sign_define("DapBreakpoint", {
@@ -68,7 +77,27 @@ function IconConfig()
     })
 end
 
+function NvimCmpColors(colors)
+    vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg='NONE', strikethrough=true, fg=colors.comment })
+
+    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg='NONE', fg=colors.teal })
+    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link='CmpIntemAbbrMatch' })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg=colors.blue, fg=colors.bg_dark })
+    vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link='CmpItemKindVariable' })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindText', { bg=colors.green, fg=colors.bg_dark })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg=colors.yellow, fg=colors.bg_dark })
+    vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link='CmpItemKindFunction' })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg=colors.magenta, fg=colors.bg_dark })
+    vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link='CmpItemKindKeyword' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindKeyword' })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { bg=colors.orange, fg=colors.bg_dark })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindField', { bg=colors.green1, fg=colors.bg_dark })
+end
+
 ColorConfig()
-CursorLineConfig()
-LineNumberColors()
-IconConfig()
