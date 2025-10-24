@@ -99,6 +99,8 @@ function NvimCmpColors(colors)
     vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { bg=colors.orange, fg=colors.bg_dark })
 
     vim.api.nvim_set_hl(0, 'CmpItemKindField', { bg=colors.green1, fg=colors.bg_dark })
+
+    vim.api.nvim_set_hl(0, 'CmpItemKindClass', { bg=colors.blue5, fg=colors.bg_dark })
 end
 
 ColorConfig()
