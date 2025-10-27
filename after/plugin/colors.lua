@@ -91,6 +91,7 @@ function NvimCmpColors(colors)
 
     vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg=colors.yellow, fg=colors.bg_dark })
     vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link='CmpItemKindFunction' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindConstant', { link='CmpItemKindFunction' })
 
     vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg=colors.magenta, fg=colors.bg_dark })
     vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link='CmpItemKindKeyword' })
