@@ -84,7 +84,12 @@ if not configs.barium then
 end
 
 local servers = {
-    astro = {},
+    astro = {
+        on_attach = function(client, bufnr)
+            -- disable astro's formatter
+            client.server_capabilities.documentFormattingProvider = false
+        end
+    },
     barium = {},
     biome = {},
     clangd = {},
