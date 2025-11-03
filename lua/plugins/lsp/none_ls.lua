@@ -26,9 +26,14 @@ return {
                         "jsonc",
                         "css",
                         "graphql",
-                        "astro",
                     },
                 }),
+                null_ls.builtins.formatting.prettier.with({
+                    filetypes = {
+                        "astro"
+                    },
+                }),
+
 
                 -- Django
                 null_ls.builtins.diagnostics.djlint,
@@ -52,6 +57,8 @@ return {
                 null_ls.builtins.diagnostics.zsh,
                 -- Java
                 null_ls.builtins.formatting.google_java_format.with({ extra_args = { "--aosp" } }),
+
+                null_ls.builtins.formatting.xmllint,
 
                 -- Code actions
                 null_ls.builtins.code_actions.refactoring,
