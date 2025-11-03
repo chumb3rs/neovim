@@ -1,6 +1,11 @@
 return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+        { "<leader>ttd", ":Trouble todo<CR>", mode = "n", desc = "Open TODOs (Trouble)" },
+        { "<leader>tdt", ":TodoTelescope<CR>", mode = "n", desc = "Open TODOs (Telescope)" },
+    },
+    lazy = false,
     opts = {
         signs = true, -- show icons in the signs column
         sign_priority = 8, -- sign priority
