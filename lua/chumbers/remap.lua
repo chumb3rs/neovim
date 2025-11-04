@@ -32,10 +32,8 @@ vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete to black-ho
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
-vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
-
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -49,8 +47,6 @@ vim.keymap.set("n", "<leader>yfn", "<cmd>let @+=expand('%:t')<CR>",
     { desc = "[Y]ank [F]ile [N]ame" })
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>source %<CR>", { desc = "Source Lua Config" })
--- terminal mode
-vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
