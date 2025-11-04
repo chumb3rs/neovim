@@ -137,6 +137,9 @@ local config = {
                     },
                 },
             },
+            saveActions = {
+                organizeImports = false
+            }
         },
     },
     cmd = {
