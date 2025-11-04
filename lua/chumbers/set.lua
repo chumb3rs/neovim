@@ -14,7 +14,7 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = true
 
-vim.opt.fillchars = { eob = ' ' }
+vim.opt.fillchars = { eob = '~' }
 
 vim.opt.swapfile = false
 vim.opt.backup = false
