@@ -139,10 +139,10 @@ write_init_body(args, t[2], snip)
 endsnippet
 
 
-snippet slotclass "class with slots and docstrings" b
+snippet slotclass "class with slots and docstrings" bA
 class ${1:MyClass}(${2:object}):
 
-	`!p snip.rv = triple_quotes(snip)`${3:Docstring for $1. }`!p snip.rv = tripple_quotes(snip)`
+	`!p snip.rv = triple_quotes(snip)`${3:Docstring for $1. }`!p snip.rv = triple_quotes(snip)`
 `!p
 snip >> 1
 args = get_args(t[4])
