@@ -26,11 +26,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "Config",
-    command = "set filetype=brazil-config"
+  pattern = "Config",
+  command = "set filetype=brazil-config",
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "lombok.config",
-    command = "set filetype=lombok"
+  pattern = "lombok.config",
+  command = "set filetype=lombok",
 })
