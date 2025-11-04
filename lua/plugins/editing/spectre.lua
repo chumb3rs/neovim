@@ -3,24 +3,24 @@ return {
     lazy = true,
     keys = {
         {
-            "<leader>S",
+            "<leader>Ss",
             '<cmd>lua require("spectre").toggle()<CR>',
             desc = "Toggle Spectre",
         },
         {
             "n",
-            "<leader>sw",
+            "<leader>Sw",
             '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
             desc = "Search current word",
         },
         {
-            "<leader>sw",
+            "<leader>Sw",
             '<esc><cmd>lua require("spectre").open_visual()<CR>',
             desc = "Search current word",
         },
         {
             "n",
-            "<leader>sp",
+            "<leader>Sb",
             '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
             desc = "Search on current file",
         },
