@@ -7,6 +7,9 @@ return {
     "tpope/vim-obsession",
     "lewis6991/spaceless.nvim",
 
+    -- NAVIGATION
+    'szw/vim-maximizer',
+
     -- APPEARANCE
     {
         "folke/tokyonight.nvim",
