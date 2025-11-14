@@ -1,8 +1,7 @@
-local configs = require("lspconfig.configs")
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server") .. "/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server")
+    .. "/node_modules/@vue/language-server"
 
 -- For Bemol integration
 function bemol()
@@ -23,74 +22,18 @@ function bemol()
     end
 end
 
-vim.lsp.config('lua_ls', {
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {
-                    "vim",
-                    "require",
-                },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-})
-
-vim.lsp.config('ts_ls', {
-    init_options = {
-        preferences = {
-            disableSuggestions = false,
-        },
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = vue_language_server_path,
-                languages = { "vue" },
-            },
-        },
-    },
-    on_attach = function(client)
-        -- Makes sure ts_ls does not format ts/js files
-        client.server_capabilities.documentFormattingProvider = false
-    end,
-})
-
--- Check if the config is already defined (useful when reloading this file)
-if not configs.barium then
-    configs.barium = {
-        default_config = {
-            cmd = { "barium" },
-            filetypes = { "brazil-config" },
-            root_dir = function(fname)
-                return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
-            end,
-            settings = {},
-        },
-    }
-end
-
 local servers = {
     astro = {
         on_attach = function(client, bufnr)
             -- disable astro's formatter
             client.server_capabilities.documentFormattingProvider = false
-        end
+        end,
     },
-    barium = {},
+    barium = {
+        cmd = { 'barium' },
+        root_markers = { 'Config' },
+        filetypes = { 'brazil-config' },
+    },
     biome = {},
     clangd = {},
     beancount = {
@@ -110,9 +53,53 @@ local servers = {
         },
         filetypes = { "json" },
     },
+    lua_ls = {
+        settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using
+                    -- (most likely LuaJIT in the case of Neovim)
+                    version = "LuaJIT",
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {
+                        "vim",
+                        "require",
+                    },
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                -- Do not send telemetry data containing a randomized but unique identifier
+                telemetry = {
+                    enable = false,
+                },
+            },
+        },
+    },
     pyright = { filetypes = { "python" } },
     ruby_lsp = {},
     tailwindcss = {},
+    ts_ls = {
+        init_options = {
+            preferences = {
+                disableSuggestions = false,
+            },
+            plugins = {
+                {
+                    name = "@vue/typescript-plugin",
+                    location = vue_language_server_path,
+                    languages = { "vue" },
+                },
+            },
+        },
+        on_attach = function(client)
+            -- Makes sure ts_ls does not format ts/js files
+            client.server_capabilities.documentFormattingProvider = false
+        end,
+    },
     volar = {
         init_options = {
             vue = {
@@ -141,3 +128,5 @@ for server, opts in pairs(servers) do
     opts.capabilities = capabilities
     vim.lsp.config(server, opts)
 end
+
+vim.lsp.enable("barium")
