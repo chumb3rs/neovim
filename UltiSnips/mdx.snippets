@@ -1,0 +1,24 @@
+snippet fm "MDX frontmatter (blog post)" bA
+---
+title: ${1: title}
+heroImage: ${2:heroimageURL}
+category: ${3:category}
+project: ${4:project}
+series: ${5:series}
+description: >-
+  ${6:description}
+pubDate: '${7:`!p
+import datetime
+# produce a full ISO timestamp in UTC like 2023-02-07T00:00:00Z
+snip.rv = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+`}'
+tags:
+  - ${8:tags}
+---
+$0
+endsnippet
+
+snippet test "test" bA
+hello there
+endsnippet
+

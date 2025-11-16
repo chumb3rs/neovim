@@ -79,6 +79,7 @@ local servers = {
             },
         },
     },
+    mdx_analyzer = {},
     pyright = { filetypes = { "python" } },
     ruby_lsp = {},
     tailwindcss = {},

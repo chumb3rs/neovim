@@ -34,3 +34,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "lombok.config",
   command = "set filetype=lombok",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "mdx",
+    callback = function()
+        vim.cmd("UltiSnipsAddFiletypes mdx.markdown")
+    end,
+})
