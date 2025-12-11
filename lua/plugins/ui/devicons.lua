@@ -11,7 +11,7 @@ return {
                 color = "#428850",
                 cterm_color = "65",
                 name = "Zsh"
-            }
+           }
         },
         -- globally enable different highlight colors per icon (default to true)
         -- if set to false all icons will have the default icon's color
@@ -43,6 +43,7 @@ return {
                 name = "Lombok"
             }
         },
+
         -- same as `override` but specifically for overrides by extension
         -- takes effect when `strict` is true
         override_by_extension = {
@@ -60,6 +61,12 @@ return {
                 icon = "",
                 color = "#7AA2F7",
                 name = "Snippets"
+            },
+            [".conf"] = {
+                icon = "",
+                color = "#1BB91F",
+                cterm_color = "28",
+                name = "Tmux"
             }
         },
 
