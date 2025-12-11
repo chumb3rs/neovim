@@ -43,6 +43,12 @@ return {
                             ["if"] = "@function.inner",
                             ["ac"] = "@class.outer",
                             ["ic"] = "@class.inner",
+                            ["ai"] = "@conditional.outer",
+                            ["ii"] = "@conditional.inner",
+                            ["al"] = "@loop.outer",
+                            ["il"] = "@loop.inner",
+                            ["ab"] = "@block.outer",
+                            ["ib"] = "@block.inner",
                         },
                     },
                     move = {
@@ -68,10 +74,10 @@ return {
                     swap = {
                         enable = true,
                         swap_next = {
-                            ["<leader>a"] = "@parameter.inner",
+                            ["<leader>ap"] = "@parameter.inner",
                         },
                         swap_previous = {
-                            ["<leader>A"] = "@parameter.inner",
+                            ["<leader>Ap"] = "@parameter.inner",
                         },
                     },
                 },
