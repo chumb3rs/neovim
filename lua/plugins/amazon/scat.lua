@@ -69,7 +69,7 @@ return {
                 {
                     label = "Midway",
                     action = function()
-                        brazil.run_command_inside_current_package("cinit")
+                        brazil.run_command_inside_current_package("mwinit -f")
                     end
                 },
                 {
