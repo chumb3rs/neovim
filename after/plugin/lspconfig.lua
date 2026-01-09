@@ -82,6 +82,7 @@ local servers = {
     mdx_analyzer = {},
     pyright = { filetypes = { "python" } },
     ruby_lsp = {},
+    smithy_ls = {},
     tailwindcss = {},
     ts_ls = {
         init_options = {
