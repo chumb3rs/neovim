@@ -36,6 +36,7 @@ local servers = {
     },
     biome = {},
     clangd = {},
+    docker_language_server = {},
     emmet_language_server = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" },
     },
