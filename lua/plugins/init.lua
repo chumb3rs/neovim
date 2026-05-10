@@ -18,10 +18,9 @@ return {
         opts = {},
     },
     {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
+        "catgoose/nvim-colorizer.lua",
+        event = "BufReadPre",
+        opts = {},
     },
     "onsails/lspkind.nvim",
 
