@@ -64,8 +64,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "dk", function() vim.diagnostic.jump({count=-1, float=true}) end, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "dj", function() vim.diagnostic.jump({count=1, float=true}) end, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=-1, float=true}) end, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=1, float=true}) end, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
