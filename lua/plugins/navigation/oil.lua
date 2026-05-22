@@ -9,6 +9,7 @@ return {
             "size",
             "mtime",
         },
+        watch_for_changes = true,
         constrain_cursor = "name",
         keymaps = {
             ["g?"] = { "actions.show_help", mode = "n" },
