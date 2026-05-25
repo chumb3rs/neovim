@@ -39,12 +39,12 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "[M]ake E[x]ecutable" })
-vim.keymap.set("n", "<leader>yfP", "<cmd>let @+=expand('%:p')<CR>",
-    { desc = "[Y]ank [F]ile [P]ath (absolute)" })
-vim.keymap.set("n", "<leader>yfp", "<cmd>let @+=@%<CR>",
-    { desc = "[Y]ank [F]ile [P]ath (relative)" })
-vim.keymap.set("n", "<leader>yfn", "<cmd>let @+=expand('%:t')<CR>",
-    { desc = "[Y]ank [F]ile [N]ame" })
+vim.keymap.set("n", "<leader>cfP", "<cmd>let @+=expand('%:p')<CR>",
+    { desc = "[C]opy [F]ile [P]ath (absolute)" })
+vim.keymap.set("n", "<leader>cfp", "<cmd>let @+=@%<CR>",
+    { desc = "[C]opy [F]ile [P]ath (relative)" })
+vim.keymap.set("n", "<leader>cfn", "<cmd>let @+=expand('%:t')<CR>",
+    { desc = "[C]opy [F]ile [N]ame" })
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>source %<CR>", { desc = "Source Lua Config" })
 
