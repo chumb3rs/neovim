@@ -24,12 +24,6 @@ return {
     },
     "onsails/lspkind.nvim",
 
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        dependencies = "OXY2DEV/markview.nvim",
-    },
-
     -- GIT PLUGINS
     "tpope/vim-rhubarb",
 
