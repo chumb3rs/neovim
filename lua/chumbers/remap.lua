@@ -32,11 +32,6 @@ vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete to black-ho
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "[M]ake E[x]ecutable" })
 vim.keymap.set("n", "<leader>cfP", "<cmd>let @+=expand('%:p')<CR>",
@@ -68,6 +63,36 @@ vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=-1, float=true})
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=1, float=true}) end, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+-- Quickfix/location list
+vim.keymap.set("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "Go to next item in quickfix list" })
+vim.keymap.set("n", "<leader>qk", "<cmd>cprev<cr>", { desc = "Go to previous item in quickfix list" })
+vim.keymap.set("n", "<leader>lk", "<cmd>lnext<CR>zz", { desc = "Go to next item in location list" })
+vim.keymap.set("n", "<leader>lj", "<cmd>lprev<CR>zz", { desc = "Go to previous item in location list" })
+local function toggle_quickfix()
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win["quickfix"] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+  vim.cmd.copen()
+end
+
+local function toggle_loclist()
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win["loclist"] == 1 then
+      vim.cmd.lclose()
+      return
+    end
+  end
+  vim.cmd.lopen()
+end
+
+vim.keymap.set('n', '<Leader>qt', toggle_quickfix, { desc = "Toggle Quickfix Window" })
+vim.keymap.set('n', '<Leader>lt', toggle_loclist, { desc = "Toggle Location Window" })
 
 -- Opening Tools
 vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Open [L]a[z]y" })
