@@ -5,6 +5,7 @@ return {
     "windwp/nvim-ts-autotag",
     "tpope/vim-sleuth",
     "tpope/vim-obsession",
+    "tpope/vim-unimpaired",
     "lewis6991/spaceless.nvim",
 
     -- NAVIGATION

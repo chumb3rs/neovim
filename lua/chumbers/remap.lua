@@ -65,10 +65,6 @@ vim.keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Open floa
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Quickfix/location list
-vim.keymap.set("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "Go to next item in quickfix list" })
-vim.keymap.set("n", "<leader>qk", "<cmd>cprev<cr>", { desc = "Go to previous item in quickfix list" })
-vim.keymap.set("n", "<leader>lk", "<cmd>lnext<CR>zz", { desc = "Go to next item in location list" })
-vim.keymap.set("n", "<leader>lj", "<cmd>lprev<CR>zz", { desc = "Go to previous item in location list" })
 local function toggle_quickfix()
   local windows = vim.fn.getwininfo()
   for _, win in pairs(windows) do
