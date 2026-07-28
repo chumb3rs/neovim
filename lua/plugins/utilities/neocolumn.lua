@@ -7,10 +7,10 @@ return {
             "<leader>tnc",
             "<cmd>ToggleNeoColumn<CR>",
             mode = "n",
-            desc = "[T]oggle [N]eo[C]olumn"
-        }
+            desc = "[T]oggle [N]eo[C]olumn",
+        },
     },
     opts = {
-        NeoColumn = "80"
-    }
+        NeoColumn = "80",
+    },
 }

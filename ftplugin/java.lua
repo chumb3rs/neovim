@@ -15,7 +15,7 @@ if hostname == "7cf34dd2a0d5" then -- settings for local Amazon machine
     root_dir = require("jdtls.setup").find_root(root_markers, "Config")
 
     Java_debug_plugin =
-    "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar"
+        "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar"
     Java_version = "JavaSE-21"
     Java_path = "/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
     Jdtls_config = "config_mac_arm"
@@ -24,7 +24,7 @@ elseif string.match(hostname, ".*amazon%.com$") then -- settings for cloud deskt
     root_dir = require("jdtls.setup").find_root(root_markers, "Config")
 
     Java_debug_plugin =
-    "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar"
+        "/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar"
     Java_version = "JavaSE-21"
     Java_path = "/usr/lib/jvm/java-21-amazon-corretto"
     Jdtls_config = "config_linux"
@@ -138,8 +138,8 @@ local config = {
                 },
             },
             saveActions = {
-                organizeImports = false
-            }
+                organizeImports = false,
+            },
         },
     },
     cmd = {

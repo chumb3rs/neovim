@@ -1,7 +1,7 @@
 -- File editing
 vim.keymap.set("n", "<leader>ef", ":edit ", { desc = "Create new file" })
-vim.keymap.set("n", "<leader>cf", "<cmd>let @+ = expand(\"%\")<CR>", { desc = "Copy File Name" })
-vim.keymap.set("n", "<leader>cp", "<cmd>let @+ = expand(\"%:p\")<CR>", { desc = "Copy File Path" })
+vim.keymap.set("n", "<leader>cf", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
+vim.keymap.set("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
 
 -- Split management
 vim.keymap.set("n", "<C-S-Right>", "<cmd>:vertical resize -1<cr>", { desc = "Resize window smaller" })
@@ -34,69 +34,69 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "[M]ake E[x]ecutable" })
-vim.keymap.set("n", "<leader>cfP", "<cmd>let @+=expand('%:p')<CR>",
-    { desc = "[C]opy [F]ile [P]ath (absolute)" })
-vim.keymap.set("n", "<leader>cfp", "<cmd>let @+=@%<CR>",
-    { desc = "[C]opy [F]ile [P]ath (relative)" })
-vim.keymap.set("n", "<leader>cfn", "<cmd>let @+=expand('%:t')<CR>",
-    { desc = "[C]opy [F]ile [N]ame" })
+vim.keymap.set("n", "<leader>cfP", "<cmd>let @+=expand('%:p')<CR>", { desc = "[C]opy [F]ile [P]ath (absolute)" })
+vim.keymap.set("n", "<leader>cfp", "<cmd>let @+=@%<CR>", { desc = "[C]opy [F]ile [P]ath (relative)" })
+vim.keymap.set("n", "<leader>cfn", "<cmd>let @+=expand('%:t')<CR>", { desc = "[C]opy [F]ile [N]ame" })
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>source %<CR>", { desc = "Source Lua Config" })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
     end,
     group = highlight_group,
-    pattern = '*',
+    pattern = "*",
 })
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=-1, float=true}) end, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=1, float=true}) end, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>ed", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Quickfix/location list
 local function toggle_quickfix()
-  local windows = vim.fn.getwininfo()
-  for _, win in pairs(windows) do
-    if win["quickfix"] == 1 then
-      vim.cmd.cclose()
-      return
+    local windows = vim.fn.getwininfo()
+    for _, win in pairs(windows) do
+        if win["quickfix"] == 1 then
+            vim.cmd.cclose()
+            return
+        end
     end
-  end
-  vim.cmd.copen()
+    vim.cmd.copen()
 end
 
 local function toggle_loclist()
-  local windows = vim.fn.getwininfo()
-  for _, win in pairs(windows) do
-    if win["loclist"] == 1 then
-      vim.cmd.lclose()
-      return
+    local windows = vim.fn.getwininfo()
+    for _, win in pairs(windows) do
+        if win["loclist"] == 1 then
+            vim.cmd.lclose()
+            return
+        end
     end
-  end
-  vim.cmd.lopen()
+    vim.cmd.lopen()
 end
 
-vim.keymap.set('n', '<Leader>qt', toggle_quickfix, { desc = "Toggle Quickfix Window" })
-vim.keymap.set('n', '<Leader>lt', toggle_loclist, { desc = "Toggle Location Window" })
+vim.keymap.set("n", "<Leader>qt", toggle_quickfix, { desc = "Toggle Quickfix Window" })
+vim.keymap.set("n", "<Leader>lt", toggle_loclist, { desc = "Toggle Location Window" })
 
 -- Opening Tools
 vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Open [L]a[z]y" })
 vim.keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Open [M]a[s]on" })
 vim.keymap.set("n", "<leader>lsp", "<cmd>LspInfo<CR>", { desc = "Open [LSP]Info" })
 vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<CR>", { desc = "Open [N]ull[LS]Info" })
-vim.keymap.set("n", "<leader>chl",  "<cmd>checkhealth<CR>", { desc = "[C]heck[H]ea[L]th" })
-
+vim.keymap.set("n", "<leader>chl", "<cmd>checkhealth<CR>", { desc = "[C]heck[H]ea[L]th" })
 
 local harpoon = require("harpoon")
 
@@ -112,34 +112,64 @@ local function toggle_telescope(harpoon_files)
         table.insert(file_paths, item.value)
     end
 
-    require("telescope.pickers").new({}, {
-        prompt_title = "Harpoon",
-        finder = require("telescope.finders").new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
+    require("telescope.pickers")
+        .new({}, {
+            prompt_title = "Harpoon",
+            finder = require("telescope.finders").new_table({
+                results = file_paths,
+            }),
+            previewer = conf.file_previewer({}),
+            sorter = conf.generic_sorter({}),
+        })
+        :find()
 end
 
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-    { desc = "Open harpoon window" })
-vim.keymap.set("n", "<C-s>", function() toggle_telescope(harpoon:list()) end,
-    { desc = "Open harpoon window with Telescope" })
+vim.keymap.set("n", "<C-e>", function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Open harpoon window" })
+vim.keymap.set("n", "<C-s>", function()
+    toggle_telescope(harpoon:list())
+end, { desc = "Open harpoon window with Telescope" })
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>a", function()
+    harpoon:list():add()
+end)
 
-vim.keymap.set("n", "<leader>h1", function() harpoon:list():select(1) end, { desc = "[H]arpoon List [1]" })
-vim.keymap.set("n", "<leader>h2", function() harpoon:list():select(2) end, { desc = "[H]arpoon List [2]" })
-vim.keymap.set("n", "<leader>h3", function() harpoon:list():select(3) end, { desc = "[H]arpoon List [3]" })
-vim.keymap.set("n", "<leader>h4", function() harpoon:list():select(4) end, { desc = "[H]arpoon List [4]" })
-vim.keymap.set("n", "<leader>h5", function() harpoon:list():select(5) end, { desc = "[H]arpoon List [5]" })
-vim.keymap.set("n", "<leader>h6", function() harpoon:list():select(6) end, { desc = "[H]arpoon List [6]" })
-vim.keymap.set("n", "<leader>h7", function() harpoon:list():select(7) end, { desc = "[H]arpoon List [7]" })
-vim.keymap.set("n", "<leader>h8", function() harpoon:list():select(8) end, { desc = "[H]arpoon List [8]" })
-vim.keymap.set("n", "<leader>h9", function() harpoon:list():select(9) end, { desc = "[H]arpoon List [9]" })
-vim.keymap.set("n", "<leader>h0", function() harpoon:list():select(0) end, { desc = "[H]arpoon List 1[0]" })
+vim.keymap.set("n", "<leader>h1", function()
+    harpoon:list():select(1)
+end, { desc = "[H]arpoon List [1]" })
+vim.keymap.set("n", "<leader>h2", function()
+    harpoon:list():select(2)
+end, { desc = "[H]arpoon List [2]" })
+vim.keymap.set("n", "<leader>h3", function()
+    harpoon:list():select(3)
+end, { desc = "[H]arpoon List [3]" })
+vim.keymap.set("n", "<leader>h4", function()
+    harpoon:list():select(4)
+end, { desc = "[H]arpoon List [4]" })
+vim.keymap.set("n", "<leader>h5", function()
+    harpoon:list():select(5)
+end, { desc = "[H]arpoon List [5]" })
+vim.keymap.set("n", "<leader>h6", function()
+    harpoon:list():select(6)
+end, { desc = "[H]arpoon List [6]" })
+vim.keymap.set("n", "<leader>h7", function()
+    harpoon:list():select(7)
+end, { desc = "[H]arpoon List [7]" })
+vim.keymap.set("n", "<leader>h8", function()
+    harpoon:list():select(8)
+end, { desc = "[H]arpoon List [8]" })
+vim.keymap.set("n", "<leader>h9", function()
+    harpoon:list():select(9)
+end, { desc = "[H]arpoon List [9]" })
+vim.keymap.set("n", "<leader>h0", function()
+    harpoon:list():select(0)
+end, { desc = "[H]arpoon List 1[0]" })
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<leader>hlp", function() harpoon:list():prev() end, { desc = "[H]arpoon [L]ist [P]revious" })
-vim.keymap.set("n", "<leader>hln", function() harpoon:list():next() end, { desc = "[H]arpoon [L]ist [N]ext" })
+vim.keymap.set("n", "<leader>hlp", function()
+    harpoon:list():prev()
+end, { desc = "[H]arpoon [L]ist [P]revious" })
+vim.keymap.set("n", "<leader>hln", function()
+    harpoon:list():next()
+end, { desc = "[H]arpoon [L]ist [N]ext" })

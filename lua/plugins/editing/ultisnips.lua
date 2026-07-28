@@ -1,5 +1,5 @@
 return {
-    'SirVer/ultisnips',
+    "SirVer/ultisnips",
     init = function()
         vim.keymap.set("n", "<leader>U", ":call UltiSnips#RefreshSnippets()<CR>", { desc = "Refresh snippets" })
         vim.cmd([[
@@ -14,5 +14,5 @@ return {
                 let g:UltiSnipsSnippetDirectories=[$HOME.'/AppData/local/nvim/UltiSnips']
             endif
         ]])
-    end
+    end,
 }

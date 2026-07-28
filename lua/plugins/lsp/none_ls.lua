@@ -30,10 +30,9 @@ return {
                 }),
                 null_ls.builtins.formatting.prettier.with({
                     filetypes = {
-                        "astro"
+                        "astro",
                     },
                 }),
-
 
                 -- Django
                 null_ls.builtins.diagnostics.djlint,

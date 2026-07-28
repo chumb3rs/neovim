@@ -3,7 +3,7 @@ return {
     version = "1.18.0",
     cmd = "Copilot enable",
     keys = {
-        { "<leader>coe", ":Copilot enable<CR>", mode = "n", desc = "Enable GitHub Copilot" }
+        { "<leader>coe", ":Copilot enable<CR>", mode = "n", desc = "Enable GitHub Copilot" },
     },
     init = function()
         vim.g.copilot_no_tab_map = true

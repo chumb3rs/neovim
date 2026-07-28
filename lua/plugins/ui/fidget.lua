@@ -4,8 +4,8 @@ return {
     opts = {
         integration = {
             ["nvim-tree"] = {
-                enable = false
-            }
-        }
-    }
+                enable = false,
+            },
+        },
+    },
 }

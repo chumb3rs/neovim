@@ -9,7 +9,7 @@ return {
     "lewis6991/spaceless.nvim",
 
     -- NAVIGATION
-    'szw/vim-maximizer',
+    "szw/vim-maximizer",
 
     -- APPEARANCE
     {
@@ -65,7 +65,7 @@ return {
     { "mfussenegger/nvim-jdtls", ft = "java" },
 
     -- DEBUGGER
-    { "rcarriga/cmp-dap",        ft = { "python", "cpp", "javascript" } },
+    { "rcarriga/cmp-dap", ft = { "python", "cpp", "javascript" } },
     {
         "rcarriga/nvim-dap-ui",
         ft = { "python", "cpp", "javascript" },
@@ -79,7 +79,7 @@ return {
     "folke/neovim",
 
     -- Beancount
-    { "crispgm/cmp-beancount",     ft = "beancount" },
+    { "crispgm/cmp-beancount", ft = "beancount" },
     { "nathangrigg/vim-beancount", ft = "beancount" },
 
     -- JSON
@@ -95,5 +95,5 @@ return {
     },
 
     { "junegunn/fzf" },
-    { "junegunn/fzf.vim",                         dependencies = { "junegunn/fzf" } },
+    { "junegunn/fzf.vim", dependencies = { "junegunn/fzf" } },
 }

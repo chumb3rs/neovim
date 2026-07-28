@@ -10,8 +10,8 @@ return {
                 icon = "",
                 color = "#428850",
                 cterm_color = "65",
-                name = "Zsh"
-           }
+                name = "Zsh",
+            },
         },
         -- globally enable different highlight colors per icon (default to true)
         -- if set to false all icons will have the default icon's color
@@ -30,18 +30,18 @@ return {
             [".gitignore"] = {
                 icon = "",
                 color = "#f1502f",
-                name = "Gitignore"
+                name = "Gitignore",
             },
             ["Config"] = {
                 icon = "",
                 color = "#009739",
-                name = "Config"
+                name = "Config",
             },
             ["lombok.config"] = {
                 icon = "󰞲",
                 color = "#d9230f",
-                name = "Lombok"
-            }
+                name = "Lombok",
+            },
         },
 
         -- same as `override` but specifically for overrides by extension
@@ -50,7 +50,7 @@ return {
             ["log"] = {
                 icon = "",
                 color = "#81e043",
-                name = "Log"
+                name = "Log",
             },
             ["astro"] = {
                 icon = "",
@@ -60,15 +60,14 @@ return {
             ["snippets"] = {
                 icon = "",
                 color = "#7AA2F7",
-                name = "Snippets"
+                name = "Snippets",
             },
             [".conf"] = {
                 icon = "",
                 color = "#1BB91F",
                 cterm_color = "28",
-                name = "Tmux"
-            }
+                name = "Tmux",
+            },
         },
-
-    }
+    },
 }

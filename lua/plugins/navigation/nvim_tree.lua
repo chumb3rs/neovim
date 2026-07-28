@@ -3,8 +3,8 @@ return {
     enabled = false,
     cmd = "NvimTreeOpen",
     keys = {
-        { "<leader>pv", ":NvimTreeFindFile<cr>", mode = "n", desc = "Explorer tree",          silent = true },
-        { "<leader>pt", ":NvimTreeToggle<cr>",   mode = "n", desc = "Explorer tree toggle",   silent = true },
+        { "<leader>pv", ":NvimTreeFindFile<cr>", mode = "n", desc = "Explorer tree", silent = true },
+        { "<leader>pt", ":NvimTreeToggle<cr>", mode = "n", desc = "Explorer tree toggle", silent = true },
         { "<leader>pc", ":NvimTreeCollapse<cr>", mode = "n", desc = "Explorer tree collapse", silent = true },
     },
     init = function()

@@ -30,9 +30,9 @@ local servers = {
         end,
     },
     barium = {
-        cmd = { 'barium' },
-        root_markers = { 'Config' },
-        filetypes = { 'brazil-config' },
+        cmd = { "barium" },
+        root_markers = { "Config" },
+        filetypes = { "brazil-config" },
     },
     biome = {},
     clangd = {},

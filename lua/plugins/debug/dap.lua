@@ -11,9 +11,9 @@ return {
         vim.keymap.set("n", "<F12>", dap.step_out, { desc = "DAP Step Out" })
 
         vim.keymap.set("n", "<leader>dus", function()
-            local widgets = require("dap.ui.widgets");
-            local sidebar = widgets.sidebar(widgets.scopes);
-            sidebar.open();
+            local widgets = require("dap.ui.widgets")
+            local sidebar = widgets.sidebar(widgets.scopes)
+            sidebar.open()
         end, { desc = "Open debugging sidebar" })
         vim.keymap.set("n", "<leader>dds", dap.disconnect, { desc = "DAP Disconnect" })
         vim.keymap.set("n", "<leader>dtt", dap.terminate, { desc = "DAP Terminate" })
@@ -29,13 +29,21 @@ return {
         end, { desc = "Set Log Point" })
         vim.keymap.set("n", "<leader>dcb", dap.clear_breakpoints, { desc = "(DAP) Clear breakpoints" })
 
-        vim.keymap.set("n", '<leader>di', function() require "dap.ui.widgets".hover() end, { desc = "Variables" })
-        vim.keymap.set("n", '<leader>d?', function()
-            local widgets = require "dap.ui.widgets"; widgets.centered_float(widgets.scopes)
+        vim.keymap.set("n", "<leader>di", function()
+            require("dap.ui.widgets").hover()
+        end, { desc = "Variables" })
+        vim.keymap.set("n", "<leader>d?", function()
+            local widgets = require("dap.ui.widgets")
+            widgets.centered_float(widgets.scopes)
         end, { desc = "Scopes" })
-        vim.keymap.set("n", "<leader>dlb", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "(DAP) List breakpoints" })
-        vim.keymap.set("n", '<leader>dlf', '<cmd>Telescope dap frames<cr>', { desc = "List frames" })
-        vim.keymap.set("n", '<leader>dlc', '<cmd>Telescope dap commands<cr>', { desc = "List commands" })
+        vim.keymap.set(
+            "n",
+            "<leader>dlb",
+            "<cmd>Telescope dap list_breakpoints<cr>",
+            { desc = "(DAP) List breakpoints" }
+        )
+        vim.keymap.set("n", "<leader>dlf", "<cmd>Telescope dap frames<cr>", { desc = "List frames" })
+        vim.keymap.set("n", "<leader>dlc", "<cmd>Telescope dap commands<cr>", { desc = "List commands" })
         -- REMAPS
 
         dapui.setup()
@@ -54,11 +62,11 @@ return {
             host = "127.0.0.1",
             port = 8123,
             executable = {
-                command = "js-debug-adapter"
-            }
+                command = "js-debug-adapter",
+            },
         }
 
-        for _, language in ipairs { "typscript", "javascript" } do
+        for _, language in ipairs({ "typscript", "javascript" }) do
             dap.configurations[language] = {
                 {
                     type = "pwa-node",
@@ -66,8 +74,8 @@ return {
                     name = "Launch file",
                     program = "${file}",
                     cwd = "${workspaceFolder}",
-                    runtimeExecutable = "node"
-                }
+                    runtimeExecutable = "node",
+                },
             }
         end
 
@@ -77,7 +85,7 @@ return {
             executable = {
                 command = "/usr/local/codelldb/extension/adapter/codelldb",
                 args = { "--port", "${port}" },
-            }
+            },
         }
 
         dap.configurations.cpp = {
@@ -86,13 +94,13 @@ return {
                 type = "codelldb",
                 request = "launch",
                 program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
                 end,
-                cwd = '${workspaceFolder}',
+                cwd = "${workspaceFolder}",
                 stopOnEntry = false,
             },
         }
         dap.configurations.c = dap.configurations.cpp
         dap.configurations.rust = dap.configurations.cpp
-    end
+    end,
 }

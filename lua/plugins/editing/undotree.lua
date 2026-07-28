@@ -8,7 +8,7 @@ return {
                 vim.cmd("UndotreeFocus")
             end,
             mode = "n",
-            desc = "Open undo tree"
-        }
-    }
+            desc = "Open undo tree",
+        },
+    },
 }
