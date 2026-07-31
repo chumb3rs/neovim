@@ -78,10 +78,6 @@ return {
 
     "folke/neovim",
 
-    -- Beancount
-    { "crispgm/cmp-beancount", ft = "beancount" },
-    { "nathangrigg/vim-beancount", ft = "beancount" },
-
     -- JSON
     {
         "b0o/schemastore.nvim",
