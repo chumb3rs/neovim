@@ -1,5 +1,6 @@
 return {
     name = "amazonq",
+    enabled = false,
     url = "https://github.com/awslabs/amazonq.nvim.git",
     lazy = true,
     cmd = "AmazonQ",
