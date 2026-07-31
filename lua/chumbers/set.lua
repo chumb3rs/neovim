@@ -46,3 +46,8 @@ vim.opt.guifont = "JetBrainsMono Nerd Font"
 -- Windows
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Providers
+vim.g.python3_host_prog = os.getenv("HOME") .. "/.local/share/mise/installs/python/3.9/bin/python3"
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
