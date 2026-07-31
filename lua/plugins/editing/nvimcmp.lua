@@ -66,14 +66,15 @@ return {
                 },
             },
             formatting = {
-                fields = { "kind", "abbr", "menu" },
+                -- nvim-cmp renders the kind icon in its own `icon` field, so pad
+                -- that into a block and push the kind name out into `menu`.
+                fields = { "icon", "abbr", "menu" },
                 format = function(entry, vim_item)
-                    local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-                    local strings = vim.split(kind.kind, "%s", { trimempty = true })
-                    kind.kind = " " .. (strings[1] or "") .. " "
-                    kind.menu = "    (" .. (strings[2] or "") .. ")"
+                    local item = lspkind.cmp_format({ maxwidth = 50 })(entry, vim_item)
+                    item.menu = "    (" .. (item.kind or "") .. ")"
+                    item.icon = " " .. (item.icon or "") .. " "
 
-                    return kind
+                    return item
                 end,
             },
         })

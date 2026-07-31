@@ -8,7 +8,7 @@
 
 1. Clone the git repository to the appropriate location. On Linux systems, this is `$XDG_CONFIG`, which on Ubuntu resolves to `~/.config/`. Note that you will need to alias the clone command.
 ```bash
-git clone https://github.com/nickmarks00/neovim.git nvim
+git clone https://github.com/chumb3rs/neovim.git nvim
 ```
 2. Open the newly-created NeoVim config directory - `vi nvim`. Since my config uses [Lazy](https://github.com/folke/lazy.nvim) as the package manager, it should be able to bootstrap itself and install all the necessary dependencies.
 3. Ensure that all the proper language servers are installed. Since I am using Mason/LSP Zero, `ensure_installed` cannot be used to automatically install *all* of the LSPs I have configured. However, if you run `:Mason`, make sure the following are installed:

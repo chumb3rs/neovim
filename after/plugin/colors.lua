@@ -79,30 +79,30 @@ function IconColors(colors)
 end
 
 function NvimCmpColors(colors)
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg='NONE', strikethrough=true, fg=colors.comment })
+    vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = colors.comment })
 
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg='NONE', fg=colors.teal })
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link='CmpIntemAbbrMatch' })
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = colors.teal })
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
 
-    vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg=colors.blue, fg=colors.bg_dark })
-    vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link='CmpItemKindVariable' })
+    -- One background colour per group of completion kinds. nvim-cmp highlights
+    -- the icon column with "CmpItemKind<Kind>Icon", so set that as well.
+    local kind_colors = {
+        [colors.blue] = { "Variable", "Interface" },
+        [colors.green] = { "Text" },
+        [colors.yellow] = { "Function", "Method", "Constant" },
+        [colors.magenta] = { "Keyword", "Property" },
+        [colors.orange] = { "Snippet", "Unit", "Enum", "EnumMember" },
+        [colors.green1] = { "Field" },
+        [colors.blue5] = { "Class", "Struct" },
+    }
 
-    vim.api.nvim_set_hl(0, 'CmpItemKindText', { bg=colors.green, fg=colors.bg_dark })
-
-    vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg=colors.yellow, fg=colors.bg_dark })
-    vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link='CmpItemKindFunction' })
-    vim.api.nvim_set_hl(0, 'CmpItemKindConstant', { link='CmpItemKindFunction' })
-
-    vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg=colors.magenta, fg=colors.bg_dark })
-    vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link='CmpItemKindKeyword' })
-    vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindKeyword' })
-
-    vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { bg=colors.orange, fg=colors.bg_dark })
-    vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindEnum' })
-
-    vim.api.nvim_set_hl(0, 'CmpItemKindField', { bg=colors.green1, fg=colors.bg_dark })
-
-    vim.api.nvim_set_hl(0, 'CmpItemKindClass', { bg=colors.blue5, fg=colors.bg_dark })
+    for bg, kinds in pairs(kind_colors) do
+        for _, kind in ipairs(kinds) do
+            local hl = { bg = bg, fg = colors.bg_dark }
+            vim.api.nvim_set_hl(0, "CmpItemKind" .. kind, hl)
+            vim.api.nvim_set_hl(0, "CmpItemKind" .. kind .. "Icon", hl)
+        end
+    end
 end
 
 ColorConfig()
