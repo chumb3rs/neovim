@@ -9,6 +9,7 @@ function ColorConfig(color)
     GitSignsColors(colors)
     LineNumberColors(colors, util)
     CursorLineColors(colors)
+    FloatColors(colors)
     IconColors(colors)
     NvimCmpColors(colors)
 end
@@ -19,6 +20,20 @@ function WindowColors()
     vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "MsgArea", { bg = "NONE" })
+end
+
+function FloatColors(colors)
+    vim.o.winborder = "rounded" -- default border for all floats (nvim 0.11+)
+
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.bg_dark, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.bg_dark, fg = colors.blue })
+    vim.api.nvim_set_hl(0, "FloatTitle", { bg = colors.bg_dark, fg = colors.blue, bold = true })
+
+    -- Completion popup menu (nvim-cmp maps its window onto the Pmenu group).
+    vim.api.nvim_set_hl(0, "Pmenu", { bg = colors.bg_dark, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.bg_highlight, fg = colors.fg, bold = true })
+    vim.api.nvim_set_hl(0, "PmenuSbar", { bg = colors.bg_dark })
+    vim.api.nvim_set_hl(0, "PmenuThumb", { bg = colors.fg_gutter })
 end
 
 function GitSignsColors(colors)

@@ -72,9 +72,16 @@ return {
             },
             window = {
                 completion = {
-                    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                    border = "rounded",
+                    -- FloatBorder:FloatBorder picks up the blue accent border set
+                    -- in colors.lua (was mapped to Pmenu, so it was invisible).
+                    winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
                     col_offset = -3,
                     side_padding = 0,
+                },
+                documentation = {
+                    border = "rounded",
+                    winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
                 },
             },
             formatting = {
