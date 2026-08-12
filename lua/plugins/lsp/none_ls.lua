@@ -11,7 +11,6 @@ return {
                     extra_args = { "--disable=E0401,E0611" },
                 }),
                 null_ls.builtins.formatting.black,
-                null_ls.builtins.formatting.usort,
 
                 -- Cpp
                 null_ls.builtins.formatting.clang_format.with({
