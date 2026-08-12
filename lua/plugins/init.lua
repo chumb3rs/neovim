@@ -18,11 +18,7 @@ return {
         priority = 1000,
         opts = {},
     },
-    {
-        "catgoose/nvim-colorizer.lua",
-        event = "BufReadPre",
-        opts = {},
-    },
+
     "onsails/lspkind.nvim",
 
     -- GIT PLUGINS
@@ -32,34 +28,6 @@ return {
     {
         "lervag/vimtex",
         ft = "tex",
-    },
-
-    -- GO
-    {
-        "ray-x/go.nvim",
-        ft = "go",
-    },
-
-    -- Rust
-    {
-        "rust-lang/rust.vim",
-        ft = "rust",
-        config = function()
-            vim.g.rustfmt_autosave = 1
-        end,
-    },
-    {
-        "mrcjkb/rustaceanvim",
-        version = "^4", -- Recommended
-        ft = { "rust" },
-    },
-    {
-        "saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        ft = "rust",
-        config = function()
-            require("crates").setup({})
-        end,
     },
 
     { "mfussenegger/nvim-jdtls", ft = "java" },
