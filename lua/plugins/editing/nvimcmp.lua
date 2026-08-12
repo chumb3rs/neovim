@@ -1,5 +1,17 @@
 return {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "felipelema/cmp-async-path",
+        "saadparwaiz1/cmp_luasnip",
+        "quangnguyen30192/cmp-nvim-ultisnips",
+        "hrsh7th/cmp-nvim-lua",
+        "L3MON4D3/LuaSnip",
+        "rafamadriz/friendly-snippets",
+    },
     config = function()
         local cmp = require("cmp")
         local luasnip = require("luasnip")

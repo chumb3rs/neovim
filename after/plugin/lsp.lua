@@ -1,4 +1,3 @@
--- =============================================================================
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local function brazil_pyright_paths(root)
@@ -176,6 +175,58 @@ require("mason-lspconfig").setup({
 
 vim.diagnostic.config({
     virtual_text = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "",
+            [vim.diagnostic.severity.INFO] = "",
+        },
+    },
+})
+
+-- Diagnostic keymaps (GLOBAL: use vim.diagnostic, so they work in any buffer,
+-- including buffers backed only by none-ls linters with no LSP client).
+vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, { desc = "[O]pen [F]loat window" })
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = 1 })
+end, { desc = "Go to next diagnostic" })
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = -1 })
+end, { desc = "Go to previous diagnostic" })
+
+-- LSP keymaps (buffer-local: only bound in buffers with an LSP client attached).
+vim.api.nvim_create_autocmd("LspAttach", {
+    desc = "LSP buffer-local keymaps",
+    callback = function(args)
+        local function map(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, desc = desc })
+        end
+
+        map("n", "gd", vim.lsp.buf.definition, "[G]o to [D]efinition")
+        map("n", "td", vim.lsp.buf.type_definition, "Go to [T]ype [D]efinition")
+        map("n", "gD", vim.lsp.buf.declaration, "[G]o to [D]eclaration")
+        map("n", "gi", vim.lsp.buf.implementation, "[G]o to [I]mplementation")
+        map("n", "<leader>?", vim.lsp.buf.hover, "Open IntelliSense menu")
+        map("i", "g?", vim.lsp.buf.signature_help, "Show signature help")
+        map("n", "gs", vim.lsp.buf.signature_help, "Show signature help")
+        map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, "Show [W]orkspace [S]ymbols")
+        map("n", "<leader>ca", vim.lsp.buf.code_action, "[L]SP [C]ode [A]ctions")
+        map("v", "<leader>ca", vim.lsp.buf.code_action, "[L]SP [C]ode [A]ctions")
+        map("n", "<leader>lrs", vim.lsp.buf.references, "[L]SP [R]eference[S]")
+        map("n", "<leader>lrn", vim.lsp.buf.rename, "[L]SP [R]e[n]ame")
+        map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
+        map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")
+        map("n", "<space>wl", function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, "List workspace folders")
+        map("n", "<leader>fm", function()
+            vim.lsp.buf.format({ async = true })
+        end, "[F]or[M]at Code")
+        map("v", "<leader>fm", function()
+            vim.lsp.buf.format({ async = true })
+        end, "[F]or[M]at Code Selection")
+    end,
 })
 
 -- Range formatting operator (gm).
