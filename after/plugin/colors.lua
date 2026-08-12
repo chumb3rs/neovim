@@ -34,6 +34,10 @@ function FloatColors(colors)
     vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.bg_highlight, fg = colors.fg, bold = true })
     vim.api.nvim_set_hl(0, "PmenuSbar", { bg = colors.bg_dark })
     vim.api.nvim_set_hl(0, "PmenuThumb", { bg = colors.fg_gutter })
+
+    vim.api.nvim_set_hl(0, "WhichKeyBorder", { bg = colors.bg_dark, fg = colors.purple })
+
+    vim.api.nvim_set_hl(0, "FidgetBorder", { bg = colors.bg_dark, fg = colors.teal })
 end
 
 function GitSignsColors(colors)

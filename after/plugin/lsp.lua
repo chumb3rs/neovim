@@ -156,6 +156,7 @@ vim.lsp.enable("barium")
 -- for every installed server, applying the vim.lsp.config specs registered above.
 require("mason").setup({
     ui = {
+        border = "rounded",
         icons = {
             package_installed = "✓",
             package_pending = "➜",
