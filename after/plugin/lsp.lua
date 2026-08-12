@@ -1,8 +1,161 @@
-local lsp = require("lsp-zero")
-local mason = require("mason")
-local lspconfig = require("lspconfig")
+-- =============================================================================
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-mason.setup({
+local function brazil_pyright_paths(root)
+    if not root then
+        return nil
+    end
+    -- Workspace root is the parent of the package's `src/` dir; fall back to
+    -- walking up to whatever ancestor contains an `env/` directory.
+    local ws = root:match("^(.*)/src/") or vim.fs.root(root, { "env" })
+    if not ws then
+        return nil
+    end
+    local pkg = root:match("/src/([^/]+)")
+    local candidates = {}
+    if pkg then
+        -- Prefer the env matching THIS package.
+        table.insert(candidates, ws .. "/env/" .. pkg .. "-*/runtime")
+    end
+    table.insert(candidates, ws .. "/env/*/runtime")
+    for _, glob in ipairs(candidates) do
+        local sp = vim.fn.glob(glob .. "/lib/python3*/site-packages", true, true)
+        if #sp > 0 then
+            local interp = vim.fn.glob(glob .. "/python3*/bin/python", true, true)
+            return sp[1], interp[1]
+        end
+    end
+    return nil
+end
+
+local servers = {
+    astro = {
+        on_attach = function(client, bufnr)
+            -- disable astro's formatter
+            client.server_capabilities.documentFormattingProvider = false
+        end,
+    },
+    barium = {
+        cmd = { "barium" },
+        root_markers = { "Config" },
+        filetypes = { "brazil-config" },
+    },
+    biome = {},
+    clangd = {},
+    docker_language_server = {},
+    emmet_language_server = {
+        filetypes = { "html", "javascriptreact", "typescriptreact", "vue", "astro", "svelte" },
+    },
+    jsonls = {
+        settings = {
+            json = {
+                schemas = require("schemastore").json.schemas(),
+                validate = { enable = true },
+            },
+        },
+        filetypes = { "json" },
+    },
+    lua_ls = {
+        settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using
+                    -- (most likely LuaJIT in the case of Neovim)
+                    version = "LuaJIT",
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {
+                        "vim",
+                        "require",
+                    },
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                -- Do not send telemetry data containing a randomized but unique identifier
+                telemetry = {
+                    enable = false,
+                },
+            },
+        },
+    },
+    mdx_analyzer = {},
+    pyright = {
+        filetypes = { "python" },
+        -- `Config` is the Brazil package marker; anchor the root at the package.
+        root_markers = { "Config", "pyproject.toml", "setup.py", ".git" },
+        before_init = function(_, config)
+            local site_packages, interpreter = brazil_pyright_paths(config.root_dir)
+            if not site_packages then
+                return
+            end
+            config.settings = vim.tbl_deep_extend("force", config.settings or {}, {
+                python = {
+                    -- Runtime interpreter for correct stdlib/version.
+                    pythonPath = interpreter,
+                    analysis = {
+                        -- The Brazil closure (boto3, etc.) lives here.
+                        extraPaths = { site_packages },
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                        diagnosticMode = "openFilesOnly",
+                    },
+                },
+            })
+        end,
+    },
+    ruby_lsp = {},
+    smithy_ls = {},
+    tailwindcss = {},
+    ts_ls = {
+        init_options = {
+            preferences = {
+                disableSuggestions = false,
+            },
+        },
+        on_attach = function(client)
+            -- Makes sure ts_ls does not format ts/js files
+            client.server_capabilities.documentFormattingProvider = false
+        end,
+    },
+    volar = {
+        init_options = {
+            vue = {
+                hybridMode = false,
+            },
+        },
+    },
+    yamlls = {
+        settings = {
+            yaml = {
+                schemaStore = {
+                    -- You must disable built-in schemaStore support if you want to use
+                    -- this plugin and its advanced options like `ignore`.
+                    enable = false,
+                    -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                    url = "",
+                },
+                schemas = require("schemastore").yaml.schemas(),
+            },
+        },
+        filetypes = { "yaml" },
+    },
+}
+
+for server, opts in pairs(servers) do
+    opts.capabilities = capabilities
+    vim.lsp.config(server, opts)
+end
+
+-- barium (the brazil-config LSP from VimBrazilConfig) is not managed by mason,
+-- so enable it explicitly. Mason-installed servers are auto-enabled below.
+vim.lsp.enable("barium")
+
+-- Mason: install + auto-enable servers. mason-lspconfig v2 calls vim.lsp.enable()
+-- for every installed server, applying the vim.lsp.config specs registered above.
+require("mason").setup({
     ui = {
         icons = {
             package_installed = "✓",
@@ -19,31 +172,13 @@ require("mason-lspconfig").setup({
         "pyright",
         "clangd",
     },
-    handlers = {
-        lsp.default_setup,
-
-        gopls = function()
-            lspconfig.gopls.setup({
-                --root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-                settings = {
-                    gopls = {
-                        usePlaceholders = true,
-                        staticcheck = true,
-                        gofumpt = true,
-                        analyses = {
-                            unusedparams = true,
-                        },
-                    },
-                },
-            })
-        end,
-    },
 })
 
 vim.diagnostic.config({
     virtual_text = true,
 })
 
+-- Range formatting operator (gm).
 function format_range_operator()
     local old_func = vim.go.operatorfunc
     _G.op_func_formatting = function()
@@ -59,23 +194,45 @@ end
 
 vim.api.nvim_set_keymap("n", "gm", "<cmd>lua format_range_operator()<CR>", { noremap = true })
 
--- For Bemol integration
-function bemol()
+-- Bemol: add first-party workspace source roots (from `.bemol/ws_root_folders`,
+-- generated by running the `bemol` CLI in the workspace) so cross-package
+-- go-to-definition works. Reads the folder list once per attach and only adds
+-- folders the client doesn't already track, avoiding the noisy
+-- "<path> is already part of this workspace" messages.
+local function bemol_folders()
     local bemol_dir = vim.fs.find({ ".bemol" }, { upward = true, type = "directory" })[1]
-    local ws_folders_lsp = {}
+    local folders = {}
     if bemol_dir then
         local file = io.open(bemol_dir .. "/ws_root_folders", "r")
         if file then
             for line in file:lines() do
-                table.insert(ws_folders_lsp, line)
+                if line ~= "" then
+                    table.insert(folders, line)
+                end
             end
             file:close()
         end
     end
-
-    for _, line in ipairs(ws_folders_lsp) do
-        vim.lsp.buf.add_workspace_folder(line)
-    end
+    return folders
 end
 
-bemol()
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client or client.name ~= "pyright" then
+            return
+        end
+        -- Folders the client already tracks (its root_dir, prior bemol adds, etc.)
+        local existing = {}
+        for _, wf in ipairs(client.workspace_folders or {}) do
+            if wf.name then
+                existing[wf.name] = true
+            end
+        end
+        for _, folder in ipairs(bemol_folders()) do
+            if not existing[folder] then
+                vim.lsp.buf.add_workspace_folder(folder)
+            end
+        end
+    end,
+})

@@ -6,7 +6,10 @@ return {
         null_ls.setup({
             sources = {
                 -- Python
-                null_ls.builtins.diagnostics.pylint,
+                --   E0401 import-error, E0611 no-name-in-module.
+                null_ls.builtins.diagnostics.pylint.with({
+                    extra_args = { "--disable=E0401,E0611" },
+                }),
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.usort,
 
