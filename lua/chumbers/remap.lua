@@ -94,7 +94,7 @@ vim.keymap.set("n", "<Leader>lt", toggle_loclist, { desc = "Toggle Location Wind
 -- Opening Tools
 vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Open [L]a[z]y" })
 vim.keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Open [M]a[s]on" })
-vim.keymap.set("n", "<leader>lsp", "<cmd>LspInfo<CR>", { desc = "Open [LSP]Info" })
+vim.keymap.set("n", "<leader>lsp", "<cmd>checkhealth vim.lsp<CR>", { desc = "Open [LSP] info" })
 vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<CR>", { desc = "Open [N]ull[LS]Info" })
 vim.keymap.set("n", "<leader>chl", "<cmd>checkhealth<CR>", { desc = "[C]heck[H]ea[L]th" })
 
