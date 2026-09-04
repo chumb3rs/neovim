@@ -65,7 +65,6 @@ return {
                 { name = "nvim_lsp" },
                 { name = "buffer" },
                 { name = "luasnip" },
-                { name = "crates" },
                 { name = "async_path" },
                 { name = "nvim_lsp_signature_help" },
                 { name = "lazydev", group_index = 0 },
@@ -73,8 +72,6 @@ return {
             window = {
                 completion = {
                     border = "rounded",
-                    -- FloatBorder:FloatBorder picks up the blue accent border set
-                    -- in colors.lua (was mapped to Pmenu, so it was invisible).
                     winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
                     col_offset = -3,
                     side_padding = 0,
@@ -85,8 +82,6 @@ return {
                 },
             },
             formatting = {
-                -- nvim-cmp renders the kind icon in its own `icon` field, so pad
-                -- that into a block and push the kind name out into `menu`.
                 fields = { "icon", "abbr", "menu" },
                 format = function(entry, vim_item)
                     local item = lspkind.cmp_format({ maxwidth = 50 })(entry, vim_item)

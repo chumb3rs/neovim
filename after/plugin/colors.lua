@@ -103,8 +103,6 @@ function NvimCmpColors(colors)
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = colors.teal })
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
 
-    -- One background colour per group of completion kinds. nvim-cmp highlights
-    -- the icon column with "CmpItemKind<Kind>Icon", so set that as well.
     local kind_colors = {
         [colors.blue] = { "Variable", "Interface" },
         [colors.green] = { "Text" },
