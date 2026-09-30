@@ -15,10 +15,10 @@ return {
             local sidebar = widgets.sidebar(widgets.scopes)
             sidebar.open()
         end, { desc = "Open debugging sidebar" })
-        vim.keymap.set("n", "<leader>dds", dap.disconnect, { desc = "DAP Disconnect" })
+        vim.keymap.set("n", "<leader>dqu", dap.disconnect, { desc = "DAP Disconnect" })
         vim.keymap.set("n", "<leader>dtt", dap.terminate, { desc = "DAP Terminate" })
-        vim.keymap.set("n", "<Leader>dr", dap.repl.toggle, { desc = "Toggle REPL" })
-        vim.keymap.set("n", "<Leader>dl", dap.run_last, { desc = "Run Last DAP Session" })
+        vim.keymap.set("n", "<Leader>drt", dap.repl.toggle, { desc = "Toggle REPL" })
+        vim.keymap.set("n", "<Leader>drl", dap.run_last, { desc = "Run Last DAP Session" })
 
         vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
         vim.keymap.set("n", "<Leader>dB", function()
