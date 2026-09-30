@@ -4,7 +4,7 @@ return {
     keys = {
         {
             "<leader>gs",
-            "<cmd>vertical topleft Git | set winfixwidth | vertical resize 100<CR>",
+            "<cmd>vertical topleft Git<CR>",
             mode = "n",
             desc = "[G]it [S]tatus",
         },
@@ -13,7 +13,7 @@ return {
         { "<leader>gbl", "<cmd>Git blame<CR>", mode = "n", desc = "[G]it [B][L]ame" },
         {
             "<leader>glg",
-            "<cmd>vertical botright Git log | set winfixwidth | vertical resize 100<CR>",
+            "<cmd>vertical botright Git log<CR>",
             mode = "n",
             desc = "[G]it [L]o[G]",
         },
