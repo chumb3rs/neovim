@@ -7,10 +7,13 @@ return {
             sources = {
                 -- Python
                 --   E0401 import-error, E0611 no-name-in-module.
+                --   W0621 redefined-outer-name
+                --   C0114/5/6 missing-module/class/function-docstring
                 null_ls.builtins.diagnostics.pylint.with({
-                    extra_args = { "--disable=E0401,E0611" },
+                    extra_args = { "--disable=E0401,E0611,W0621,C0114,C0115,C0116" },
                 }),
                 null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.isort,
 
                 -- Cpp
                 null_ls.builtins.formatting.clang_format.with({
