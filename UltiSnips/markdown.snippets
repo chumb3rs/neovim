@@ -29,8 +29,12 @@ snippet tbb "Insert bold text" A
 **${1:${VISUAL}}**$0
 endsnippet
 
-snippet tii "Insert italictext" A
+snippet tii "Insert italic text" A
 *${1:${VISUAL}}*$0
+endsnippet
+
+snippet tbi "Insert bold-italic text" A
+***${1:${VISUAL}}***$0
 endsnippet
 
 snippet thh "Insert highlighted text" A
@@ -38,11 +42,11 @@ snippet thh "Insert highlighted text" A
 endsnippet
 
 snippet hf "Insert hyperlink" A
-[${1:${VISUAL}alias}](${2:link})$0
+[${1:${VISUAL}alias}]($2)$0
 endsnippet
 
 snippet img "Insert image" bA
-![${1:pic alt}](${2:path}${3/.+/ "/}${3:opt title}${3/.+/"/})$0
+![${1:alt}]($2)$0
 endsnippet
 
 priority 2
@@ -56,4 +60,12 @@ endsnippet
 priority 1
 snippet cbb "Insert inline-code" A
 \`${1:${VISUAL}}\`
+endsnippet
+
+snippet cxo "Insert an uncompleted checkbox" bA
+- [  ] $0
+endsnippet
+
+snippet cxx "Insert a completed checkbox" bA
+- [x] $0
 endsnippet
