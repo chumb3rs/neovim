@@ -26,6 +26,8 @@ vim.keymap.set("n", "<leader>bcl", ":%bd|e#<CR>", { desc = "Close all buffers ex
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection" })
+vim.keymap.set("n", "L", "$")
+vim.keymap.set("n", "H", "^")
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
