@@ -2,6 +2,9 @@
 vim.keymap.set("n", "<leader>ef", ":edit ", { desc = "Create new file" })
 vim.keymap.set("n", "<leader>cf", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
 vim.keymap.set("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
+vim.keymap.set("n", "<leader>cfP", "<cmd>let @+=expand('%:p')<CR>", { desc = "[C]opy [F]ile [P]ath (absolute)" })
+vim.keymap.set("n", "<leader>cfp", "<cmd>let @+=@%<CR>", { desc = "[C]opy [F]ile [P]ath (relative)" })
+vim.keymap.set("n", "<leader>cfn", "<cmd>let @+=expand('%:t')<CR>", { desc = "[C]opy [F]ile [N]ame" })
 
 -- Split management
 vim.keymap.set("n", "<C-S-Right>", "<cmd>:vertical resize -1<cr>", { desc = "Resize window smaller" })
@@ -34,9 +37,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "[M]ake E[x]ecutable" })
-vim.keymap.set("n", "<leader>cfP", "<cmd>let @+=expand('%:p')<CR>", { desc = "[C]opy [F]ile [P]ath (absolute)" })
-vim.keymap.set("n", "<leader>cfp", "<cmd>let @+=@%<CR>", { desc = "[C]opy [F]ile [P]ath (relative)" })
-vim.keymap.set("n", "<leader>cfn", "<cmd>let @+=expand('%:t')<CR>", { desc = "[C]opy [F]ile [N]ame" })
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>source %<CR>", { desc = "Source Lua Config" })
 
@@ -97,6 +97,8 @@ vim.keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Open [M]a[s]on" })
 vim.keymap.set("n", "<leader>lsp", "<cmd>checkhealth vim.lsp<CR>", { desc = "Open [LSP] info" })
 vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<CR>", { desc = "Open [N]ull[LS]Info" })
 vim.keymap.set("n", "<leader>chl", "<cmd>checkhealth<CR>", { desc = "[C]heck[H]ea[L]th" })
+vim.keymap.set("n", "<leader>don", "<cmd>DiffOrig<CR>", { desc = "[D]iff[O]rig" })
+vim.keymap.set("n", "<leader>dof", "<cmd>DiffOff<CR>", { desc = "[D]iff[O][F]f" })
 
 local harpoon = require("harpoon")
 
