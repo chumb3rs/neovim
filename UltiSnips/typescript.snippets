@@ -1,0 +1,20 @@
+#https://github.com/honza/vim-snippets/blob/master/UltiSnips/markdown.snippets
+extends javascript
+
+snippet int "interface"
+interface ${1} {
+	$0
+}
+endsnippet
+
+snippet caf "Create new arrow function" A
+const ${1:function_name} = (${2:argument}: ${3:argument_type}): ${4:return_type} => {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fnn "function (named)" A
+function ${1:function_name} (${2:argument}: ${3:argument_type}) {
+	${VISUAL}$0
+}
+endsnippet
