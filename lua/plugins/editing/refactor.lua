@@ -1,6 +1,6 @@
 return {
     "ThePrimeagen/refactoring.nvim",
-    lazy = true,
+    lazy = false,
     cmd = "Refactor",
     keys = {
         { "<leader>re", ":Refactor extract ", mode = "x", desc = "[R]efactor [E]xtract" },
@@ -47,6 +47,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
+        "lewis6991/async.nvim",
     },
     opts = {
         -- prompt for return type
